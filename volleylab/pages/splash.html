@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开屏页</title>
+    <style id="theme-vars">
+/* ============================================================
+   排球研习 VolleyLab — 战术板视觉系统 (Tactic Board Design System)
+   深色单主题 · 粉笔白线稿 + 排球橙高亮
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+
+  /* --- 表面 Surface --- */
+  --vl-background: #10151B;      /* 墨黑偏蓝，战术板底色 */
+  --vl-surface: #1A212B;         /* 卡片 / 浮层 */
+  --vl-surface-2: #222B38;       /* hover / 选中 */
+  --vl-surface-3: #171D26;       /* 演示区 / 内嵌面板 */
+  --vl-border: #2A3441;          /* 分割线 / 描边 */
+  --vl-line-soft: #202832;       /* 列表内细分割 */
+
+  /* --- 文本 Text --- */
+  --vl-foreground: #EDF1F5;      /* 粉笔白 */
+  --vl-muted-foreground: #8C98A8;/* 说明文字 */
+  --vl-ink-3: #5E6A79;           /* 三级文字 */
+
+  /* --- 主强调 Brand（唯一品牌色） --- */
+  --vl-primary: #F2A03C;         /* 排球橙 */
+  --vl-primary-foreground: #10151B;
+  --vl-primary-soft: rgba(242, 160, 60, 0.14);
+  --vl-primary-line: rgba(242, 160, 60, 0.44);
+
+  /* --- 语义别名 Semantic aliases --- */
+  --vl-card: #1A212B;
+  --vl-card-foreground: #EDF1F5;
+  --vl-popover: #202834;
+  --vl-popover-foreground: #EDF1F5;
+  --vl-muted: #171D26;
+  --vl-input: #171D26;
+  --vl-ring: #F2A03C;
+
+  /* --- 状态 Status --- */
+  --state-success: #35C28B;      /* 步骤完成 */
+  --state-warning: #F2A03C;
+  --state-error: #E2574C;        /* 常见错误 */
+  --state-info: #3FA9C9;         /* 数据 / 次要标签 */
+
+  /* --- 线稿与遮罩 Linework & scrim --- */
+  --vl-court-line: #3A4756;
+  --vl-court-line-soft: #2E3947;
+  --vl-stage-light: #F2F4F7;    /* 素模演示台浅灰底，与深色页面形成对比 */
+  --vl-scrim: rgba(16, 21, 27, 0.72);
+  --vl-scrim-strong: rgba(16, 21, 27, 0.94);
+  --vl-overlay-chip: rgba(16, 21, 27, 0.66);
+
+  /* --- 圆角 Radius --- */
+  --vl-radius-sm: 4px;
+  --vl-radius-md: 8px;
+  --vl-radius-lg: 16px;
+  --vl-radius-full: 9999px;
+
+  /* --- 字体 Typography --- */
+  --vl-font-sans: "PingFang SC", "HarmonyOS Sans", "Noto Sans SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  --vl-font-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Roboto Mono", monospace;
+}
+
+/* ============================================================
+   基础元素
+   ============================================================ */
+
+html {
+  background: var(--vl-background);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--vl-background);
+  color: var(--vl-foreground);
+  font-family: var(--vl-font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  word-break: keep-all;
+}
+
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; color: inherit; }
+
+img { display: block; max-width: 100%; }
+
+::selection {
+  background: var(--vl-primary-soft);
+  color: var(--vl-foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--vl-ring);
+  outline-offset: 2px;
+  border-radius: var(--vl-radius-sm);
+}
+
+/* ============================================================
+   版式工具（全局复用，保证 11 个页面同一套节奏）
+   ============================================================ */
+
+.vl-screen {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 20px 32px;
+  box-sizing: border-box;
+}
+
+.vl-appbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 56px;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.vl-footer {
+  width: 100%;
+  max-width: 560px;
+  margin: 40px auto 0;
+  padding: 16px 20px 28px;
+  border-top: 1px solid var(--vl-border);
+  box-sizing: border-box;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--vl-muted-foreground);
+}
+
+.vl-iconbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: -10px;
+  border: 1px solid transparent;
+  border-radius: var(--vl-radius-full);
+  background: transparent;
+  color: var(--vl-foreground);
+  transition: background-color 140ms cubic-bezier(.2, .8, .2, 1), border-color 140ms cubic-bezier(.2, .8, .2, 1);
+}
+.vl-iconbtn:hover { background: var(--vl-surface); border-color: var(--vl-border); }
+.vl-iconbtn:active { background: var(--vl-surface-2); }
+
+.vl-appbar-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.vl-eyebrow {
+  font-family: var(--vl-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--vl-muted-foreground);
+}
+
+.vl-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 28px 0 12px;
+}
+
+.vl-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.vl-section-link {
+  font-size: 13px;
+  color: var(--vl-muted-foreground);
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: color 140ms ease;
+}
+.vl-section-link:hover { color: var(--vl-primary); }
+
+.vl-card {
+  background: var(--vl-card);
+  border: 1px solid var(--vl-border);
+  border-radius: var(--vl-radius-lg);
+}
+
+.vl-divider {
+  height: 1px;
+  background: var(--vl-line-soft);
+  border: 0;
+  margin: 0;
+}
+
+.vl-hair {
+  height: 1px;
+  background: var(--vl-border);
+  border: 0;
+  margin: 0;
+}
+
+.vl-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: var(--vl-radius-md);
+  background: var(--vl-surface-2);
+  color: var(--vl-muted-foreground);
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.vl-tag-brand {
+  background: var(--vl-primary);
+  color: var(--vl-primary-foreground);
+  font-weight: 700;
+  border-radius: var(--vl-radius-sm);
+}
+
+.vl-tag-outline {
+  background: transparent;
+  border: 1px solid var(--vl-primary-line);
+  color: var(--vl-primary);
+}
+
+.vl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: var(--vl-radius-full);
+  border: 1px solid var(--vl-border);
+  background: transparent;
+  color: var(--vl-foreground);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+.vl-btn:hover { background: var(--vl-surface); }
+.vl-btn:active { transform: scale(0.99); }
+
+.vl-btn-primary {
+  background: var(--vl-primary);
+  border-color: var(--vl-primary);
+  color: var(--vl-primary-foreground);
+  font-weight: 700;
+}
+.vl-btn-primary:hover { background: var(--vl-primary); border-color: var(--vl-foreground); }
+
+.vl-num {
+  font-family: var(--vl-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.vl-body {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--vl-muted-foreground);
+}
+
+.vl-caption {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--vl-muted-foreground);
+}
+
+.vl-label {
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--vl-muted-foreground);
+}
+
+/* 战术板球场线稿容器 */
+.vl-court {
+  background: var(--vl-surface-3);
+  border: 1px solid var(--vl-border);
+  border-radius: var(--vl-radius-lg);
+  overflow: hidden;
+}
+
+/* 橙色站位点的脉冲 */
+@keyframes vl-pulse {
+  0%   { transform: scale(1);    opacity: 1; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+
+/* 开屏按钮呼吸 */
+@keyframes vl-breathe {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.04); }
+}
+
+/* 球体浮动 */
+@keyframes vl-float {
+  0%   { transform: translateY(-6px); }
+  100% { transform: translateY(6px); }
+}
+
+/* 页面入场（CSS 降级版本，Flutter 端用 Interval 交织动画） */
+@keyframes vl-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.vl-rise {
+  animation: vl-rise 420ms cubic-bezier(.3, 0, 0, 1) both;
+}
+
+/* 自定义滚动条隐藏（横向步骤条 / 手势卡） */
+.vl-noscrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.vl-noscrollbar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--vl-background);
+    --color-foreground: var(--vl-foreground);
+    --color-card: var(--vl-card);
+    --color-card-foreground: var(--vl-card-foreground);
+    --color-popover: var(--vl-popover);
+    --color-popover-foreground: var(--vl-popover-foreground);
+    --color-primary: var(--vl-primary);
+    --color-primary-foreground: var(--vl-primary-foreground);
+    --color-muted: var(--vl-muted);
+    --color-muted-foreground: var(--vl-muted-foreground);
+    --color-border: var(--vl-border);
+    --color-input: var(--vl-input);
+    --color-ring: var(--vl-ring);
+    --radius-sm: var(--vl-radius-sm);
+    --radius-md: var(--vl-radius-md);
+    --radius-lg: var(--vl-radius-lg);
+  }
+  @layer base {
+    body { background: var(--vl-background); color: var(--vl-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style id="semantic-token-fallback">
+      .bg-background { background-color: var(--vl-background); }
+      .text-background { color: var(--vl-background); }
+      .border-background { border-color: var(--vl-background); }
+      .ring-background { --tw-ring-color: var(--vl-background); }
+      .bg-foreground { background-color: var(--vl-foreground); }
+      .text-foreground { color: var(--vl-foreground); }
+      .border-foreground { border-color: var(--vl-foreground); }
+      .ring-foreground { --tw-ring-color: var(--vl-foreground); }
+      .bg-card { background-color: var(--vl-card); }
+      .text-card { color: var(--vl-card); }
+      .border-card { border-color: var(--vl-card); }
+      .ring-card { --tw-ring-color: var(--vl-card); }
+      .bg-card-foreground { background-color: var(--vl-card-foreground); }
+      .text-card-foreground { color: var(--vl-card-foreground); }
+      .border-card-foreground { border-color: var(--vl-card-foreground); }
+      .ring-card-foreground { --tw-ring-color: var(--vl-card-foreground); }
+      .bg-popover { background-color: var(--vl-popover); }
+      .text-popover { color: var(--vl-popover); }
+      .border-popover { border-color: var(--vl-popover); }
+      .ring-popover { --tw-ring-color: var(--vl-popover); }
+      .bg-popover-foreground { background-color: var(--vl-popover-foreground); }
+      .text-popover-foreground { color: var(--vl-popover-foreground); }
+      .border-popover-foreground { border-color: var(--vl-popover-foreground); }
+      .ring-popover-foreground { --tw-ring-color: var(--vl-popover-foreground); }
+      .bg-primary { background-color: var(--vl-primary); }
+      .text-primary { color: var(--vl-primary); }
+      .border-primary { border-color: var(--vl-primary); }
+      .ring-primary { --tw-ring-color: var(--vl-primary); }
+      .bg-primary-foreground { background-color: var(--vl-primary-foreground); }
+      .text-primary-foreground { color: var(--vl-primary-foreground); }
+      .border-primary-foreground { border-color: var(--vl-primary-foreground); }
+      .ring-primary-foreground { --tw-ring-color: var(--vl-primary-foreground); }
+      .bg-muted { background-color: var(--vl-muted); }
+      .text-muted { color: var(--vl-muted); }
+      .border-muted { border-color: var(--vl-muted); }
+      .ring-muted { --tw-ring-color: var(--vl-muted); }
+      .bg-muted-foreground { background-color: var(--vl-muted-foreground); }
+      .text-muted-foreground { color: var(--vl-muted-foreground); }
+      .border-muted-foreground { border-color: var(--vl-muted-foreground); }
+      .ring-muted-foreground { --tw-ring-color: var(--vl-muted-foreground); }
+      .bg-border { background-color: var(--vl-border); }
+      .text-border { color: var(--vl-border); }
+      .border-border { border-color: var(--vl-border); }
+      .ring-border { --tw-ring-color: var(--vl-border); }
+      .bg-input { background-color: var(--vl-input); }
+      .text-input { color: var(--vl-input); }
+      .border-input { border-color: var(--vl-input); }
+      .ring-input { --tw-ring-color: var(--vl-input); }
+      .bg-ring { background-color: var(--vl-ring); }
+      .text-ring { color: var(--vl-ring); }
+      .border-ring { border-color: var(--vl-ring); }
+      .ring-ring { --tw-ring-color: var(--vl-ring); }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main class="splash-main">
+      <section class="splash-hero" aria-label="战术板半场线稿">
+        <div class="splash-ball-float" aria-hidden="true">
+          <span class="splash-ball-breathe">
+            <svg viewBox="0 0 72 72" width="72" height="72" fill="none">
+              <circle cx="36" cy="36" r="29" stroke="var(--vl-primary)" stroke-width="1.5"/>
+              <path d="M7.5 33.2C18 19 54 19 64.5 33.2" stroke="var(--vl-primary)" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M7.5 38.8C18 53 54 53 64.5 38.8" stroke="var(--vl-primary)" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M40 7.2C49 22 49 50 40 64.8" stroke="var(--vl-primary)" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </span>
+        </div>
+        <svg class="splash-court" viewBox="0 0 360 250" role="img" aria-label="排球半场俯视线稿：中线球网、三米攻击线与六个区位编号">
+          <g fill="none" stroke="var(--vl-court-line)" stroke-width="1.2" stroke-linecap="round">
+            <polygon points="84,40 276,40 336,236 24,236"/>
+            <line x1="63" y1="109" x2="297" y2="109"/>
+            <line x1="148" y1="40" x2="128" y2="236"/>
+            <line x1="212" y1="40" x2="232" y2="236"/>
+            <line x1="78" y1="28" x2="78" y2="42"/>
+            <line x1="282" y1="28" x2="282" y2="42"/>
+            <line x1="84" y1="35" x2="276" y2="35" stroke-width="0.9"/>
+          </g>
+          <g fill="none" stroke="var(--vl-court-line-soft)" stroke-width="0.8">
+            <line x1="84" y1="35" x2="84" y2="40"/>
+            <line x1="112" y1="35" x2="112" y2="40"/>
+            <line x1="140" y1="35" x2="140" y2="40"/>
+            <line x1="168" y1="35" x2="168" y2="40"/>
+            <line x1="196" y1="35" x2="196" y2="40"/>
+            <line x1="224" y1="35" x2="224" y2="40"/>
+            <line x1="252" y1="35" x2="252" y2="40"/>
+            <line x1="276" y1="35" x2="276" y2="40"/>
+          </g>
+          <g font-family="var(--vl-font-mono)" font-size="10" letter-spacing="1" fill="var(--vl-muted-foreground)" text-anchor="middle">
+            <text x="108" y="84">4</text>
+            <text x="180" y="84">3</text>
+            <text x="252" y="84">2</text>
+            <text x="89" y="181">5</text>
+            <text x="180" y="181">6</text>
+            <text x="272" y="181">1</text>
+          </g>
+          <g font-family="var(--vl-font-mono)" font-size="8" letter-spacing="1.2" fill="var(--vl-muted-foreground)">
+            <text x="24" y="26">NET · 中线</text>
+            <text x="294" y="103" text-anchor="end">3M · 攻击线</text>
+          </g>
+          <g fill="none" stroke="var(--vl-court-line-soft)" stroke-width="1.2" stroke-linecap="round">
+            <path d="M138 202C172 220 214 219 246 197" stroke-dasharray="4 5"/>
+            <path d="M239 194L246 197L242 205"/>
+          </g>
+        </svg>
+      </section>
+
+      <div class="splash-copy">
+        <div class="splash-brand">
+          <h1 class="splash-title">排球研习</h1>
+          <p class="splash-latin">VolleyLab</p>
+        </div>
+        <div class="splash-lines">
+          <p class="splash-tagline">从动作开始，学会每一个位置</p>
+          <p class="splash-positioning">用动作分解图，把每个位置的打法讲到能上场</p>
+        </div>
+      </div>
+
+      <div class="splash-actions">
+        <a class="vl-btn vl-btn-primary splash-cta" href="home.html" data-dom-id="cta-enter">
+          进入首页
+          <i data-lucide="arrow-right" style="width:18px;height:18px"></i>
+        </a>
+      </div>
+
+      <p class="splash-meta"><span class="vl-num">v1.0</span> · 大学排球社团 · 本地资源驱动</p>
+    </main>
+
+    <footer class="vl-footer splash-footer">
+      <p>排球研习 VolleyLab · 课程项目演示</p>
+      <p class="splash-footer-note">内容为教学示例，非官方资料</p>
+    </footer>
+
+    <style id="critical-layout">
+      .splash-main {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 560px;
+        margin: 0 auto;
+        min-height: calc(100vh - 96px);
+        min-height: calc(100svh - 96px);
+        box-sizing: border-box;
+        padding-bottom: 8px;
+      }
+
+      /* --- 战术板线稿舞台（列内全出血） --- */
+      .splash-hero {
+        position: relative;
+        width: 100%;
+        padding-top: 28px;
+        animation: vl-fade-in 520ms ease-out both;
+      }
+      .splash-court { display: block; width: 100%; height: auto; }
+      .splash-ball-float {
+        position: absolute;
+        top: 4px;
+        left: 50%;
+        width: 80px;
+        margin-left: -40px;
+        animation: vl-float 6s ease-in-out infinite alternate;
+      }
+      .splash-ball-breathe {
+        display: block;
+        animation: vl-breathe 3s ease-in-out infinite alternate;
+      }
+      .splash-ball-breathe svg { display: block; width: 80px; height: 80px; }
+
+      /* --- 品牌与定位 --- */
+      .splash-copy { padding: 22px 20px 0; text-align: center; }
+      .splash-brand { animation: vl-rise 460ms cubic-bezier(.3, 0, 0, 1) 60ms both; }
+      .splash-title {
+        font-size: 36px;
+        line-height: 1.12;
+        letter-spacing: -0.02em;
+      }
+      .splash-latin {
+        margin-top: 10px;
+        font-family: var(--vl-font-mono);
+        font-size: 12px;
+        line-height: 1.4;
+        letter-spacing: 0.28em;
+        text-indent: 0.28em;
+        color: var(--vl-primary);
+      }
+      .splash-lines {
+        margin-top: 18px;
+        animation: vl-rise 460ms cubic-bezier(.3, 0, 0, 1) 140ms both;
+      }
+      .splash-tagline {
+        font-size: 15px;
+        line-height: 1.55;
+        color: var(--vl-foreground);
+      }
+      .splash-positioning {
+        margin-top: 6px;
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--vl-muted-foreground);
+      }
+
+      /* --- 主 CTA --- */
+      .splash-actions {
+        display: flex;
+        justify-content: center;
+        padding: 26px 20px 0;
+        animation: vl-rise 460ms cubic-bezier(.3, 0, 0, 1) 200ms both;
+      }
+      .splash-cta {
+        width: 100%;
+        max-width: 260px;
+        height: 48px;
+        min-height: 48px;
+        padding: 0 22px;
+        font-size: 15px;
+      }
+      .splash-cta svg,
+      .splash-cta i {
+        width: 18px;
+        height: 18px;
+        transition: transform 160ms cubic-bezier(.2, .8, .2, 1);
+      }
+      .splash-cta:hover svg { transform: translateX(2px); }
+
+      /* --- 版本小字 + 页脚 --- */
+      .splash-meta {
+        margin-top: auto;
+        padding: 30px 20px 4px;
+        text-align: center;
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--vl-muted-foreground);
+      }
+      .splash-meta .vl-num { letter-spacing: 0.06em; }
+
+      .splash-footer { text-align: center; }
+      .splash-footer-note {
+        margin-top: 4px;
+        font-size: 12px;
+        color: var(--vl-muted-foreground);
+      }
+
+      @keyframes vl-fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+    </style>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

@@ -1,0 +1,705 @@
+{
+  "data": [
+    {
+      "id": "page-splash",
+      "title": "开屏页",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1762900000000,
+      "canvasData": {
+        "x": 169,
+        "y": 0,
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 933,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-0a5afb17",
+          "measuredAt": 1794475089698
+        }
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/splash.html",
+        "interactions": [
+          {
+            "domId": "cta-enter",
+            "targetPageId": "page-home",
+            "transitionLabel": "进入首页"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-home",
+      "title": "首页",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1762900000001,
+      "canvasData": {
+        "x": 338,
+        "y": 0,
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 1052,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-82c103e5",
+          "measuredAt": 1794483424451
+        }
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/home.html",
+        "interactions": [
+          {
+            "domId": "link-pos-outside",
+            "targetPageId": "page-position-outside",
+            "transitionLabel": "查看主攻"
+          },
+          {
+            "domId": "cta-search",
+            "targetPageId": "page-search",
+            "hideEdge": true,
+            "transitionLabel": "打开搜索"
+          },
+          {
+            "domId": "link-news-detail",
+            "targetPageId": "page-news-detail",
+            "hideEdge": true,
+            "transitionLabel": "查看新闻"
+          },
+          {
+            "domId": "link-pos-setter",
+            "targetPageId": "page-position-setter",
+            "hideEdge": true,
+            "transitionLabel": "查看二传"
+          },
+          {
+            "domId": "link-pos-opposite",
+            "targetPageId": "page-position-opposite",
+            "hideEdge": true,
+            "transitionLabel": "查看接应"
+          },
+          {
+            "domId": "link-pos-libero",
+            "targetPageId": "page-position-libero",
+            "hideEdge": true,
+            "transitionLabel": "查看自由人"
+          },
+          {
+            "domId": "link-news-2",
+            "targetPageId": "page-news-detail",
+            "hideEdge": true,
+            "transitionLabel": "查看新闻"
+          },
+          {
+            "domId": "link-news-3",
+            "targetPageId": "page-news-detail",
+            "hideEdge": true,
+            "transitionLabel": "查看新闻"
+          },
+          {
+            "domId": "link-news-4",
+            "targetPageId": "page-news-detail",
+            "hideEdge": true,
+            "transitionLabel": "查看新闻"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-position-outside",
+      "title": "主攻",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1762900000002,
+      "canvasData": {
+        "x": 0,
+        "y": 0,
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 3003,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-6848c2c6",
+          "measuredAt": 1794475089698
+        }
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/position-outside.html",
+        "interactions": [
+          {
+            "domId": "link-skill-spike",
+            "targetPageId": "page-skill-spike",
+            "transitionLabel": "扣球教学"
+          },
+          {
+            "domId": "back-home",
+            "targetPageId": "page-home",
+            "transitionLabel": "返回首页"
+          },
+          {
+            "domId": "link-skill-pass-outside",
+            "targetPageId": "page-skill-pass",
+            "hideEdge": true,
+            "transitionLabel": "一传教学"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-position-setter",
+      "title": "二传",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1762900000003,
+      "canvasData": {
+        "x": 169,
+        "y": 3380,
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 2263,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-dde9f69a",
+          "measuredAt": 1794475089698
+        }
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/position-setter.html",
+        "interactions": [
+          {
+            "domId": "back-home",
+            "targetPageId": "page-home",
+            "transitionLabel": "返回首页"
+          },
+          {
+            "domId": "link-set-gesture",
+            "targetPageId": "page-set-gesture",
+            "hideEdge": true,
+            "transitionLabel": "战术手势"
+          },
+          {
+            "domId": "link-skill-set",
+            "targetPageId": "page-skill-set",
+            "hideEdge": true,
+            "transitionLabel": "传球教学"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-position-opposite",
+      "title": "接应",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1762900000004,
+      "canvasData": {
+        "x": 169,
+        "y": 2548,
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 2483,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-2df70fff",
+          "measuredAt": 1794475089698
+        }
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/position-opposite.html",
+        "interactions": [
+          {
+            "domId": "back-home",
+            "targetPageId": "page-home",
+            "transitionLabel": "返回首页"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-position-libero",
+      "title": "自由人",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1762900000005,
+      "canvasData": {
+        "x": 169,
+        "y": 1653,
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 2702,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-2b92e3bb",
+          "measuredAt": 1794475089698
+        }
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/position-libero.html",
+        "interactions": [
+          {
+            "domId": "back-home",
+            "targetPageId": "page-home",
+            "transitionLabel": "返回首页"
+          },
+          {
+            "domId": "link-skill-pass",
+            "targetPageId": "page-skill-pass",
+            "hideEdge": true,
+            "transitionLabel": "一传教学"
+          },
+          {
+            "domId": "link-skill-dig",
+            "targetPageId": "page-skill-dig",
+            "hideEdge": true,
+            "transitionLabel": "防守救球"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-skill-spike",
+      "title": "扣球教学",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1762900000006,
+      "canvasData": {
+        "x": 0,
+        "y": 983,
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 1925,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-a8cceb2d",
+          "measuredAt": 1794558059346
+        }
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/skill-spike.html",
+        "interactions": [
+          {
+            "domId": "back-outside",
+            "targetPageId": "page-position-outside",
+            "transitionLabel": "返回主攻"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-skill-pass",
+      "title": "一传教学",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1762900000007,
+      "canvasData": {
+        "x": 0,
+        "y": 2353,
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 1910,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-50b6b733",
+          "measuredAt": 1794558059346
+        }
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/skill-pass.html",
+        "interactions": [
+          {
+            "domId": "back-libero",
+            "targetPageId": "page-position-libero",
+            "transitionLabel": "返回自由人"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-skill-set",
+      "title": "传球教学",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1762900000011,
+      "canvasData": {
+        "x": 0,
+        "y": 3390,
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 1815,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-83f481e2",
+          "measuredAt": 1794558059346
+        }
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/skill-set.html",
+        "interactions": [
+          {
+            "domId": "back-setter",
+            "targetPageId": "page-position-setter",
+            "transitionLabel": "返回二传"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-skill-dig",
+      "title": "防守救球",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1762900000012,
+      "canvasData": {
+        "x": 0,
+        "y": 1653,
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 2030,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-7ba2423d",
+          "measuredAt": 1794558059346
+        }
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/skill-dig.html",
+        "interactions": [
+          {
+            "domId": "back-libero",
+            "targetPageId": "page-position-libero",
+            "transitionLabel": "返回自由人"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-set-gesture",
+      "title": "二传手势",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1762900000008,
+      "canvasData": {
+        "x": 0,
+        "y": 3018,
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 900,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-1eb1c961",
+          "measuredAt": 1794558059346
+        }
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/set-gesture.html",
+        "interactions": [
+          {
+            "domId": "back-setter",
+            "targetPageId": "page-position-setter",
+            "transitionLabel": "返回二传"
+          },
+          {
+            "domId": "gesture-card-link",
+            "targetPageId": "page-position-setter",
+            "hideEdge": true,
+            "transitionLabel": "回到二传"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-search",
+      "title": "搜索",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1762900000009,
+      "canvasData": {
+        "x": 0,
+        "y": 4148,
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 1183,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-ed0b4c05",
+          "measuredAt": 1794558059346
+        }
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/search.html",
+        "interactions": [
+          {
+            "domId": "back-home",
+            "targetPageId": "page-home",
+            "hideEdge": true,
+            "transitionLabel": "返回首页"
+          },
+          {
+            "domId": "result-pos-outside",
+            "targetPageId": "page-position-outside",
+            "hideEdge": true,
+            "transitionLabel": "打开主攻"
+          },
+          {
+            "domId": "result-skill-spike",
+            "targetPageId": "page-skill-spike",
+            "hideEdge": true,
+            "transitionLabel": "打开扣球"
+          }
+        ]
+      }
+    },
+    {
+      "id": "page-news-detail",
+      "title": "新闻详情",
+      "type": "page",
+      "version": 1,
+      "createdAt": 1762900000010,
+      "canvasData": {
+        "x": 169,
+        "y": 381,
+        "group": 0,
+        "layoutSnapshot": {
+          "version": 1,
+          "contentHeight": 2257,
+          "viewportWidth": 375,
+          "sourceHash": "fnv1a-05c96f08",
+          "measuredAt": 1794475089698
+        }
+      },
+      "devMetadata": {
+        "htmlSrc": "pages/news-detail.html",
+        "interactions": [
+          {
+            "domId": "back-home",
+            "targetPageId": "page-home",
+            "transitionLabel": "返回首页"
+          }
+        ]
+      }
+    },
+    {
+      "id": "image-001",
+      "title": "主攻站位封面",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1794470597836,
+      "canvasData": {
+        "x": 0,
+        "y": 4597,
+        "naturalSize": {
+          "width": 2240,
+          "height": 1680
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/pos-outside-cover.jpg"
+      }
+    },
+    {
+      "id": "image-002",
+      "title": "二传站位封面",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1794470597837,
+      "canvasData": {
+        "x": 169,
+        "y": 4597,
+        "naturalSize": {
+          "width": 2240,
+          "height": 1680
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/pos-setter-cover.jpg"
+      }
+    },
+    {
+      "id": "image-003",
+      "title": "接应站位封面",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1794470597838,
+      "canvasData": {
+        "x": 338,
+        "y": 4597,
+        "naturalSize": {
+          "width": 2240,
+          "height": 1680
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/pos-opposite-cover.jpg"
+      }
+    },
+    {
+      "id": "image-004",
+      "title": "自由人站位封面",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1794470597839,
+      "canvasData": {
+        "x": 507,
+        "y": 4597,
+        "naturalSize": {
+          "width": 2240,
+          "height": 1680
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/pos-libero-cover.jpg"
+      }
+    },
+    {
+      "id": "image-005",
+      "title": "扣球空中击球素模帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1794470597840,
+      "canvasData": {
+        "x": 676,
+        "y": 4597,
+        "naturalSize": {
+          "width": 1920,
+          "height": 1920
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/skill-spike-stage.jpg"
+      }
+    },
+    {
+      "id": "image-006",
+      "title": "一传低姿垫球素模帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1794470597841,
+      "canvasData": {
+        "x": 845,
+        "y": 4597,
+        "naturalSize": {
+          "width": 1920,
+          "height": 1920
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/skill-pass-stage.jpg"
+      }
+    },
+    {
+      "id": "image-007",
+      "title": "传球上手素模帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1794470718304,
+      "canvasData": {
+        "x": 1014,
+        "y": 4597,
+        "naturalSize": {
+          "width": 1920,
+          "height": 1920
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/skill-set-stage.jpg"
+      }
+    },
+    {
+      "id": "image-008",
+      "title": "防守鱼跃素模帧",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1794470718305,
+      "canvasData": {
+        "x": 1183,
+        "y": 4597,
+        "naturalSize": {
+          "width": 1920,
+          "height": 1920
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/skill-dig-stage.jpg"
+      }
+    },
+    {
+      "id": "image-009",
+      "title": "校园排球联赛新闻封面",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1794475474001,
+      "canvasData": {
+        "x": 1352,
+        "y": 4597,
+        "naturalSize": {
+          "width": 2560,
+          "height": 1440
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/news-campus-league.jpg"
+      }
+    },
+    {
+      "id": "image-010",
+      "title": "女排动态新闻封面",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1794475474002,
+      "canvasData": {
+        "x": 1521,
+        "y": 4597,
+        "naturalSize": {
+          "width": 2560,
+          "height": 1440
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/news-womens-team.jpg"
+      }
+    },
+    {
+      "id": "image-011",
+      "title": "自由人规则新闻封面",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1794475474003,
+      "canvasData": {
+        "x": 1690,
+        "y": 4597,
+        "naturalSize": {
+          "width": 2560,
+          "height": 1440
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/news-libero-rules.jpg"
+      }
+    },
+    {
+      "id": "image-012",
+      "title": "青少年训练新闻封面",
+      "type": "image",
+      "version": 1,
+      "createdAt": 1794475474004,
+      "canvasData": {
+        "x": 1859,
+        "y": 4597,
+        "naturalSize": {
+          "width": 2560,
+          "height": 1440
+        }
+      },
+      "devMetadata": {
+        "imageSrc": "assets/news-youth-training.jpg"
+      }
+    }
+  ],
+  "config": {
+    "autoLayout": true,
+    "deviceType": "mobile",
+    "projectName": "排球研习 VolleyLab",
+    "designLibrary": null
+  }
+}

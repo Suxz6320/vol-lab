@@ -1,0 +1,23 @@
+# Flutter / Dart 构建产物
+volleylab_app/build/
+volleylab_app/.dart_tool/
+volleylab_app/.flutter-plugins
+volleylab_app/.flutter-plugins-dependencies
+volleylab_app/android/.gradle/
+volleylab_app/android/local.properties
+volleylab_app/android/app/build/
+volleylab_app/.idea/
+volleylab_app/*.iml
+
+# 安装包与日志
+*.apk
+*.log
+
+# 临时与导出目录
+.screenshots/
+.trae-html-share-packages/
+.shots/
+
+# 系统文件
+Thumbs.db
+.DS_Store

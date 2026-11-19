@@ -1,0 +1,1422 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-11-12T08:06:52.876Z",
+  "source": "build-page-dispatch-manifest.mjs",
+  "mode": "complex",
+  "summary_path": "runtime-orchestration-summary.json",
+  "skillProvenance": {
+    "name": "solo-design",
+    "skill": "solo-design",
+    "plugin": "trae-remote-official:trae-design",
+    "version": "0.1.3",
+    "generatedAt": "2026-11-12T10:00:00+08:00"
+  },
+  "dispatchPreflightManifest": [
+    {
+      "recorded_at": "2026-11-12T08:06:52.867Z",
+      "generatedBy": "build-page-dispatch-manifest.mjs",
+      "packetType": "ComplexPagePacket",
+      "laneContract": {
+        "resolvedLane": "complex_html_page",
+        "packetType": "ComplexPagePacket",
+        "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+      },
+      "taskLinePresent": true,
+      "outputPathPresent": true,
+      "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+      "nodeId": "page-splash",
+      "htmlSrc": "pages/splash.html",
+      "supplementaryReads": [],
+      "allowedWritePaths": [
+        "pages/splash.html",
+        "assets/"
+      ],
+      "forbiddenWriteRoots": [
+        "*.design",
+        "runtime-orchestration-summary.json",
+        "validation-report.json",
+        "finish-readiness-report.json",
+        "restore-contract-report.json",
+        "page-generation-summary.json"
+      ],
+      "toolPolicy": {
+        "todoWriteAllowed": false,
+        "validationScriptsAllowed": false,
+        "previewAllowed": false,
+        "helperScriptsAllowed": false,
+        "designFileWriteAllowed": false,
+        "allowedWritePaths": [
+          "pages/splash.html",
+          "assets/"
+        ]
+      },
+      "skillRuntime": {
+        "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+        "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+        "toolPaths": {
+          "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+          "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+          "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+          "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+          "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+          "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+        },
+        "requiredForPageSubAgent": [
+          "applyHtmlHeadContract",
+          "recordDispatchCompletion"
+        ],
+        "pathInjection": "absolute",
+        "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+        "commandTemplates": {
+          "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-splash\" --html-src=\"pages/splash.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+        }
+      },
+      "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+      "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\splash.html",
+      "brandPrefix": "vl",
+      "aestheticsMode": "free-explore",
+      "toolDisciplineBlockPresent": true,
+      "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\splash.html\" --title=\"开屏页\" --lang=\"zh-CN\" --prefix=\"vl\"",
+      "headFillMode": "skeleton-first",
+      "viewportMode": "document-scroll",
+      "completionSchemaExpected": "full",
+      "restoreFields": null,
+      "restoreContractStatus": null,
+      "restoreCompactPacket": null,
+      "deterministicCommands": null,
+      "sourceAuthorityLock": null,
+      "preDispatchFileHashes": {
+        "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+      },
+      "contextPreflight": {
+        "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+        "requiredContextFiles": [
+          "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+          "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+          "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+          "delivery-quality/page-rendering-quality-gate.md",
+          "delivery-quality/design-artifact-validation.md",
+          "delivery-quality/delivery-evidence-contract.md",
+          "visual-experience/visual-experience-guidelines.md",
+          "visual-experience/visual-checkpoint-protocol.md"
+        ],
+        "optionalContextFiles": [],
+        "passed": true
+      },
+      "pageSliceOnly": true,
+      "requiredFieldsPresent": true,
+      "missingFields": [],
+      "fillHtmlHeadCommandValid": true,
+      "mobileNavigation": {
+        "required": false,
+        "appliesToThisPage": false,
+        "canonicalHtmlIncluded": false,
+        "missingFields": []
+      },
+      "persistedToSummary": true,
+      "taskQueryAudited": false,
+      "proofSource": "summary-only",
+      "largeWorkflowFilesInTaskQuery": null
+    },
+    {
+      "recorded_at": "2026-11-12T08:06:52.867Z",
+      "generatedBy": "build-page-dispatch-manifest.mjs",
+      "packetType": "ComplexPagePacket",
+      "laneContract": {
+        "resolvedLane": "complex_html_page",
+        "packetType": "ComplexPagePacket",
+        "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+      },
+      "taskLinePresent": true,
+      "outputPathPresent": true,
+      "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+      "nodeId": "page-home",
+      "htmlSrc": "pages/home.html",
+      "supplementaryReads": [],
+      "allowedWritePaths": [
+        "pages/home.html",
+        "assets/"
+      ],
+      "forbiddenWriteRoots": [
+        "*.design",
+        "runtime-orchestration-summary.json",
+        "validation-report.json",
+        "finish-readiness-report.json",
+        "restore-contract-report.json",
+        "page-generation-summary.json"
+      ],
+      "toolPolicy": {
+        "todoWriteAllowed": false,
+        "validationScriptsAllowed": false,
+        "previewAllowed": false,
+        "helperScriptsAllowed": false,
+        "designFileWriteAllowed": false,
+        "allowedWritePaths": [
+          "pages/home.html",
+          "assets/"
+        ]
+      },
+      "skillRuntime": {
+        "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+        "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+        "toolPaths": {
+          "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+          "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+          "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+          "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+          "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+          "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+        },
+        "requiredForPageSubAgent": [
+          "applyHtmlHeadContract",
+          "recordDispatchCompletion"
+        ],
+        "pathInjection": "absolute",
+        "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+        "commandTemplates": {
+          "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-home\" --html-src=\"pages/home.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+        }
+      },
+      "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+      "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\home.html",
+      "brandPrefix": "vl",
+      "aestheticsMode": "free-explore",
+      "toolDisciplineBlockPresent": true,
+      "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\home.html\" --title=\"首页\" --lang=\"zh-CN\" --prefix=\"vl\"",
+      "headFillMode": "skeleton-first",
+      "viewportMode": "document-scroll",
+      "completionSchemaExpected": "full",
+      "restoreFields": null,
+      "restoreContractStatus": null,
+      "restoreCompactPacket": null,
+      "deterministicCommands": null,
+      "sourceAuthorityLock": null,
+      "preDispatchFileHashes": {
+        "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+      },
+      "contextPreflight": {
+        "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+        "requiredContextFiles": [
+          "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+          "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+          "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+          "delivery-quality/page-rendering-quality-gate.md",
+          "delivery-quality/design-artifact-validation.md",
+          "delivery-quality/delivery-evidence-contract.md",
+          "visual-experience/visual-experience-guidelines.md",
+          "visual-experience/visual-checkpoint-protocol.md"
+        ],
+        "optionalContextFiles": [],
+        "passed": true
+      },
+      "pageSliceOnly": true,
+      "requiredFieldsPresent": true,
+      "missingFields": [],
+      "fillHtmlHeadCommandValid": true,
+      "mobileNavigation": {
+        "required": false,
+        "appliesToThisPage": false,
+        "canonicalHtmlIncluded": false,
+        "missingFields": []
+      },
+      "persistedToSummary": true,
+      "taskQueryAudited": false,
+      "proofSource": "summary-only",
+      "largeWorkflowFilesInTaskQuery": null
+    },
+    {
+      "recorded_at": "2026-11-12T08:06:52.867Z",
+      "generatedBy": "build-page-dispatch-manifest.mjs",
+      "packetType": "ComplexPagePacket",
+      "laneContract": {
+        "resolvedLane": "complex_html_page",
+        "packetType": "ComplexPagePacket",
+        "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+      },
+      "taskLinePresent": true,
+      "outputPathPresent": true,
+      "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+      "nodeId": "page-position-outside",
+      "htmlSrc": "pages/position-outside.html",
+      "supplementaryReads": [],
+      "allowedWritePaths": [
+        "pages/position-outside.html",
+        "assets/"
+      ],
+      "forbiddenWriteRoots": [
+        "*.design",
+        "runtime-orchestration-summary.json",
+        "validation-report.json",
+        "finish-readiness-report.json",
+        "restore-contract-report.json",
+        "page-generation-summary.json"
+      ],
+      "toolPolicy": {
+        "todoWriteAllowed": false,
+        "validationScriptsAllowed": false,
+        "previewAllowed": false,
+        "helperScriptsAllowed": false,
+        "designFileWriteAllowed": false,
+        "allowedWritePaths": [
+          "pages/position-outside.html",
+          "assets/"
+        ]
+      },
+      "skillRuntime": {
+        "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+        "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+        "toolPaths": {
+          "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+          "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+          "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+          "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+          "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+          "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+        },
+        "requiredForPageSubAgent": [
+          "applyHtmlHeadContract",
+          "recordDispatchCompletion"
+        ],
+        "pathInjection": "absolute",
+        "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+        "commandTemplates": {
+          "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-position-outside\" --html-src=\"pages/position-outside.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+        }
+      },
+      "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+      "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\position-outside.html",
+      "brandPrefix": "vl",
+      "aestheticsMode": "free-explore",
+      "toolDisciplineBlockPresent": true,
+      "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\position-outside.html\" --title=\"主攻\" --lang=\"zh-CN\" --prefix=\"vl\"",
+      "headFillMode": "skeleton-first",
+      "viewportMode": "document-scroll",
+      "completionSchemaExpected": "full",
+      "restoreFields": null,
+      "restoreContractStatus": null,
+      "restoreCompactPacket": null,
+      "deterministicCommands": null,
+      "sourceAuthorityLock": null,
+      "preDispatchFileHashes": {
+        "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+      },
+      "contextPreflight": {
+        "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+        "requiredContextFiles": [
+          "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+          "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+          "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+          "delivery-quality/page-rendering-quality-gate.md",
+          "delivery-quality/design-artifact-validation.md",
+          "delivery-quality/delivery-evidence-contract.md",
+          "visual-experience/visual-experience-guidelines.md",
+          "visual-experience/visual-checkpoint-protocol.md"
+        ],
+        "optionalContextFiles": [],
+        "passed": true
+      },
+      "pageSliceOnly": true,
+      "requiredFieldsPresent": true,
+      "missingFields": [],
+      "fillHtmlHeadCommandValid": true,
+      "mobileNavigation": {
+        "required": false,
+        "appliesToThisPage": false,
+        "canonicalHtmlIncluded": false,
+        "missingFields": []
+      },
+      "persistedToSummary": true,
+      "taskQueryAudited": false,
+      "proofSource": "summary-only",
+      "largeWorkflowFilesInTaskQuery": null
+    },
+    {
+      "recorded_at": "2026-11-12T08:06:52.867Z",
+      "generatedBy": "build-page-dispatch-manifest.mjs",
+      "packetType": "ComplexPagePacket",
+      "laneContract": {
+        "resolvedLane": "complex_html_page",
+        "packetType": "ComplexPagePacket",
+        "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+      },
+      "taskLinePresent": true,
+      "outputPathPresent": true,
+      "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+      "nodeId": "page-position-setter",
+      "htmlSrc": "pages/position-setter.html",
+      "supplementaryReads": [],
+      "allowedWritePaths": [
+        "pages/position-setter.html",
+        "assets/"
+      ],
+      "forbiddenWriteRoots": [
+        "*.design",
+        "runtime-orchestration-summary.json",
+        "validation-report.json",
+        "finish-readiness-report.json",
+        "restore-contract-report.json",
+        "page-generation-summary.json"
+      ],
+      "toolPolicy": {
+        "todoWriteAllowed": false,
+        "validationScriptsAllowed": false,
+        "previewAllowed": false,
+        "helperScriptsAllowed": false,
+        "designFileWriteAllowed": false,
+        "allowedWritePaths": [
+          "pages/position-setter.html",
+          "assets/"
+        ]
+      },
+      "skillRuntime": {
+        "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+        "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+        "toolPaths": {
+          "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+          "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+          "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+          "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+          "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+          "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+        },
+        "requiredForPageSubAgent": [
+          "applyHtmlHeadContract",
+          "recordDispatchCompletion"
+        ],
+        "pathInjection": "absolute",
+        "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+        "commandTemplates": {
+          "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-position-setter\" --html-src=\"pages/position-setter.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+        }
+      },
+      "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+      "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\position-setter.html",
+      "brandPrefix": "vl",
+      "aestheticsMode": "free-explore",
+      "toolDisciplineBlockPresent": true,
+      "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\position-setter.html\" --title=\"二传\" --lang=\"zh-CN\" --prefix=\"vl\"",
+      "headFillMode": "skeleton-first",
+      "viewportMode": "document-scroll",
+      "completionSchemaExpected": "full",
+      "restoreFields": null,
+      "restoreContractStatus": null,
+      "restoreCompactPacket": null,
+      "deterministicCommands": null,
+      "sourceAuthorityLock": null,
+      "preDispatchFileHashes": {
+        "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+      },
+      "contextPreflight": {
+        "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+        "requiredContextFiles": [
+          "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+          "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+          "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+          "delivery-quality/page-rendering-quality-gate.md",
+          "delivery-quality/design-artifact-validation.md",
+          "delivery-quality/delivery-evidence-contract.md",
+          "visual-experience/visual-experience-guidelines.md",
+          "visual-experience/visual-checkpoint-protocol.md"
+        ],
+        "optionalContextFiles": [],
+        "passed": true
+      },
+      "pageSliceOnly": true,
+      "requiredFieldsPresent": true,
+      "missingFields": [],
+      "fillHtmlHeadCommandValid": true,
+      "mobileNavigation": {
+        "required": false,
+        "appliesToThisPage": false,
+        "canonicalHtmlIncluded": false,
+        "missingFields": []
+      },
+      "persistedToSummary": true,
+      "taskQueryAudited": false,
+      "proofSource": "summary-only",
+      "largeWorkflowFilesInTaskQuery": null
+    },
+    {
+      "recorded_at": "2026-11-12T08:06:52.867Z",
+      "generatedBy": "build-page-dispatch-manifest.mjs",
+      "packetType": "ComplexPagePacket",
+      "laneContract": {
+        "resolvedLane": "complex_html_page",
+        "packetType": "ComplexPagePacket",
+        "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+      },
+      "taskLinePresent": true,
+      "outputPathPresent": true,
+      "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+      "nodeId": "page-position-opposite",
+      "htmlSrc": "pages/position-opposite.html",
+      "supplementaryReads": [],
+      "allowedWritePaths": [
+        "pages/position-opposite.html",
+        "assets/"
+      ],
+      "forbiddenWriteRoots": [
+        "*.design",
+        "runtime-orchestration-summary.json",
+        "validation-report.json",
+        "finish-readiness-report.json",
+        "restore-contract-report.json",
+        "page-generation-summary.json"
+      ],
+      "toolPolicy": {
+        "todoWriteAllowed": false,
+        "validationScriptsAllowed": false,
+        "previewAllowed": false,
+        "helperScriptsAllowed": false,
+        "designFileWriteAllowed": false,
+        "allowedWritePaths": [
+          "pages/position-opposite.html",
+          "assets/"
+        ]
+      },
+      "skillRuntime": {
+        "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+        "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+        "toolPaths": {
+          "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+          "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+          "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+          "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+          "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+          "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+        },
+        "requiredForPageSubAgent": [
+          "applyHtmlHeadContract",
+          "recordDispatchCompletion"
+        ],
+        "pathInjection": "absolute",
+        "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+        "commandTemplates": {
+          "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-position-opposite\" --html-src=\"pages/position-opposite.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+        }
+      },
+      "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+      "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\position-opposite.html",
+      "brandPrefix": "vl",
+      "aestheticsMode": "free-explore",
+      "toolDisciplineBlockPresent": true,
+      "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\position-opposite.html\" --title=\"接应\" --lang=\"zh-CN\" --prefix=\"vl\"",
+      "headFillMode": "skeleton-first",
+      "viewportMode": "document-scroll",
+      "completionSchemaExpected": "full",
+      "restoreFields": null,
+      "restoreContractStatus": null,
+      "restoreCompactPacket": null,
+      "deterministicCommands": null,
+      "sourceAuthorityLock": null,
+      "preDispatchFileHashes": {
+        "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+      },
+      "contextPreflight": {
+        "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+        "requiredContextFiles": [
+          "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+          "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+          "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+          "delivery-quality/page-rendering-quality-gate.md",
+          "delivery-quality/design-artifact-validation.md",
+          "delivery-quality/delivery-evidence-contract.md",
+          "visual-experience/visual-experience-guidelines.md",
+          "visual-experience/visual-checkpoint-protocol.md"
+        ],
+        "optionalContextFiles": [],
+        "passed": true
+      },
+      "pageSliceOnly": true,
+      "requiredFieldsPresent": true,
+      "missingFields": [],
+      "fillHtmlHeadCommandValid": true,
+      "mobileNavigation": {
+        "required": false,
+        "appliesToThisPage": false,
+        "canonicalHtmlIncluded": false,
+        "missingFields": []
+      },
+      "persistedToSummary": true,
+      "taskQueryAudited": false,
+      "proofSource": "summary-only",
+      "largeWorkflowFilesInTaskQuery": null
+    },
+    {
+      "recorded_at": "2026-11-12T08:06:52.867Z",
+      "generatedBy": "build-page-dispatch-manifest.mjs",
+      "packetType": "ComplexPagePacket",
+      "laneContract": {
+        "resolvedLane": "complex_html_page",
+        "packetType": "ComplexPagePacket",
+        "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+      },
+      "taskLinePresent": true,
+      "outputPathPresent": true,
+      "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+      "nodeId": "page-position-libero",
+      "htmlSrc": "pages/position-libero.html",
+      "supplementaryReads": [],
+      "allowedWritePaths": [
+        "pages/position-libero.html",
+        "assets/"
+      ],
+      "forbiddenWriteRoots": [
+        "*.design",
+        "runtime-orchestration-summary.json",
+        "validation-report.json",
+        "finish-readiness-report.json",
+        "restore-contract-report.json",
+        "page-generation-summary.json"
+      ],
+      "toolPolicy": {
+        "todoWriteAllowed": false,
+        "validationScriptsAllowed": false,
+        "previewAllowed": false,
+        "helperScriptsAllowed": false,
+        "designFileWriteAllowed": false,
+        "allowedWritePaths": [
+          "pages/position-libero.html",
+          "assets/"
+        ]
+      },
+      "skillRuntime": {
+        "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+        "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+        "toolPaths": {
+          "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+          "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+          "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+          "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+          "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+          "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+        },
+        "requiredForPageSubAgent": [
+          "applyHtmlHeadContract",
+          "recordDispatchCompletion"
+        ],
+        "pathInjection": "absolute",
+        "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+        "commandTemplates": {
+          "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-position-libero\" --html-src=\"pages/position-libero.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+        }
+      },
+      "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+      "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\position-libero.html",
+      "brandPrefix": "vl",
+      "aestheticsMode": "free-explore",
+      "toolDisciplineBlockPresent": true,
+      "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\position-libero.html\" --title=\"自由人\" --lang=\"zh-CN\" --prefix=\"vl\"",
+      "headFillMode": "skeleton-first",
+      "viewportMode": "document-scroll",
+      "completionSchemaExpected": "full",
+      "restoreFields": null,
+      "restoreContractStatus": null,
+      "restoreCompactPacket": null,
+      "deterministicCommands": null,
+      "sourceAuthorityLock": null,
+      "preDispatchFileHashes": {
+        "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+      },
+      "contextPreflight": {
+        "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+        "requiredContextFiles": [
+          "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+          "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+          "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+          "delivery-quality/page-rendering-quality-gate.md",
+          "delivery-quality/design-artifact-validation.md",
+          "delivery-quality/delivery-evidence-contract.md",
+          "visual-experience/visual-experience-guidelines.md",
+          "visual-experience/visual-checkpoint-protocol.md"
+        ],
+        "optionalContextFiles": [],
+        "passed": true
+      },
+      "pageSliceOnly": true,
+      "requiredFieldsPresent": true,
+      "missingFields": [],
+      "fillHtmlHeadCommandValid": true,
+      "mobileNavigation": {
+        "required": false,
+        "appliesToThisPage": false,
+        "canonicalHtmlIncluded": false,
+        "missingFields": []
+      },
+      "persistedToSummary": true,
+      "taskQueryAudited": false,
+      "proofSource": "summary-only",
+      "largeWorkflowFilesInTaskQuery": null
+    },
+    {
+      "recorded_at": "2026-11-12T08:06:52.867Z",
+      "generatedBy": "build-page-dispatch-manifest.mjs",
+      "packetType": "ComplexPagePacket",
+      "laneContract": {
+        "resolvedLane": "complex_html_page",
+        "packetType": "ComplexPagePacket",
+        "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+      },
+      "taskLinePresent": true,
+      "outputPathPresent": true,
+      "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+      "nodeId": "page-skill-spike",
+      "htmlSrc": "pages/skill-spike.html",
+      "supplementaryReads": [],
+      "allowedWritePaths": [
+        "pages/skill-spike.html",
+        "assets/"
+      ],
+      "forbiddenWriteRoots": [
+        "*.design",
+        "runtime-orchestration-summary.json",
+        "validation-report.json",
+        "finish-readiness-report.json",
+        "restore-contract-report.json",
+        "page-generation-summary.json"
+      ],
+      "toolPolicy": {
+        "todoWriteAllowed": false,
+        "validationScriptsAllowed": false,
+        "previewAllowed": false,
+        "helperScriptsAllowed": false,
+        "designFileWriteAllowed": false,
+        "allowedWritePaths": [
+          "pages/skill-spike.html",
+          "assets/"
+        ]
+      },
+      "skillRuntime": {
+        "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+        "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+        "toolPaths": {
+          "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+          "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+          "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+          "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+          "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+          "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+        },
+        "requiredForPageSubAgent": [
+          "applyHtmlHeadContract",
+          "recordDispatchCompletion"
+        ],
+        "pathInjection": "absolute",
+        "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+        "commandTemplates": {
+          "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-skill-spike\" --html-src=\"pages/skill-spike.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+        }
+      },
+      "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+      "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\skill-spike.html",
+      "brandPrefix": "vl",
+      "aestheticsMode": "free-explore",
+      "toolDisciplineBlockPresent": true,
+      "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\skill-spike.html\" --title=\"扣球教学\" --lang=\"zh-CN\" --prefix=\"vl\"",
+      "headFillMode": "skeleton-first",
+      "viewportMode": "document-scroll",
+      "completionSchemaExpected": "full",
+      "restoreFields": null,
+      "restoreContractStatus": null,
+      "restoreCompactPacket": null,
+      "deterministicCommands": null,
+      "sourceAuthorityLock": null,
+      "preDispatchFileHashes": {
+        "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+      },
+      "contextPreflight": {
+        "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+        "requiredContextFiles": [
+          "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+          "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+          "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+          "delivery-quality/page-rendering-quality-gate.md",
+          "delivery-quality/design-artifact-validation.md",
+          "delivery-quality/delivery-evidence-contract.md",
+          "visual-experience/visual-experience-guidelines.md",
+          "visual-experience/visual-checkpoint-protocol.md"
+        ],
+        "optionalContextFiles": [],
+        "passed": true
+      },
+      "pageSliceOnly": true,
+      "requiredFieldsPresent": true,
+      "missingFields": [],
+      "fillHtmlHeadCommandValid": true,
+      "mobileNavigation": {
+        "required": false,
+        "appliesToThisPage": false,
+        "canonicalHtmlIncluded": false,
+        "missingFields": []
+      },
+      "persistedToSummary": true,
+      "taskQueryAudited": false,
+      "proofSource": "summary-only",
+      "largeWorkflowFilesInTaskQuery": null
+    },
+    {
+      "recorded_at": "2026-11-12T08:06:52.867Z",
+      "generatedBy": "build-page-dispatch-manifest.mjs",
+      "packetType": "ComplexPagePacket",
+      "laneContract": {
+        "resolvedLane": "complex_html_page",
+        "packetType": "ComplexPagePacket",
+        "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+      },
+      "taskLinePresent": true,
+      "outputPathPresent": true,
+      "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+      "nodeId": "page-skill-pass",
+      "htmlSrc": "pages/skill-pass.html",
+      "supplementaryReads": [],
+      "allowedWritePaths": [
+        "pages/skill-pass.html",
+        "assets/"
+      ],
+      "forbiddenWriteRoots": [
+        "*.design",
+        "runtime-orchestration-summary.json",
+        "validation-report.json",
+        "finish-readiness-report.json",
+        "restore-contract-report.json",
+        "page-generation-summary.json"
+      ],
+      "toolPolicy": {
+        "todoWriteAllowed": false,
+        "validationScriptsAllowed": false,
+        "previewAllowed": false,
+        "helperScriptsAllowed": false,
+        "designFileWriteAllowed": false,
+        "allowedWritePaths": [
+          "pages/skill-pass.html",
+          "assets/"
+        ]
+      },
+      "skillRuntime": {
+        "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+        "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+        "toolPaths": {
+          "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+          "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+          "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+          "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+          "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+          "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+        },
+        "requiredForPageSubAgent": [
+          "applyHtmlHeadContract",
+          "recordDispatchCompletion"
+        ],
+        "pathInjection": "absolute",
+        "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+        "commandTemplates": {
+          "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-skill-pass\" --html-src=\"pages/skill-pass.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+        }
+      },
+      "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+      "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\skill-pass.html",
+      "brandPrefix": "vl",
+      "aestheticsMode": "free-explore",
+      "toolDisciplineBlockPresent": true,
+      "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\skill-pass.html\" --title=\"一传教学\" --lang=\"zh-CN\" --prefix=\"vl\"",
+      "headFillMode": "skeleton-first",
+      "viewportMode": "document-scroll",
+      "completionSchemaExpected": "full",
+      "restoreFields": null,
+      "restoreContractStatus": null,
+      "restoreCompactPacket": null,
+      "deterministicCommands": null,
+      "sourceAuthorityLock": null,
+      "preDispatchFileHashes": {
+        "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+      },
+      "contextPreflight": {
+        "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+        "requiredContextFiles": [
+          "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+          "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+          "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+          "delivery-quality/page-rendering-quality-gate.md",
+          "delivery-quality/design-artifact-validation.md",
+          "delivery-quality/delivery-evidence-contract.md",
+          "visual-experience/visual-experience-guidelines.md",
+          "visual-experience/visual-checkpoint-protocol.md"
+        ],
+        "optionalContextFiles": [],
+        "passed": true
+      },
+      "pageSliceOnly": true,
+      "requiredFieldsPresent": true,
+      "missingFields": [],
+      "fillHtmlHeadCommandValid": true,
+      "mobileNavigation": {
+        "required": false,
+        "appliesToThisPage": false,
+        "canonicalHtmlIncluded": false,
+        "missingFields": []
+      },
+      "persistedToSummary": true,
+      "taskQueryAudited": false,
+      "proofSource": "summary-only",
+      "largeWorkflowFilesInTaskQuery": null
+    },
+    {
+      "recorded_at": "2026-11-12T08:06:52.867Z",
+      "generatedBy": "build-page-dispatch-manifest.mjs",
+      "packetType": "ComplexPagePacket",
+      "laneContract": {
+        "resolvedLane": "complex_html_page",
+        "packetType": "ComplexPagePacket",
+        "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+      },
+      "taskLinePresent": true,
+      "outputPathPresent": true,
+      "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+      "nodeId": "page-skill-set",
+      "htmlSrc": "pages/skill-set.html",
+      "supplementaryReads": [],
+      "allowedWritePaths": [
+        "pages/skill-set.html",
+        "assets/"
+      ],
+      "forbiddenWriteRoots": [
+        "*.design",
+        "runtime-orchestration-summary.json",
+        "validation-report.json",
+        "finish-readiness-report.json",
+        "restore-contract-report.json",
+        "page-generation-summary.json"
+      ],
+      "toolPolicy": {
+        "todoWriteAllowed": false,
+        "validationScriptsAllowed": false,
+        "previewAllowed": false,
+        "helperScriptsAllowed": false,
+        "designFileWriteAllowed": false,
+        "allowedWritePaths": [
+          "pages/skill-set.html",
+          "assets/"
+        ]
+      },
+      "skillRuntime": {
+        "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+        "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+        "toolPaths": {
+          "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+          "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+          "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+          "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+          "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+          "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+        },
+        "requiredForPageSubAgent": [
+          "applyHtmlHeadContract",
+          "recordDispatchCompletion"
+        ],
+        "pathInjection": "absolute",
+        "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+        "commandTemplates": {
+          "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-skill-set\" --html-src=\"pages/skill-set.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+        }
+      },
+      "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+      "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\skill-set.html",
+      "brandPrefix": "vl",
+      "aestheticsMode": "free-explore",
+      "toolDisciplineBlockPresent": true,
+      "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\skill-set.html\" --title=\"传球教学\" --lang=\"zh-CN\" --prefix=\"vl\"",
+      "headFillMode": "skeleton-first",
+      "viewportMode": "document-scroll",
+      "completionSchemaExpected": "full",
+      "restoreFields": null,
+      "restoreContractStatus": null,
+      "restoreCompactPacket": null,
+      "deterministicCommands": null,
+      "sourceAuthorityLock": null,
+      "preDispatchFileHashes": {
+        "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+      },
+      "contextPreflight": {
+        "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+        "requiredContextFiles": [
+          "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+          "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+          "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+          "delivery-quality/page-rendering-quality-gate.md",
+          "delivery-quality/design-artifact-validation.md",
+          "delivery-quality/delivery-evidence-contract.md",
+          "visual-experience/visual-experience-guidelines.md",
+          "visual-experience/visual-checkpoint-protocol.md"
+        ],
+        "optionalContextFiles": [],
+        "passed": true
+      },
+      "pageSliceOnly": true,
+      "requiredFieldsPresent": true,
+      "missingFields": [],
+      "fillHtmlHeadCommandValid": true,
+      "mobileNavigation": {
+        "required": false,
+        "appliesToThisPage": false,
+        "canonicalHtmlIncluded": false,
+        "missingFields": []
+      },
+      "persistedToSummary": true,
+      "taskQueryAudited": false,
+      "proofSource": "summary-only",
+      "largeWorkflowFilesInTaskQuery": null
+    },
+    {
+      "recorded_at": "2026-11-12T08:06:52.867Z",
+      "generatedBy": "build-page-dispatch-manifest.mjs",
+      "packetType": "ComplexPagePacket",
+      "laneContract": {
+        "resolvedLane": "complex_html_page",
+        "packetType": "ComplexPagePacket",
+        "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+      },
+      "taskLinePresent": true,
+      "outputPathPresent": true,
+      "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+      "nodeId": "page-skill-dig",
+      "htmlSrc": "pages/skill-dig.html",
+      "supplementaryReads": [],
+      "allowedWritePaths": [
+        "pages/skill-dig.html",
+        "assets/"
+      ],
+      "forbiddenWriteRoots": [
+        "*.design",
+        "runtime-orchestration-summary.json",
+        "validation-report.json",
+        "finish-readiness-report.json",
+        "restore-contract-report.json",
+        "page-generation-summary.json"
+      ],
+      "toolPolicy": {
+        "todoWriteAllowed": false,
+        "validationScriptsAllowed": false,
+        "previewAllowed": false,
+        "helperScriptsAllowed": false,
+        "designFileWriteAllowed": false,
+        "allowedWritePaths": [
+          "pages/skill-dig.html",
+          "assets/"
+        ]
+      },
+      "skillRuntime": {
+        "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+        "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+        "toolPaths": {
+          "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+          "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+          "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+          "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+          "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+          "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+        },
+        "requiredForPageSubAgent": [
+          "applyHtmlHeadContract",
+          "recordDispatchCompletion"
+        ],
+        "pathInjection": "absolute",
+        "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+        "commandTemplates": {
+          "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-skill-dig\" --html-src=\"pages/skill-dig.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+        }
+      },
+      "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+      "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\skill-dig.html",
+      "brandPrefix": "vl",
+      "aestheticsMode": "free-explore",
+      "toolDisciplineBlockPresent": true,
+      "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\skill-dig.html\" --title=\"防守救球\" --lang=\"zh-CN\" --prefix=\"vl\"",
+      "headFillMode": "skeleton-first",
+      "viewportMode": "document-scroll",
+      "completionSchemaExpected": "full",
+      "restoreFields": null,
+      "restoreContractStatus": null,
+      "restoreCompactPacket": null,
+      "deterministicCommands": null,
+      "sourceAuthorityLock": null,
+      "preDispatchFileHashes": {
+        "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+      },
+      "contextPreflight": {
+        "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+        "requiredContextFiles": [
+          "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+          "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+          "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+          "delivery-quality/page-rendering-quality-gate.md",
+          "delivery-quality/design-artifact-validation.md",
+          "delivery-quality/delivery-evidence-contract.md",
+          "visual-experience/visual-experience-guidelines.md",
+          "visual-experience/visual-checkpoint-protocol.md"
+        ],
+        "optionalContextFiles": [],
+        "passed": true
+      },
+      "pageSliceOnly": true,
+      "requiredFieldsPresent": true,
+      "missingFields": [],
+      "fillHtmlHeadCommandValid": true,
+      "mobileNavigation": {
+        "required": false,
+        "appliesToThisPage": false,
+        "canonicalHtmlIncluded": false,
+        "missingFields": []
+      },
+      "persistedToSummary": true,
+      "taskQueryAudited": false,
+      "proofSource": "summary-only",
+      "largeWorkflowFilesInTaskQuery": null
+    },
+    {
+      "recorded_at": "2026-11-12T08:06:52.867Z",
+      "generatedBy": "build-page-dispatch-manifest.mjs",
+      "packetType": "ComplexPagePacket",
+      "laneContract": {
+        "resolvedLane": "complex_html_page",
+        "packetType": "ComplexPagePacket",
+        "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+      },
+      "taskLinePresent": true,
+      "outputPathPresent": true,
+      "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+      "nodeId": "page-set-gesture",
+      "htmlSrc": "pages/set-gesture.html",
+      "supplementaryReads": [],
+      "allowedWritePaths": [
+        "pages/set-gesture.html",
+        "assets/"
+      ],
+      "forbiddenWriteRoots": [
+        "*.design",
+        "runtime-orchestration-summary.json",
+        "validation-report.json",
+        "finish-readiness-report.json",
+        "restore-contract-report.json",
+        "page-generation-summary.json"
+      ],
+      "toolPolicy": {
+        "todoWriteAllowed": false,
+        "validationScriptsAllowed": false,
+        "previewAllowed": false,
+        "helperScriptsAllowed": false,
+        "designFileWriteAllowed": false,
+        "allowedWritePaths": [
+          "pages/set-gesture.html",
+          "assets/"
+        ]
+      },
+      "skillRuntime": {
+        "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+        "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+        "toolPaths": {
+          "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+          "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+          "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+          "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+          "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+          "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+        },
+        "requiredForPageSubAgent": [
+          "applyHtmlHeadContract",
+          "recordDispatchCompletion"
+        ],
+        "pathInjection": "absolute",
+        "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+        "commandTemplates": {
+          "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-set-gesture\" --html-src=\"pages/set-gesture.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+        }
+      },
+      "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+      "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\set-gesture.html",
+      "brandPrefix": "vl",
+      "aestheticsMode": "free-explore",
+      "toolDisciplineBlockPresent": true,
+      "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\set-gesture.html\" --title=\"二传手势\" --lang=\"zh-CN\" --prefix=\"vl\"",
+      "headFillMode": "skeleton-first",
+      "viewportMode": "document-scroll",
+      "completionSchemaExpected": "full",
+      "restoreFields": null,
+      "restoreContractStatus": null,
+      "restoreCompactPacket": null,
+      "deterministicCommands": null,
+      "sourceAuthorityLock": null,
+      "preDispatchFileHashes": {
+        "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+      },
+      "contextPreflight": {
+        "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+        "requiredContextFiles": [
+          "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+          "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+          "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+          "delivery-quality/page-rendering-quality-gate.md",
+          "delivery-quality/design-artifact-validation.md",
+          "delivery-quality/delivery-evidence-contract.md",
+          "visual-experience/visual-experience-guidelines.md",
+          "visual-experience/visual-checkpoint-protocol.md"
+        ],
+        "optionalContextFiles": [],
+        "passed": true
+      },
+      "pageSliceOnly": true,
+      "requiredFieldsPresent": true,
+      "missingFields": [],
+      "fillHtmlHeadCommandValid": true,
+      "mobileNavigation": {
+        "required": false,
+        "appliesToThisPage": false,
+        "canonicalHtmlIncluded": false,
+        "missingFields": []
+      },
+      "persistedToSummary": true,
+      "taskQueryAudited": false,
+      "proofSource": "summary-only",
+      "largeWorkflowFilesInTaskQuery": null
+    },
+    {
+      "recorded_at": "2026-11-12T08:06:52.867Z",
+      "generatedBy": "build-page-dispatch-manifest.mjs",
+      "packetType": "ComplexPagePacket",
+      "laneContract": {
+        "resolvedLane": "complex_html_page",
+        "packetType": "ComplexPagePacket",
+        "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+      },
+      "taskLinePresent": true,
+      "outputPathPresent": true,
+      "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+      "nodeId": "page-search",
+      "htmlSrc": "pages/search.html",
+      "supplementaryReads": [],
+      "allowedWritePaths": [
+        "pages/search.html",
+        "assets/"
+      ],
+      "forbiddenWriteRoots": [
+        "*.design",
+        "runtime-orchestration-summary.json",
+        "validation-report.json",
+        "finish-readiness-report.json",
+        "restore-contract-report.json",
+        "page-generation-summary.json"
+      ],
+      "toolPolicy": {
+        "todoWriteAllowed": false,
+        "validationScriptsAllowed": false,
+        "previewAllowed": false,
+        "helperScriptsAllowed": false,
+        "designFileWriteAllowed": false,
+        "allowedWritePaths": [
+          "pages/search.html",
+          "assets/"
+        ]
+      },
+      "skillRuntime": {
+        "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+        "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+        "toolPaths": {
+          "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+          "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+          "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+          "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+          "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+          "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+        },
+        "requiredForPageSubAgent": [
+          "applyHtmlHeadContract",
+          "recordDispatchCompletion"
+        ],
+        "pathInjection": "absolute",
+        "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+        "commandTemplates": {
+          "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-search\" --html-src=\"pages/search.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+        }
+      },
+      "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+      "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\search.html",
+      "brandPrefix": "vl",
+      "aestheticsMode": "free-explore",
+      "toolDisciplineBlockPresent": true,
+      "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\search.html\" --title=\"搜索\" --lang=\"zh-CN\" --prefix=\"vl\"",
+      "headFillMode": "skeleton-first",
+      "viewportMode": "document-scroll",
+      "completionSchemaExpected": "full",
+      "restoreFields": null,
+      "restoreContractStatus": null,
+      "restoreCompactPacket": null,
+      "deterministicCommands": null,
+      "sourceAuthorityLock": null,
+      "preDispatchFileHashes": {
+        "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+      },
+      "contextPreflight": {
+        "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+        "requiredContextFiles": [
+          "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+          "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+          "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+          "delivery-quality/page-rendering-quality-gate.md",
+          "delivery-quality/design-artifact-validation.md",
+          "delivery-quality/delivery-evidence-contract.md",
+          "visual-experience/visual-experience-guidelines.md",
+          "visual-experience/visual-checkpoint-protocol.md"
+        ],
+        "optionalContextFiles": [],
+        "passed": true
+      },
+      "pageSliceOnly": true,
+      "requiredFieldsPresent": true,
+      "missingFields": [],
+      "fillHtmlHeadCommandValid": true,
+      "mobileNavigation": {
+        "required": false,
+        "appliesToThisPage": false,
+        "canonicalHtmlIncluded": false,
+        "missingFields": []
+      },
+      "persistedToSummary": true,
+      "taskQueryAudited": false,
+      "proofSource": "summary-only",
+      "largeWorkflowFilesInTaskQuery": null
+    },
+    {
+      "recorded_at": "2026-11-12T08:06:52.867Z",
+      "generatedBy": "build-page-dispatch-manifest.mjs",
+      "packetType": "ComplexPagePacket",
+      "laneContract": {
+        "resolvedLane": "complex_html_page",
+        "packetType": "ComplexPagePacket",
+        "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+      },
+      "taskLinePresent": true,
+      "outputPathPresent": true,
+      "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+      "nodeId": "page-news-detail",
+      "htmlSrc": "pages/news-detail.html",
+      "supplementaryReads": [],
+      "allowedWritePaths": [
+        "pages/news-detail.html",
+        "assets/"
+      ],
+      "forbiddenWriteRoots": [
+        "*.design",
+        "runtime-orchestration-summary.json",
+        "validation-report.json",
+        "finish-readiness-report.json",
+        "restore-contract-report.json",
+        "page-generation-summary.json"
+      ],
+      "toolPolicy": {
+        "todoWriteAllowed": false,
+        "validationScriptsAllowed": false,
+        "previewAllowed": false,
+        "helperScriptsAllowed": false,
+        "designFileWriteAllowed": false,
+        "allowedWritePaths": [
+          "pages/news-detail.html",
+          "assets/"
+        ]
+      },
+      "skillRuntime": {
+        "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+        "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+        "toolPaths": {
+          "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+          "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+          "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+          "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+          "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+          "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+        },
+        "requiredForPageSubAgent": [
+          "applyHtmlHeadContract",
+          "recordDispatchCompletion"
+        ],
+        "pathInjection": "absolute",
+        "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+        "commandTemplates": {
+          "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-news-detail\" --html-src=\"pages/news-detail.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+        }
+      },
+      "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+      "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\news-detail.html",
+      "brandPrefix": "vl",
+      "aestheticsMode": "free-explore",
+      "toolDisciplineBlockPresent": true,
+      "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\news-detail.html\" --title=\"新闻详情\" --lang=\"zh-CN\" --prefix=\"vl\"",
+      "headFillMode": "skeleton-first",
+      "viewportMode": "document-scroll",
+      "completionSchemaExpected": "full",
+      "restoreFields": null,
+      "restoreContractStatus": null,
+      "restoreCompactPacket": null,
+      "deterministicCommands": null,
+      "sourceAuthorityLock": null,
+      "preDispatchFileHashes": {
+        "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+      },
+      "contextPreflight": {
+        "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+        "requiredContextFiles": [
+          "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+          "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+          "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+          "delivery-quality/page-rendering-quality-gate.md",
+          "delivery-quality/design-artifact-validation.md",
+          "delivery-quality/delivery-evidence-contract.md",
+          "visual-experience/visual-experience-guidelines.md",
+          "visual-experience/visual-checkpoint-protocol.md"
+        ],
+        "optionalContextFiles": [],
+        "passed": true
+      },
+      "pageSliceOnly": true,
+      "requiredFieldsPresent": true,
+      "missingFields": [],
+      "fillHtmlHeadCommandValid": true,
+      "mobileNavigation": {
+        "required": false,
+        "appliesToThisPage": false,
+        "canonicalHtmlIncluded": false,
+        "missingFields": []
+      },
+      "persistedToSummary": true,
+      "taskQueryAudited": false,
+      "proofSource": "summary-only",
+      "largeWorkflowFilesInTaskQuery": null
+    }
+  ],
+  "deterministicCommandsByPage": {
+    "pages/splash.html": {},
+    "pages/home.html": {},
+    "pages/position-outside.html": {},
+    "pages/position-setter.html": {},
+    "pages/position-opposite.html": {},
+    "pages/position-libero.html": {},
+    "pages/skill-spike.html": {},
+    "pages/skill-pass.html": {},
+    "pages/skill-set.html": {},
+    "pages/skill-dig.html": {},
+    "pages/set-gesture.html": {},
+    "pages/search.html": {},
+    "pages/news-detail.html": {}
+  }
+}

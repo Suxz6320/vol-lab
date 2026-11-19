@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索</title>
+    <style id="theme-vars">
+/* ============================================================
+   排球研习 VolleyLab — 战术板视觉系统 (Tactic Board Design System)
+   深色单主题 · 粉笔白线稿 + 排球橙高亮
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+
+  /* --- 表面 Surface --- */
+  --vl-background: #10151B;      /* 墨黑偏蓝，战术板底色 */
+  --vl-surface: #1A212B;         /* 卡片 / 浮层 */
+  --vl-surface-2: #222B38;       /* hover / 选中 */
+  --vl-surface-3: #171D26;       /* 演示区 / 内嵌面板 */
+  --vl-border: #2A3441;          /* 分割线 / 描边 */
+  --vl-line-soft: #202832;       /* 列表内细分割 */
+
+  /* --- 文本 Text --- */
+  --vl-foreground: #EDF1F5;      /* 粉笔白 */
+  --vl-muted-foreground: #8C98A8;/* 说明文字 */
+  --vl-ink-3: #5E6A79;           /* 三级文字 */
+
+  /* --- 主强调 Brand（唯一品牌色） --- */
+  --vl-primary: #F2A03C;         /* 排球橙 */
+  --vl-primary-foreground: #10151B;
+  --vl-primary-soft: rgba(242, 160, 60, 0.14);
+  --vl-primary-line: rgba(242, 160, 60, 0.44);
+
+  /* --- 语义别名 Semantic aliases --- */
+  --vl-card: #1A212B;
+  --vl-card-foreground: #EDF1F5;
+  --vl-popover: #202834;
+  --vl-popover-foreground: #EDF1F5;
+  --vl-muted: #171D26;
+  --vl-input: #171D26;
+  --vl-ring: #F2A03C;
+
+  /* --- 状态 Status --- */
+  --state-success: #35C28B;      /* 步骤完成 */
+  --state-warning: #F2A03C;
+  --state-error: #E2574C;        /* 常见错误 */
+  --state-info: #3FA9C9;         /* 数据 / 次要标签 */
+
+  /* --- 线稿与遮罩 Linework & scrim --- */
+  --vl-court-line: #3A4756;
+  --vl-court-line-soft: #2E3947;
+  --vl-stage-light: #F2F4F7;    /* 素模演示台浅灰底，与深色页面形成对比 */
+  --vl-scrim: rgba(16, 21, 27, 0.72);
+  --vl-scrim-strong: rgba(16, 21, 27, 0.94);
+  --vl-overlay-chip: rgba(16, 21, 27, 0.66);
+
+  /* --- 圆角 Radius --- */
+  --vl-radius-sm: 4px;
+  --vl-radius-md: 8px;
+  --vl-radius-lg: 16px;
+  --vl-radius-full: 9999px;
+
+  /* --- 字体 Typography --- */
+  --vl-font-sans: "PingFang SC", "HarmonyOS Sans", "Noto Sans SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  --vl-font-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Roboto Mono", monospace;
+}
+
+/* ============================================================
+   基础元素
+   ============================================================ */
+
+html {
+  background: var(--vl-background);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--vl-background);
+  color: var(--vl-foreground);
+  font-family: var(--vl-font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  word-break: keep-all;
+}
+
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; color: inherit; }
+
+img { display: block; max-width: 100%; }
+
+::selection {
+  background: var(--vl-primary-soft);
+  color: var(--vl-foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--vl-ring);
+  outline-offset: 2px;
+  border-radius: var(--vl-radius-sm);
+}
+
+/* ============================================================
+   版式工具（全局复用，保证 11 个页面同一套节奏）
+   ============================================================ */
+
+.vl-screen {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 20px 32px;
+  box-sizing: border-box;
+}
+
+.vl-appbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 56px;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.vl-footer {
+  width: 100%;
+  max-width: 560px;
+  margin: 40px auto 0;
+  padding: 16px 20px 28px;
+  border-top: 1px solid var(--vl-border);
+  box-sizing: border-box;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--vl-muted-foreground);
+}
+
+.vl-iconbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: -10px;
+  border: 1px solid transparent;
+  border-radius: var(--vl-radius-full);
+  background: transparent;
+  color: var(--vl-foreground);
+  transition: background-color 140ms cubic-bezier(.2, .8, .2, 1), border-color 140ms cubic-bezier(.2, .8, .2, 1);
+}
+.vl-iconbtn:hover { background: var(--vl-surface); border-color: var(--vl-border); }
+.vl-iconbtn:active { background: var(--vl-surface-2); }
+
+.vl-appbar-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.vl-eyebrow {
+  font-family: var(--vl-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--vl-muted-foreground);
+}
+
+.vl-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 28px 0 12px;
+}
+
+.vl-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.vl-section-link {
+  font-size: 13px;
+  color: var(--vl-muted-foreground);
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: color 140ms ease;
+}
+.vl-section-link:hover { color: var(--vl-primary); }
+
+.vl-card {
+  background: var(--vl-card);
+  border: 1px solid var(--vl-border);
+  border-radius: var(--vl-radius-lg);
+}
+
+.vl-divider {
+  height: 1px;
+  background: var(--vl-line-soft);
+  border: 0;
+  margin: 0;
+}
+
+.vl-hair {
+  height: 1px;
+  background: var(--vl-border);
+  border: 0;
+  margin: 0;
+}
+
+.vl-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: var(--vl-radius-md);
+  background: var(--vl-surface-2);
+  color: var(--vl-muted-foreground);
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.vl-tag-brand {
+  background: var(--vl-primary);
+  color: var(--vl-primary-foreground);
+  font-weight: 700;
+  border-radius: var(--vl-radius-sm);
+}
+
+.vl-tag-outline {
+  background: transparent;
+  border: 1px solid var(--vl-primary-line);
+  color: var(--vl-primary);
+}
+
+.vl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: var(--vl-radius-full);
+  border: 1px solid var(--vl-border);
+  background: transparent;
+  color: var(--vl-foreground);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+.vl-btn:hover { background: var(--vl-surface); }
+.vl-btn:active { transform: scale(0.99); }
+
+.vl-btn-primary {
+  background: var(--vl-primary);
+  border-color: var(--vl-primary);
+  color: var(--vl-primary-foreground);
+  font-weight: 700;
+}
+.vl-btn-primary:hover { background: var(--vl-primary); border-color: var(--vl-foreground); }
+
+.vl-num {
+  font-family: var(--vl-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.vl-body {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--vl-muted-foreground);
+}
+
+.vl-caption {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--vl-muted-foreground);
+}
+
+.vl-label {
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--vl-muted-foreground);
+}
+
+/* 战术板球场线稿容器 */
+.vl-court {
+  background: var(--vl-surface-3);
+  border: 1px solid var(--vl-border);
+  border-radius: var(--vl-radius-lg);
+  overflow: hidden;
+}
+
+/* 橙色站位点的脉冲 */
+@keyframes vl-pulse {
+  0%   { transform: scale(1);    opacity: 1; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+
+/* 开屏按钮呼吸 */
+@keyframes vl-breathe {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.04); }
+}
+
+/* 球体浮动 */
+@keyframes vl-float {
+  0%   { transform: translateY(-6px); }
+  100% { transform: translateY(6px); }
+}
+
+/* 页面入场（CSS 降级版本，Flutter 端用 Interval 交织动画） */
+@keyframes vl-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.vl-rise {
+  animation: vl-rise 420ms cubic-bezier(.3, 0, 0, 1) both;
+}
+
+/* 自定义滚动条隐藏（横向步骤条 / 手势卡） */
+.vl-noscrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.vl-noscrollbar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--vl-background);
+    --color-foreground: var(--vl-foreground);
+    --color-card: var(--vl-card);
+    --color-card-foreground: var(--vl-card-foreground);
+    --color-popover: var(--vl-popover);
+    --color-popover-foreground: var(--vl-popover-foreground);
+    --color-primary: var(--vl-primary);
+    --color-primary-foreground: var(--vl-primary-foreground);
+    --color-muted: var(--vl-muted);
+    --color-muted-foreground: var(--vl-muted-foreground);
+    --color-border: var(--vl-border);
+    --color-input: var(--vl-input);
+    --color-ring: var(--vl-ring);
+    --radius-sm: var(--vl-radius-sm);
+    --radius-md: var(--vl-radius-md);
+    --radius-lg: var(--vl-radius-lg);
+  }
+  @layer base {
+    body { background: var(--vl-background); color: var(--vl-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style id="semantic-token-fallback">
+      .bg-background { background-color: var(--vl-background); }
+      .text-background { color: var(--vl-background); }
+      .border-background { border-color: var(--vl-background); }
+      .ring-background { --tw-ring-color: var(--vl-background); }
+      .bg-foreground { background-color: var(--vl-foreground); }
+      .text-foreground { color: var(--vl-foreground); }
+      .border-foreground { border-color: var(--vl-foreground); }
+      .ring-foreground { --tw-ring-color: var(--vl-foreground); }
+      .bg-card { background-color: var(--vl-card); }
+      .text-card { color: var(--vl-card); }
+      .border-card { border-color: var(--vl-card); }
+      .ring-card { --tw-ring-color: var(--vl-card); }
+      .bg-card-foreground { background-color: var(--vl-card-foreground); }
+      .text-card-foreground { color: var(--vl-card-foreground); }
+      .border-card-foreground { border-color: var(--vl-card-foreground); }
+      .ring-card-foreground { --tw-ring-color: var(--vl-card-foreground); }
+      .bg-popover { background-color: var(--vl-popover); }
+      .text-popover { color: var(--vl-popover); }
+      .border-popover { border-color: var(--vl-popover); }
+      .ring-popover { --tw-ring-color: var(--vl-popover); }
+      .bg-popover-foreground { background-color: var(--vl-popover-foreground); }
+      .text-popover-foreground { color: var(--vl-popover-foreground); }
+      .border-popover-foreground { border-color: var(--vl-popover-foreground); }
+      .ring-popover-foreground { --tw-ring-color: var(--vl-popover-foreground); }
+      .bg-primary { background-color: var(--vl-primary); }
+      .text-primary { color: var(--vl-primary); }
+      .border-primary { border-color: var(--vl-primary); }
+      .ring-primary { --tw-ring-color: var(--vl-primary); }
+      .bg-primary-foreground { background-color: var(--vl-primary-foreground); }
+      .text-primary-foreground { color: var(--vl-primary-foreground); }
+      .border-primary-foreground { border-color: var(--vl-primary-foreground); }
+      .ring-primary-foreground { --tw-ring-color: var(--vl-primary-foreground); }
+      .bg-muted { background-color: var(--vl-muted); }
+      .text-muted { color: var(--vl-muted); }
+      .border-muted { border-color: var(--vl-muted); }
+      .ring-muted { --tw-ring-color: var(--vl-muted); }
+      .bg-muted-foreground { background-color: var(--vl-muted-foreground); }
+      .text-muted-foreground { color: var(--vl-muted-foreground); }
+      .border-muted-foreground { border-color: var(--vl-muted-foreground); }
+      .ring-muted-foreground { --tw-ring-color: var(--vl-muted-foreground); }
+      .bg-border { background-color: var(--vl-border); }
+      .text-border { color: var(--vl-border); }
+      .border-border { border-color: var(--vl-border); }
+      .ring-border { --tw-ring-color: var(--vl-border); }
+      .bg-input { background-color: var(--vl-input); }
+      .text-input { color: var(--vl-input); }
+      .border-input { border-color: var(--vl-input); }
+      .ring-input { --tw-ring-color: var(--vl-input); }
+      .bg-ring { background-color: var(--vl-ring); }
+      .text-ring { color: var(--vl-ring); }
+      .border-ring { border-color: var(--vl-ring); }
+      .ring-ring { --tw-ring-color: var(--vl-ring); }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main>
+      <header class="vl-appbar">
+        <a class="vl-iconbtn" data-dom-id="back-home" href="home.html" aria-label="返回">
+          <i data-lucide="arrow-left"></i>
+        </a>
+        <div class="vl-appbar-title">搜索</div>
+      </header>
+
+      <div class="vl-screen sr-body">
+        <section class="sr-block sr-block--field" aria-label="搜索框">
+          <div class="sr-field">
+            <i class="sr-ico" data-lucide="search"></i>
+            <input class="sr-input" data-dom-id="search-input" type="search" placeholder="搜索位置、技术、术语" aria-label="搜索位置、技术、术语" autocomplete="off">
+            <button class="sr-clear is-hidden" type="button" data-dom-id="search-clear" aria-label="清空搜索">
+              <i data-lucide="x"></i>
+            </button>
+          </div>
+        </section>
+
+        <section class="sr-block sr-block--recent" aria-labelledby="recent-heading">
+          <div class="sr-recent-head">
+            <h2 class="vl-eyebrow" id="recent-heading">最近搜索</h2>
+            <span class="sr-recent-count vl-num">04</span>
+          </div>
+          <div class="sr-tags" data-dom-id="recent-tags">
+            <button class="vl-tag sr-tag" type="button" data-query="扣球">扣球</button>
+            <button class="vl-tag sr-tag" type="button" data-query="一传">一传</button>
+            <button class="vl-tag sr-tag" type="button" data-query="自由人">自由人</button>
+            <button class="vl-tag sr-tag" type="button" data-query="二传">二传</button>
+          </div>
+        </section>
+
+        <section class="sr-block sr-block--groups" data-dom-id="result-groups" aria-label="搜索结果">
+          <div class="sr-group">
+            <div class="sr-group-head">
+              <h2 class="vl-eyebrow">位置</h2>
+              <span class="sr-group-count vl-num">04</span>
+            </div>
+            <div class="sr-list">
+              <a class="sr-row" data-dom-id="result-pos-outside" href="position-outside.html" data-keywords="主攻 大主攻 四号位 进攻 outside hitter">
+                <img class="sr-thumb" src="../assets/pos-outside-cover.jpg" alt="主攻四号位站位的半场线稿" loading="lazy">
+                <span class="sr-main">
+                  <span class="sr-type">位置</span>
+                  <span class="sr-title">主攻</span>
+                  <span class="sr-desc">四号位的第一进攻点</span>
+                </span>
+                <i class="sr-chev" data-lucide="chevron-right"></i>
+              </a>
+
+              <a class="sr-row" data-dom-id="result-pos-setter" href="position-setter.html" data-keywords="二传 组织 分配 三号位 setter 场上大脑">
+                <img class="sr-thumb" src="../assets/pos-setter-cover.jpg" alt="二传三号位站位的半场线稿" loading="lazy">
+                <span class="sr-main">
+                  <span class="sr-type">位置</span>
+                  <span class="sr-title">二传</span>
+                  <span class="sr-desc">场上大脑，分配每一球</span>
+                </span>
+                <i class="sr-chev" data-lucide="chevron-right"></i>
+              </a>
+
+              <a class="sr-row" data-dom-id="result-pos-opposite" href="position-opposite.html" data-keywords="接应 二号位 右翼 opposite 强攻">
+                <img class="sr-thumb" src="../assets/pos-opposite-cover.jpg" alt="接应二号位站位的半场线稿" loading="lazy">
+                <span class="sr-main">
+                  <span class="sr-type">位置</span>
+                  <span class="sr-title">接应</span>
+                  <span class="sr-desc">右翼火力，二传的第二选择</span>
+                </span>
+                <i class="sr-chev" data-lucide="chevron-right"></i>
+              </a>
+
+              <a class="sr-row" data-dom-id="result-pos-libero" href="position-libero.html" data-keywords="自由人 后排 防守 五号位 libero 接发球">
+                <img class="sr-thumb" src="../assets/pos-libero-cover.jpg" alt="自由人后排五号位站位的半场线稿" loading="lazy">
+                <span class="sr-main">
+                  <span class="sr-type">位置</span>
+                  <span class="sr-title">自由人</span>
+                  <span class="sr-desc">后排防线，接发球与防守</span>
+                </span>
+                <i class="sr-chev" data-lucide="chevron-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="sr-group">
+            <div class="sr-group-head">
+              <h2 class="vl-eyebrow">技术</h2>
+              <span class="sr-group-count vl-num">05</span>
+            </div>
+            <div class="sr-list">
+              <a class="sr-row" data-dom-id="result-skill-spike" href="skill-spike.html" data-keywords="扣球 助跑 起跳 挥臂 包球 spike 击球">
+                <img class="sr-thumb" src="../assets/skill-spike-stage.jpg" alt="扣球起跳动作素模定格" loading="lazy">
+                <span class="sr-main">
+                  <span class="sr-type">技术</span>
+                  <span class="sr-title">扣球</span>
+                  <span class="sr-desc">6 个步骤 · 从助跑到包球</span>
+                </span>
+                <i class="sr-chev" data-lucide="chevron-right"></i>
+              </a>
+
+              <a class="sr-row" data-dom-id="result-skill-pass" href="skill-pass.html" data-keywords="一传 垫球 前臂 平台 接发球 pass">
+                <img class="sr-thumb" src="../assets/skill-pass-stage.jpg" alt="一传前臂迎球动作素模定格" loading="lazy">
+                <span class="sr-main">
+                  <span class="sr-type">技术</span>
+                  <span class="sr-title">一传</span>
+                  <span class="sr-desc">5 个步骤 · 从站姿到送球</span>
+                </span>
+                <i class="sr-chev" data-lucide="chevron-right"></i>
+              </a>
+
+              <a class="sr-row" data-dom-id="result-skill-set" href="skill-set.html" data-keywords="传球 二传 手型 上手 弹送 set 托球">
+                <img class="sr-thumb" src="../assets/skill-set-stage.jpg" alt="二传上手传球动作素模定格" loading="lazy">
+                <span class="sr-main">
+                  <span class="sr-type">技术</span>
+                  <span class="sr-title">传球</span>
+                  <span class="sr-desc">5 个步骤 · 从手型到弹送</span>
+                </span>
+                <i class="sr-chev" data-lucide="chevron-right"></i>
+              </a>
+
+              <a class="sr-row" data-dom-id="result-skill-dig" href="skill-dig.html" data-keywords="防守 救球 鱼跃 低姿 扑救 dig 垫球">
+                <img class="sr-thumb" src="../assets/skill-dig-stage.jpg" alt="防守救球低姿动作素模定格" loading="lazy">
+                <span class="sr-main">
+                  <span class="sr-type">技术</span>
+                  <span class="sr-title">防守救球</span>
+                  <span class="sr-desc">5 个步骤 · 从预判到起身</span>
+                </span>
+                <i class="sr-chev" data-lucide="chevron-right"></i>
+              </a>
+
+              <a class="sr-row" data-dom-id="result-set-gesture" href="set-gesture.html" data-keywords="战术手势 手势 暗号 信号 约定 gesture 二传">
+                <span class="sr-thumb sr-thumb--icon"><i data-lucide="hand"></i></span>
+                <span class="sr-main">
+                  <span class="sr-type">技术</span>
+                  <span class="sr-title">战术手势</span>
+                  <span class="sr-desc">5 种信号 · 与攻手的暗号</span>
+                </span>
+                <i class="sr-chev" data-lucide="chevron-right"></i>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="sr-block sr-block--empty is-hidden" data-dom-id="empty-state" aria-label="空结果提示">
+          <i class="sr-empty-ico" data-lucide="search-x"></i>
+          <h2 class="sr-empty-title">没有找到相关结果</h2>
+          <p class="sr-empty-text">没找到相关教程，试试“扣球”“一传”“拦网”</p>
+          <a class="vl-btn sr-empty-btn" href="home.html">浏览全部位置</a>
+        </section>
+      </div>
+
+      <footer class="vl-footer">
+        <p>排球研习 VolleyLab · 课程项目演示</p>
+        <p class="sr-footer-note">本地搜索 · 位置名 / 技能名 / 步骤标题</p>
+      </footer>
+    </main>
+
+    <style id="critical-layout">
+      .vl-appbar .vl-iconbtn { width: 44px; height: 44px; margin-left: -12px; }
+      .vl-iconbtn svg { width: 20px; height: 20px; }
+
+      .sr-body { padding-top: 4px; }
+
+      /* ===== 搜索框 ===== */
+      .sr-field {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 44px;
+        padding: 0 10px 0 14px;
+        box-sizing: border-box;
+        background: var(--vl-surface);
+        border: 1px solid var(--vl-border);
+        border-radius: var(--vl-radius-full);
+        transition: border-color 140ms ease;
+      }
+      .sr-field:focus-within { border-color: var(--vl-primary); }
+      .sr-ico { flex: none; display: flex; width: 18px; height: 18px; color: var(--vl-muted-foreground); }
+      .sr-ico svg { width: 18px; height: 18px; }
+      .sr-input {
+        flex: 1 1 auto;
+        min-width: 0;
+        height: 100%;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: var(--vl-foreground);
+        font-family: inherit;
+        font-size: 15px;
+        line-height: 1;
+        outline: none;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+      .sr-input::placeholder { color: var(--vl-muted-foreground); }
+      .sr-input::-webkit-search-cancel-button,
+      .sr-input::-webkit-search-decoration { -webkit-appearance: none; appearance: none; display: none; }
+      .sr-clear {
+        flex: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        border: 0;
+        border-radius: var(--vl-radius-full);
+        background: transparent;
+        color: var(--vl-ink-3);
+        cursor: pointer;
+      }
+      .sr-clear:active { background: var(--vl-surface-2); color: var(--vl-foreground); }
+      .sr-clear svg { width: 16px; height: 16px; }
+      .is-hidden { display: none !important; }
+
+      /* ===== 最近搜索 ===== */
+      .sr-block--recent { margin-top: 22px; }
+      .sr-recent-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+      .sr-recent-count { font-size: 11px; color: var(--vl-ink-3); }
+      .sr-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+      .sr-tag {
+        height: 44px;
+        min-height: 44px;
+        padding: 0 16px;
+        border: 1px solid var(--vl-border);
+        border-radius: var(--vl-radius-full);
+        background: var(--vl-surface);
+        color: var(--vl-foreground);
+        font-size: 13px;
+        cursor: pointer;
+        transition: border-color 140ms ease, background-color 140ms ease;
+      }
+      .sr-tag:hover { border-color: var(--vl-primary-line); background: var(--vl-surface-2); }
+      .sr-tag:active { background: var(--vl-surface-2); }
+
+      /* ===== 结果分组 ===== */
+      .sr-block--groups { margin-top: 26px; }
+      .sr-group + .sr-group { margin-top: 22px; }
+      .sr-group-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+      .sr-group-count { font-size: 11px; color: var(--vl-ink-3); }
+      .sr-list {
+        display: flex;
+        flex-direction: column;
+        padding: 0 14px;
+        background: var(--vl-surface);
+        border: 1px solid var(--vl-border);
+        border-radius: var(--vl-radius-lg);
+      }
+      .sr-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        min-height: 66px;
+        padding: 11px 0;
+        box-sizing: border-box;
+        text-align: left;
+      }
+      .sr-row + .sr-row { border-top: 1px solid var(--vl-line-soft); }
+      button.sr-row {
+        border: 0;
+        background: none;
+        cursor: pointer;
+        color: inherit;
+      }
+      a.sr-row, button.sr-row { transition: opacity 140ms ease; }
+      a.sr-row:active, button.sr-row:active { opacity: 0.72; }
+      .sr-thumb {
+        flex: none;
+        width: 44px;
+        height: 44px;
+        border-radius: var(--vl-radius-md);
+        object-fit: cover;
+        background: var(--vl-surface-2);
+      }
+      .sr-thumb--icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--vl-muted-foreground);
+      }
+      .sr-thumb--icon svg { width: 20px; height: 20px; }
+      .sr-main { display: flex; flex-direction: column; gap: 2px; flex: 1 1 auto; min-width: 0; }
+      .sr-type {
+        font-family: var(--vl-font-mono);
+        font-size: 12px;
+        line-height: 1.2;
+        letter-spacing: 0.1em;
+        color: var(--vl-ink-3);
+      }
+      .sr-title {
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 1.35;
+        color: var(--vl-foreground);
+        transition: color 140ms ease;
+      }
+      a.sr-row:hover .sr-title, button.sr-row:hover .sr-title { color: var(--vl-primary); }
+      .sr-desc { font-size: 13px; line-height: 1.45; color: var(--vl-muted-foreground); }
+      .sr-chev {
+        flex: none;
+        width: 16px;
+        height: 16px;
+        color: var(--vl-ink-3);
+        transition: transform 140ms ease;
+      }
+      a.sr-row:hover .sr-chev, button.sr-row:hover .sr-chev { transform: translateX(2px); }
+
+      /* ===== 空状态 ===== */
+      .sr-block--empty {
+        margin-top: 26px;
+        padding: 26px 20px 22px;
+        background: var(--vl-surface-3);
+        border-radius: var(--vl-radius-lg);
+        text-align: center;
+      }
+      .sr-empty-ico { display: block; width: 32px; height: 32px; margin: 0 auto; color: var(--vl-ink-3); }
+      .sr-empty-ico svg { width: 32px; height: 32px; }
+      .sr-empty-title {
+        margin-top: 12px;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 1.4;
+        color: var(--vl-foreground);
+      }
+      .sr-empty-text {
+        margin-top: 6px;
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--vl-muted-foreground);
+      }
+      .sr-empty-btn { margin-top: 16px; }
+
+      .sr-footer-note { margin-top: 4px; font-size: 12px; color: var(--vl-muted-foreground); }
+
+      /* ===== 入场错峰 ===== */
+      .sr-block { animation: vl-rise 420ms cubic-bezier(.3, 0, 0, 1) both; }
+      .sr-block--recent { animation-delay: 60ms; }
+      .sr-block--groups { animation-delay: 120ms; }
+      .sr-block--empty { animation-delay: 180ms; }
+    </style>
+
+    <script>lucide.createIcons();</script>
+    <script id="vl-search-filter">
+      (function () {
+        var input = document.querySelector('[data-dom-id="search-input"]');
+        if (!input) return;
+        var clearBtn = document.querySelector('[data-dom-id="search-clear"]');
+        var recentBlock = document.querySelector('.sr-block--recent');
+        var tagWrap = document.querySelector('[data-dom-id="recent-tags"]');
+        var recentCount = document.querySelector('.sr-recent-count');
+        var groups = [].slice.call(document.querySelectorAll('.sr-group'));
+        var empty = document.querySelector('[data-dom-id="empty-state"]');
+        var storeKey = 'vl-search-recent';
+        var defaults = ['扣球', '一传', '自由人', '二传'];
+        var recent = loadRecent();
+
+        function loadRecent() {
+          try {
+            var saved = JSON.parse(window.localStorage.getItem(storeKey) || 'null');
+            if (Object.prototype.toString.call(saved) === '[object Array]' && saved.length) {
+              return saved.slice(0, 6);
+            }
+          } catch (e) {}
+          return defaults.slice();
+        }
+
+        function saveRecent() {
+          try { window.localStorage.setItem(storeKey, JSON.stringify(recent)); } catch (e) {}
+        }
+
+        function pad2(v) { return (v < 10 ? '0' : '') + v; }
+        function normalize(v) { return (v || '').toLowerCase().replace(/\s+/g, ''); }
+
+        function renderRecent() {
+          if (tagWrap) {
+            tagWrap.textContent = '';
+            recent.forEach(function (word) {
+              var tag = document.createElement('button');
+              tag.type = 'button';
+              tag.className = 'vl-tag sr-tag';
+              tag.setAttribute('data-query', word);
+              tag.textContent = word;
+              tagWrap.appendChild(tag);
+            });
+          }
+          if (recentCount) recentCount.textContent = pad2(recent.length);
+        }
+
+        function remember(word) {
+          var q = (word || '').trim();
+          if (!q) return;
+          recent = [q].concat(recent.filter(function (w) { return w !== q; })).slice(0, 6);
+          saveRecent();
+          renderRecent();
+        }
+
+        function apply() {
+          var q = normalize(input.value);
+          if (clearBtn) clearBtn.classList.toggle('is-hidden', q.length === 0);
+          var total = 0;
+          groups.forEach(function (group) {
+            var rows = [].slice.call(group.querySelectorAll('.sr-row'));
+            var shown = 0;
+            rows.forEach(function (row) {
+              var hay = normalize(row.getAttribute('data-keywords') || row.textContent);
+              var hit = q.length === 0 || hay.indexOf(q) >= 0;
+              row.classList.toggle('is-hidden', !hit);
+              if (hit) shown += 1;
+            });
+            group.classList.toggle('is-hidden', shown === 0);
+            var count = group.querySelector('.sr-group-count');
+            if (count) count.textContent = pad2(shown);
+            total += shown;
+          });
+          if (empty) empty.classList.toggle('is-hidden', total > 0);
+          if (recentBlock) recentBlock.classList.toggle('is-hidden', q.length > 0);
+        }
+
+        input.addEventListener('input', apply);
+        input.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') {
+            remember(input.value);
+            apply();
+          }
+        });
+
+        if (clearBtn) {
+          clearBtn.addEventListener('click', function () {
+            input.value = '';
+            apply();
+            input.focus();
+          });
+        }
+
+        if (tagWrap) {
+          tagWrap.addEventListener('click', function (e) {
+            var tag = e.target.closest ? e.target.closest('[data-query]') : null;
+            if (!tag) return;
+            input.value = tag.getAttribute('data-query');
+            remember(input.value);
+            apply();
+          });
+        }
+
+        renderRecent();
+        apply();
+      })();
+    </script>
+</body>
+</html>

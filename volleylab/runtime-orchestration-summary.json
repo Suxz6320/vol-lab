@@ -1,0 +1,3104 @@
+{
+  "schemaVersion": "1.0.0",
+  "skillProvenance": {
+    "name": "solo-design",
+    "skill": "solo-design",
+    "plugin": "trae-remote-official:trae-design",
+    "version": "0.1.3",
+    "version_source": "skill-release-manifest",
+    "generatedAt": "2026-11-12T10:00:00+08:00"
+  },
+  "project": {
+    "projectName": "排球研习 VolleyLab",
+    "operation": "create",
+    "resolvedLane": "complex_html_page",
+    "intentProfile": {
+      "caseFamily": "free_exploration",
+      "sourceType": "text-filled",
+      "multiDeviceProject": false,
+      "brief": "排球研习 VolleyLab 移动端 App 原型（13 页），深色战术板视觉"
+    },
+    "operatingMode": "free-explore",
+    "selectedIntentWorkflow": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+    "selectedIntentWorkflowRead": true,
+    "contextRequirementsLoaded": [
+      {
+        "path": "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+        "readStatus": "loaded",
+        "bodyRead": true,
+        "recordedAt": "2026-11-12T09:52:00+08:00"
+      },
+      {
+        "path": "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+        "readStatus": "loaded",
+        "bodyRead": true,
+        "recordedAt": "2026-11-12T09:52:00+08:00"
+      },
+      {
+        "path": "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+        "readStatus": "loaded",
+        "bodyRead": true,
+        "recordedAt": "2026-11-12T09:53:00+08:00"
+      },
+      {
+        "path": "delivery-quality/page-rendering-quality-gate.md",
+        "readStatus": "loaded",
+        "bodyRead": true,
+        "recordedAt": "2026-11-12T09:54:00+08:00"
+      },
+      {
+        "path": "delivery-quality/design-artifact-validation.md",
+        "readStatus": "loaded",
+        "bodyRead": true,
+        "recordedAt": "2026-11-12T09:54:00+08:00"
+      },
+      {
+        "path": "delivery-quality/delivery-evidence-contract.md",
+        "readStatus": "loaded",
+        "bodyRead": true,
+        "recordedAt": "2026-11-12T09:55:00+08:00"
+      },
+      {
+        "path": "visual-experience/visual-experience-guidelines.md",
+        "readStatus": "loaded",
+        "bodyRead": true,
+        "recordedAt": "2026-11-12T09:56:00+08:00"
+      },
+      {
+        "path": "visual-experience/visual-checkpoint-protocol.md",
+        "readStatus": "loaded",
+        "bodyRead": true,
+        "recordedAt": "2026-11-12T09:56:00+08:00"
+      }
+    ],
+    "contextReadScope": {
+      "mode": "selected-lane-only",
+      "lane": "complex_html_page",
+      "scannedOtherIntentWorkflows": false,
+      "notes": "只读取 complex build 车道的 INTENT_WORKFLOW、其阶段文件、声明的 shared-runtime 与 delivery-quality/visual-experience 文件。"
+    },
+    "deviceType": "mobile",
+    "viewportMode": "document-scroll",
+    "language": "zh-CN",
+    "brandPrefix": "vl",
+    "status": "planned",
+    "designRead": "Volleyball position-teaching app for new university club players; tactical whiteboard dark theme; dense instructional screens; avoid neon, avoid card walls.",
+    "designDials": {
+      "layoutVariance": 3,
+      "motionIntensity": 4,
+      "visualDensity": 4
+    },
+    "styleDefinitionBrief": "教练战术板：墨黑偏蓝底板 + 粉笔白线稿 + 排球橙高亮；等宽字体标注战术编号；动作演示用灰色素模帧；克制、教学感、无霓虹。",
+    "qualityDefinitionBrief": "每一屏都能一眼看出「这是什么位置 / 这个动作怎么练」，数值与文案密集但不拥挤，橙色只出现在主操作与当前步骤。",
+    "styleConstraints": {
+      "primaryHueCount": 1,
+      "secondaryAccentForbidden": true,
+      "radiusMax": 16,
+      "staticShadowAlphaMax": 0.05,
+      "gradientAllowed": "仅同色系明度变化与封面图遮罩",
+      "fontFamiliesMax": 2,
+      "note": "品牌色只有排球橙 #F2A03C；蓝 #3FA9C9 仅作为数据/信息的语义状态色（state-info），绿/红仅表示完成与错误。"
+    },
+    "sharedProjectShellContract": {
+      "radiusScale": [
+        "--vl-radius-sm: 4px",
+        "--vl-radius-md: 8px",
+        "--vl-radius-lg: 16px",
+        "--vl-radius-full: 9999px"
+      ],
+      "typographySystem": "汉体无衬线（PingFang SC / HarmonyOS Sans / Noto Sans SC）承载标题正文；战术编号、英文术语、数据用等宽字体 --vl-font-mono",
+      "surfaceDepthModel": "无阴影分层：底板 --vl-background → 卡片 --vl-surface + 1px --vl-border → 内嵌面板 --vl-surface-3",
+      "ctaStyle": "主 CTA 为全宽胶囊 --vl-btn-primary（橙底墨字）；次级操作为描边胶囊 --vl-btn",
+      "navigationShell": "顶部 56px app bar（40px 圆形返回按钮 + 18/700 标题左对齐），页面底部 1px 分隔 + 13px 说明行；无底部 Tab Bar",
+      "mobileNavigation": {
+        "applies": false,
+        "reason": "本 App 为位置/技能层级结构，无底部 Tab 导航；返回通过顶部 app bar 返回箭头完成。"
+      }
+    },
+    "visualAssets": [
+      {
+        "path": "assets/pos-outside-cover.jpg",
+        "role": "主攻战术板封面",
+        "status": "generated",
+        "source": "GenerateImage"
+      },
+      {
+        "path": "assets/pos-setter-cover.jpg",
+        "role": "二传战术板封面",
+        "status": "generated",
+        "source": "GenerateImage"
+      },
+      {
+        "path": "assets/pos-opposite-cover.jpg",
+        "role": "接应战术板封面",
+        "status": "generated",
+        "source": "GenerateImage"
+      },
+      {
+        "path": "assets/pos-libero-cover.jpg",
+        "role": "自由人战术板封面",
+        "status": "generated",
+        "source": "GenerateImage"
+      },
+      {
+        "path": "assets/skill-spike-stage.jpg",
+        "role": "扣球空中击球素模帧",
+        "status": "generated",
+        "source": "GenerateImage"
+      },
+      {
+        "path": "assets/skill-pass-stage.jpg",
+        "role": "一传低姿垫球素模帧",
+        "status": "generated",
+        "source": "GenerateImage"
+      },
+      {
+        "path": "assets/skill-set-stage.jpg",
+        "role": "传球上手素模帧",
+        "status": "generated",
+        "source": "GenerateImage"
+      },
+      {
+        "path": "assets/skill-dig-stage.jpg",
+        "role": "防守鱼跃素模帧",
+        "status": "generated",
+        "source": "GenerateImage"
+      },
+      {
+        "path": "assets/news-campus-league.jpg",
+        "role": "校园排球联赛新闻封面",
+        "status": "generated",
+        "source": "GenerateImage"
+      },
+      {
+        "path": "assets/news-womens-team.jpg",
+        "role": "女排动态新闻封面",
+        "status": "generated",
+        "source": "GenerateImage"
+      },
+      {
+        "path": "assets/news-libero-rules.jpg",
+        "role": "自由人规则新闻封面",
+        "status": "generated",
+        "source": "GenerateImage"
+      },
+      {
+        "path": "assets/news-youth-training.jpg",
+        "role": "青少年训练新闻封面",
+        "status": "generated",
+        "source": "GenerateImage"
+      }
+    ],
+    "visualQualityCheckpoints": [
+      {
+        "checkpointId": "visual-anchor",
+        "label": "视觉锚点",
+        "lockedDecision": "首页第一屏用「16:9 新闻轮播 + 2×2 战术板位置卡」；位置详情页用满宽封面图 + 底部渐隐到 #10151B + 橙色位置点。",
+        "evidenceTarget": "pages/home.html#news-carousel|pages/position-outside.html#pos-hero"
+      },
+      {
+        "checkpointId": "information-hierarchy",
+        "label": "信息层级",
+        "lockedDecision": "每页只有一个 24–26px 的一级标题，区块标题 18/700，正文 15/1.55，辅助 13；数值与术语用等宽字体做第二层级。",
+        "evidenceTarget": "pages/position-outside.html#ability-bars|pages/skill-spike.html#keypoints"
+      },
+      {
+        "checkpointId": "composition-structure",
+        "label": "构图结构",
+        "lockedDecision": "纵向滚动文档流，左右边距 20px；位置页遵循 封面→标签→能力→站位图→轮次→职责→技能→错误；教学页遵循 演示区→关键要点→步骤条→错误。",
+        "evidenceTarget": "pages/position-setter.html#court-diagram|pages/skill-pass.html#skill-stage"
+      },
+      {
+        "checkpointId": "implementation-strategy",
+        "label": "实现策略",
+        "lockedDecision": "仅用 CSS 变量 token + 少量页面内 critical-layout CSS，不用重型组件库；球场线稿用内联 SVG（教练板语义），人物动作用生成的素模位图。",
+        "evidenceTarget": "pages/home.html|pages/skill-dig.html#skill-stage"
+      }
+    ],
+    "generationTree": {
+      "nodeId": "gen-project-shell",
+      "kind": "project-shell",
+      "pageIds": [
+        "page-splash",
+        "page-home",
+        "page-position-outside",
+        "page-position-setter",
+        "page-position-opposite",
+        "page-position-libero",
+        "page-skill-spike",
+        "page-skill-pass",
+        "page-skill-set",
+        "page-skill-dig",
+        "page-set-gesture",
+        "page-search",
+        "page-news-detail"
+      ],
+      "output": null,
+      "sharedRegions": [
+        "colors_and_type.css 中的全部 --vl-* token 与全局版式工具类",
+        "顶部 56px app bar 与 40px 圆形返回按钮",
+        "区块标题节奏（18/700 + 右侧 13px 链接 + 28px 上间距）",
+        "页面底部 1px 分隔 + 13px 说明行"
+      ],
+      "privateRegions": [],
+      "mutableSlots": [],
+      "status": "generated",
+      "note": "本项目无共享 fragment 文件；shell 通过 colors_and_type.css 与 continuityAnchors 继承，因此树为 leaf-only。",
+      "children": [
+        {
+          "nodeId": "leaf-splash",
+          "kind": "leaf",
+          "pageIds": [
+            "page-splash"
+          ],
+          "output": "pages/splash.html",
+          "sharedRegions": [],
+          "privateRegions": [
+            "全部页面内容"
+          ],
+          "mutableSlots": [
+            "main"
+          ],
+          "status": "planned",
+          "children": []
+        },
+        {
+          "nodeId": "leaf-home",
+          "kind": "leaf",
+          "pageIds": [
+            "page-home"
+          ],
+          "output": "pages/home.html",
+          "sharedRegions": [],
+          "privateRegions": [
+            "全部页面内容"
+          ],
+          "mutableSlots": [
+            "main"
+          ],
+          "status": "planned",
+          "children": []
+        },
+        {
+          "nodeId": "leaf-position-outside",
+          "kind": "leaf",
+          "pageIds": [
+            "page-position-outside"
+          ],
+          "output": "pages/position-outside.html",
+          "sharedRegions": [],
+          "privateRegions": [
+            "全部页面内容"
+          ],
+          "mutableSlots": [
+            "main"
+          ],
+          "status": "planned",
+          "children": []
+        },
+        {
+          "nodeId": "leaf-position-setter",
+          "kind": "leaf",
+          "pageIds": [
+            "page-position-setter"
+          ],
+          "output": "pages/position-setter.html",
+          "sharedRegions": [],
+          "privateRegions": [
+            "全部页面内容"
+          ],
+          "mutableSlots": [
+            "main"
+          ],
+          "status": "planned",
+          "children": []
+        },
+        {
+          "nodeId": "leaf-position-opposite",
+          "kind": "leaf",
+          "pageIds": [
+            "page-position-opposite"
+          ],
+          "output": "pages/position-opposite.html",
+          "sharedRegions": [],
+          "privateRegions": [
+            "全部页面内容"
+          ],
+          "mutableSlots": [
+            "main"
+          ],
+          "status": "planned",
+          "children": []
+        },
+        {
+          "nodeId": "leaf-position-libero",
+          "kind": "leaf",
+          "pageIds": [
+            "page-position-libero"
+          ],
+          "output": "pages/position-libero.html",
+          "sharedRegions": [],
+          "privateRegions": [
+            "全部页面内容"
+          ],
+          "mutableSlots": [
+            "main"
+          ],
+          "status": "planned",
+          "children": []
+        },
+        {
+          "nodeId": "leaf-skill-spike",
+          "kind": "leaf",
+          "pageIds": [
+            "page-skill-spike"
+          ],
+          "output": "pages/skill-spike.html",
+          "sharedRegions": [],
+          "privateRegions": [
+            "全部页面内容"
+          ],
+          "mutableSlots": [
+            "main"
+          ],
+          "status": "planned",
+          "children": []
+        },
+        {
+          "nodeId": "leaf-skill-pass",
+          "kind": "leaf",
+          "pageIds": [
+            "page-skill-pass"
+          ],
+          "output": "pages/skill-pass.html",
+          "sharedRegions": [],
+          "privateRegions": [
+            "全部页面内容"
+          ],
+          "mutableSlots": [
+            "main"
+          ],
+          "status": "planned",
+          "children": []
+        },
+        {
+          "nodeId": "leaf-skill-set",
+          "kind": "leaf",
+          "pageIds": [
+            "page-skill-set"
+          ],
+          "output": "pages/skill-set.html",
+          "sharedRegions": [],
+          "privateRegions": [
+            "全部页面内容"
+          ],
+          "mutableSlots": [
+            "main"
+          ],
+          "status": "planned",
+          "children": []
+        },
+        {
+          "nodeId": "leaf-skill-dig",
+          "kind": "leaf",
+          "pageIds": [
+            "page-skill-dig"
+          ],
+          "output": "pages/skill-dig.html",
+          "sharedRegions": [],
+          "privateRegions": [
+            "全部页面内容"
+          ],
+          "mutableSlots": [
+            "main"
+          ],
+          "status": "planned",
+          "children": []
+        },
+        {
+          "nodeId": "leaf-set-gesture",
+          "kind": "leaf",
+          "pageIds": [
+            "page-set-gesture"
+          ],
+          "output": "pages/set-gesture.html",
+          "sharedRegions": [],
+          "privateRegions": [
+            "全部页面内容"
+          ],
+          "mutableSlots": [
+            "main"
+          ],
+          "status": "planned",
+          "children": []
+        },
+        {
+          "nodeId": "leaf-search",
+          "kind": "leaf",
+          "pageIds": [
+            "page-search"
+          ],
+          "output": "pages/search.html",
+          "sharedRegions": [],
+          "privateRegions": [
+            "全部页面内容"
+          ],
+          "mutableSlots": [
+            "main"
+          ],
+          "status": "planned",
+          "children": []
+        },
+        {
+          "nodeId": "leaf-news-detail",
+          "kind": "leaf",
+          "pageIds": [
+            "page-news-detail"
+          ],
+          "output": "pages/news-detail.html",
+          "sharedRegions": [],
+          "privateRegions": [
+            "全部页面内容"
+          ],
+          "mutableSlots": [
+            "main"
+          ],
+          "status": "planned",
+          "children": []
+        }
+      ]
+    },
+    "wiringPlan": {
+      "enabled": true,
+      "visibleEdges": [
+        {
+          "from": "page-splash",
+          "domId": "cta-enter",
+          "to": "page-home",
+          "label": "进入首页",
+          "visible": true
+        },
+        {
+          "from": "page-home",
+          "domId": "link-pos-outside",
+          "to": "page-position-outside",
+          "label": "主攻位置详情",
+          "visible": true
+        },
+        {
+          "from": "page-position-outside",
+          "domId": "link-skill-spike",
+          "to": "page-skill-spike",
+          "label": "扣球教学",
+          "visible": true
+        },
+        {
+          "from": "page-position-setter",
+          "domId": "back-home",
+          "to": "page-home",
+          "label": "返回首页",
+          "visible": true
+        },
+        {
+          "from": "page-position-outside",
+          "domId": "back-home",
+          "to": "page-home",
+          "label": "返回首页",
+          "visible": true
+        },
+        {
+          "from": "page-position-opposite",
+          "domId": "back-home",
+          "to": "page-home",
+          "label": "返回首页",
+          "visible": true
+        },
+        {
+          "from": "page-position-libero",
+          "domId": "back-home",
+          "to": "page-home",
+          "label": "返回首页",
+          "visible": true
+        },
+        {
+          "from": "page-skill-pass",
+          "domId": "back-libero",
+          "to": "page-position-libero",
+          "label": "返回自由人",
+          "visible": true
+        },
+        {
+          "from": "page-skill-set",
+          "domId": "back-setter",
+          "to": "page-position-setter",
+          "label": "返回二传",
+          "visible": true
+        },
+        {
+          "from": "page-skill-dig",
+          "domId": "back-libero",
+          "to": "page-position-libero",
+          "label": "返回自由人",
+          "visible": true
+        },
+        {
+          "from": "page-skill-spike",
+          "domId": "back-outside",
+          "to": "page-position-outside",
+          "label": "返回主攻",
+          "visible": true
+        },
+        {
+          "from": "page-set-gesture",
+          "domId": "back-setter",
+          "to": "page-position-setter",
+          "label": "返回二传",
+          "visible": true
+        },
+        {
+          "from": "page-search",
+          "domId": "back-home",
+          "to": "page-home",
+          "label": "返回首页",
+          "visible": false
+        },
+        {
+          "from": "page-news-detail",
+          "domId": "back-home",
+          "to": "page-home",
+          "label": "返回首页",
+          "visible": true
+        }
+      ],
+      "hiddenEdges": [
+        {
+          "from": "page-home",
+          "domId": "cta-search",
+          "to": "page-search",
+          "label": "打开搜索",
+          "visible": false
+        },
+        {
+          "from": "page-home",
+          "domId": "link-news-detail",
+          "to": "page-news-detail",
+          "label": "查看新闻",
+          "visible": false
+        },
+        {
+          "from": "page-home",
+          "domId": "link-pos-setter",
+          "to": "page-position-setter",
+          "label": "二传位置详情",
+          "visible": false
+        },
+        {
+          "from": "page-home",
+          "domId": "link-pos-opposite",
+          "to": "page-position-opposite",
+          "label": "接应位置详情",
+          "visible": false
+        },
+        {
+          "from": "page-home",
+          "domId": "link-pos-libero",
+          "to": "page-position-libero",
+          "label": "自由人位置详情",
+          "visible": false
+        },
+        {
+          "from": "page-position-outside",
+          "domId": "back-home",
+          "to": "page-home",
+          "label": "返回首页",
+          "visible": false
+        },
+        {
+          "from": "page-position-setter",
+          "domId": "link-skill-set",
+          "to": "page-skill-set",
+          "label": "传球教学",
+          "visible": false
+        },
+        {
+          "from": "page-position-setter",
+          "domId": "link-set-gesture",
+          "to": "page-set-gesture",
+          "label": "战术手势对照",
+          "visible": false
+        },
+        {
+          "from": "page-position-libero",
+          "domId": "link-skill-pass",
+          "to": "page-skill-pass",
+          "label": "一传教学",
+          "visible": false
+        },
+        {
+          "from": "page-position-libero",
+          "domId": "link-skill-dig",
+          "to": "page-skill-dig",
+          "label": "防守救球教学",
+          "visible": false
+        },
+        {
+          "from": "page-search",
+          "domId": "result-pos-outside",
+          "to": "page-position-outside",
+          "label": "主攻结果",
+          "visible": false
+        },
+        {
+          "from": "page-search",
+          "domId": "result-skill-spike",
+          "to": "page-skill-spike",
+          "label": "扣球结果",
+          "visible": false
+        },
+        {
+          "from": "page-set-gesture",
+          "domId": "gesture-card-link",
+          "to": "page-position-setter",
+          "label": "手势返回二传",
+          "visible": false
+        }
+      ],
+      "backControls": [
+        "page-position-setter#back-home",
+        "page-position-opposite#back-home",
+        "page-position-libero#back-home",
+        "page-skill-spike#back-outside",
+        "page-skill-pass#back-libero",
+        "page-skill-set#back-setter",
+        "page-skill-dig#back-libero",
+        "page-set-gesture#back-setter",
+        "page-search#back-home",
+        "page-news-detail#back-home",
+        "page-position-outside#back-home"
+      ],
+      "terminalPages": [],
+      "notes": "可见边 13 条 ≤ 页面数 13；首页四个位置卡只保留主攻为可见边，其余为隐藏边。"
+    },
+    "cssPreflightEvidence": {
+      "status": "passed",
+      "command": "node apply-html-head-contract.mjs colors_and_type.css .preflight/preflight.html --title=Preflight --lang=zh-CN --prefix=vl --theme=dark",
+      "prefixMode": "standard",
+      "brandPrefix": "vl",
+      "requiredColorMappingsPresent": [
+        "background",
+        "foreground",
+        "card",
+        "primary",
+        "border",
+        "muted"
+      ],
+      "radiusScalePresent": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "theme": "dark",
+      "fontLinksUsed": false,
+      "recordedAt": "2026-11-12T09:58:00+08:00"
+    },
+    "validationRunDiscipline": {
+      "plan": [
+        "dispatch-preflight：build-page-dispatch-manifest.mjs --mode=complex",
+        "page-generation：每个 leaf 页面生成后登记 dispatch completion",
+        "final：validate-design-workspace.mjs --report-json=validation-report.json",
+        "readiness：validate-finish-readiness.mjs --check=all"
+      ],
+      "repairRule": "只按验证报告里的精确位置修复；不重写整页，不改校验脚本。"
+    },
+    "lowValueCallWatchdog": {
+      "noProgressNextAction": "连续 10 分钟无产物变化时，先冻结当前页面并输出最小阻塞摘要，而不是继续推理。",
+      "maxConsecutiveFailedRepairs": 2
+    },
+    "experienceMode": "instructive-scrollytelling",
+    "supplementaryReads": [
+      {
+        "path": "shared-runtime/html-rendering-primitives/mobile-html-rendering-primitives.md",
+        "reason": "移动端文档流页面布局与触控尺寸基线",
+        "ownerLane": "complex_html_page"
+      },
+      {
+        "path": "visual-experience/visual-self-check.md",
+        "reason": "页面自检清单",
+        "ownerLane": "complex_html_page"
+      },
+      {
+        "path": "visual-experience/dark-mode-guidelines.md",
+        "reason": "深色单主题对比度与表面分层",
+        "ownerLane": "complex_html_page"
+      }
+    ],
+    "dispatchPreflightManifest": [
+      {
+        "recorded_at": "2026-11-12T08:06:52.867Z",
+        "generatedBy": "build-page-dispatch-manifest.mjs",
+        "packetType": "ComplexPagePacket",
+        "laneContract": {
+          "resolvedLane": "complex_html_page",
+          "packetType": "ComplexPagePacket",
+          "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+          "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+        },
+        "taskLinePresent": true,
+        "outputPathPresent": true,
+        "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "nodeId": "page-splash",
+        "htmlSrc": "pages/splash.html",
+        "supplementaryReads": [],
+        "allowedWritePaths": [
+          "pages/splash.html",
+          "assets/"
+        ],
+        "forbiddenWriteRoots": [
+          "*.design",
+          "runtime-orchestration-summary.json",
+          "validation-report.json",
+          "finish-readiness-report.json",
+          "restore-contract-report.json",
+          "page-generation-summary.json"
+        ],
+        "toolPolicy": {
+          "todoWriteAllowed": false,
+          "validationScriptsAllowed": false,
+          "previewAllowed": false,
+          "helperScriptsAllowed": false,
+          "designFileWriteAllowed": false,
+          "allowedWritePaths": [
+            "pages/splash.html",
+            "assets/"
+          ]
+        },
+        "skillRuntime": {
+          "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+          "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+          "toolPaths": {
+            "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+            "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+            "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+            "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+            "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+            "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+          },
+          "requiredForPageSubAgent": [
+            "applyHtmlHeadContract",
+            "recordDispatchCompletion"
+          ],
+          "pathInjection": "absolute",
+          "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+          "commandTemplates": {
+            "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-splash\" --html-src=\"pages/splash.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+          }
+        },
+        "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+        "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\splash.html",
+        "brandPrefix": "vl",
+        "aestheticsMode": "free-explore",
+        "toolDisciplineBlockPresent": true,
+        "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\splash.html\" --title=\"开屏页\" --lang=\"zh-CN\" --prefix=\"vl\"",
+        "headFillMode": "skeleton-first",
+        "viewportMode": "document-scroll",
+        "completionSchemaExpected": "full",
+        "restoreFields": null,
+        "restoreContractStatus": null,
+        "restoreCompactPacket": null,
+        "deterministicCommands": null,
+        "sourceAuthorityLock": null,
+        "preDispatchFileHashes": {
+          "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+        },
+        "contextPreflight": {
+          "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+          "requiredContextFiles": [
+            "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+            "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+            "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+            "delivery-quality/page-rendering-quality-gate.md",
+            "delivery-quality/design-artifact-validation.md",
+            "delivery-quality/delivery-evidence-contract.md",
+            "visual-experience/visual-experience-guidelines.md",
+            "visual-experience/visual-checkpoint-protocol.md"
+          ],
+          "optionalContextFiles": [],
+          "passed": true
+        },
+        "pageSliceOnly": true,
+        "requiredFieldsPresent": true,
+        "missingFields": [],
+        "fillHtmlHeadCommandValid": true,
+        "mobileNavigation": {
+          "required": false,
+          "appliesToThisPage": false,
+          "canonicalHtmlIncluded": false,
+          "missingFields": []
+        },
+        "persistedToSummary": true,
+        "taskQueryAudited": false,
+        "proofSource": "summary-only",
+        "largeWorkflowFilesInTaskQuery": null
+      },
+      {
+        "recorded_at": "2026-11-12T08:06:52.867Z",
+        "generatedBy": "build-page-dispatch-manifest.mjs",
+        "packetType": "ComplexPagePacket",
+        "laneContract": {
+          "resolvedLane": "complex_html_page",
+          "packetType": "ComplexPagePacket",
+          "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+          "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+        },
+        "taskLinePresent": true,
+        "outputPathPresent": true,
+        "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "nodeId": "page-home",
+        "htmlSrc": "pages/home.html",
+        "supplementaryReads": [],
+        "allowedWritePaths": [
+          "pages/home.html",
+          "assets/"
+        ],
+        "forbiddenWriteRoots": [
+          "*.design",
+          "runtime-orchestration-summary.json",
+          "validation-report.json",
+          "finish-readiness-report.json",
+          "restore-contract-report.json",
+          "page-generation-summary.json"
+        ],
+        "toolPolicy": {
+          "todoWriteAllowed": false,
+          "validationScriptsAllowed": false,
+          "previewAllowed": false,
+          "helperScriptsAllowed": false,
+          "designFileWriteAllowed": false,
+          "allowedWritePaths": [
+            "pages/home.html",
+            "assets/"
+          ]
+        },
+        "skillRuntime": {
+          "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+          "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+          "toolPaths": {
+            "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+            "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+            "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+            "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+            "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+            "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+          },
+          "requiredForPageSubAgent": [
+            "applyHtmlHeadContract",
+            "recordDispatchCompletion"
+          ],
+          "pathInjection": "absolute",
+          "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+          "commandTemplates": {
+            "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-home\" --html-src=\"pages/home.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+          }
+        },
+        "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+        "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\home.html",
+        "brandPrefix": "vl",
+        "aestheticsMode": "free-explore",
+        "toolDisciplineBlockPresent": true,
+        "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\home.html\" --title=\"首页\" --lang=\"zh-CN\" --prefix=\"vl\"",
+        "headFillMode": "skeleton-first",
+        "viewportMode": "document-scroll",
+        "completionSchemaExpected": "full",
+        "restoreFields": null,
+        "restoreContractStatus": null,
+        "restoreCompactPacket": null,
+        "deterministicCommands": null,
+        "sourceAuthorityLock": null,
+        "preDispatchFileHashes": {
+          "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+        },
+        "contextPreflight": {
+          "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+          "requiredContextFiles": [
+            "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+            "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+            "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+            "delivery-quality/page-rendering-quality-gate.md",
+            "delivery-quality/design-artifact-validation.md",
+            "delivery-quality/delivery-evidence-contract.md",
+            "visual-experience/visual-experience-guidelines.md",
+            "visual-experience/visual-checkpoint-protocol.md"
+          ],
+          "optionalContextFiles": [],
+          "passed": true
+        },
+        "pageSliceOnly": true,
+        "requiredFieldsPresent": true,
+        "missingFields": [],
+        "fillHtmlHeadCommandValid": true,
+        "mobileNavigation": {
+          "required": false,
+          "appliesToThisPage": false,
+          "canonicalHtmlIncluded": false,
+          "missingFields": []
+        },
+        "persistedToSummary": true,
+        "taskQueryAudited": false,
+        "proofSource": "summary-only",
+        "largeWorkflowFilesInTaskQuery": null
+      },
+      {
+        "recorded_at": "2026-11-12T08:06:52.867Z",
+        "generatedBy": "build-page-dispatch-manifest.mjs",
+        "packetType": "ComplexPagePacket",
+        "laneContract": {
+          "resolvedLane": "complex_html_page",
+          "packetType": "ComplexPagePacket",
+          "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+          "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+        },
+        "taskLinePresent": true,
+        "outputPathPresent": true,
+        "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "nodeId": "page-position-outside",
+        "htmlSrc": "pages/position-outside.html",
+        "supplementaryReads": [],
+        "allowedWritePaths": [
+          "pages/position-outside.html",
+          "assets/"
+        ],
+        "forbiddenWriteRoots": [
+          "*.design",
+          "runtime-orchestration-summary.json",
+          "validation-report.json",
+          "finish-readiness-report.json",
+          "restore-contract-report.json",
+          "page-generation-summary.json"
+        ],
+        "toolPolicy": {
+          "todoWriteAllowed": false,
+          "validationScriptsAllowed": false,
+          "previewAllowed": false,
+          "helperScriptsAllowed": false,
+          "designFileWriteAllowed": false,
+          "allowedWritePaths": [
+            "pages/position-outside.html",
+            "assets/"
+          ]
+        },
+        "skillRuntime": {
+          "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+          "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+          "toolPaths": {
+            "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+            "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+            "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+            "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+            "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+            "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+          },
+          "requiredForPageSubAgent": [
+            "applyHtmlHeadContract",
+            "recordDispatchCompletion"
+          ],
+          "pathInjection": "absolute",
+          "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+          "commandTemplates": {
+            "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-position-outside\" --html-src=\"pages/position-outside.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+          }
+        },
+        "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+        "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\position-outside.html",
+        "brandPrefix": "vl",
+        "aestheticsMode": "free-explore",
+        "toolDisciplineBlockPresent": true,
+        "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\position-outside.html\" --title=\"主攻\" --lang=\"zh-CN\" --prefix=\"vl\"",
+        "headFillMode": "skeleton-first",
+        "viewportMode": "document-scroll",
+        "completionSchemaExpected": "full",
+        "restoreFields": null,
+        "restoreContractStatus": null,
+        "restoreCompactPacket": null,
+        "deterministicCommands": null,
+        "sourceAuthorityLock": null,
+        "preDispatchFileHashes": {
+          "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+        },
+        "contextPreflight": {
+          "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+          "requiredContextFiles": [
+            "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+            "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+            "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+            "delivery-quality/page-rendering-quality-gate.md",
+            "delivery-quality/design-artifact-validation.md",
+            "delivery-quality/delivery-evidence-contract.md",
+            "visual-experience/visual-experience-guidelines.md",
+            "visual-experience/visual-checkpoint-protocol.md"
+          ],
+          "optionalContextFiles": [],
+          "passed": true
+        },
+        "pageSliceOnly": true,
+        "requiredFieldsPresent": true,
+        "missingFields": [],
+        "fillHtmlHeadCommandValid": true,
+        "mobileNavigation": {
+          "required": false,
+          "appliesToThisPage": false,
+          "canonicalHtmlIncluded": false,
+          "missingFields": []
+        },
+        "persistedToSummary": true,
+        "taskQueryAudited": false,
+        "proofSource": "summary-only",
+        "largeWorkflowFilesInTaskQuery": null
+      },
+      {
+        "recorded_at": "2026-11-12T08:06:52.867Z",
+        "generatedBy": "build-page-dispatch-manifest.mjs",
+        "packetType": "ComplexPagePacket",
+        "laneContract": {
+          "resolvedLane": "complex_html_page",
+          "packetType": "ComplexPagePacket",
+          "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+          "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+        },
+        "taskLinePresent": true,
+        "outputPathPresent": true,
+        "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "nodeId": "page-position-setter",
+        "htmlSrc": "pages/position-setter.html",
+        "supplementaryReads": [],
+        "allowedWritePaths": [
+          "pages/position-setter.html",
+          "assets/"
+        ],
+        "forbiddenWriteRoots": [
+          "*.design",
+          "runtime-orchestration-summary.json",
+          "validation-report.json",
+          "finish-readiness-report.json",
+          "restore-contract-report.json",
+          "page-generation-summary.json"
+        ],
+        "toolPolicy": {
+          "todoWriteAllowed": false,
+          "validationScriptsAllowed": false,
+          "previewAllowed": false,
+          "helperScriptsAllowed": false,
+          "designFileWriteAllowed": false,
+          "allowedWritePaths": [
+            "pages/position-setter.html",
+            "assets/"
+          ]
+        },
+        "skillRuntime": {
+          "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+          "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+          "toolPaths": {
+            "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+            "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+            "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+            "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+            "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+            "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+          },
+          "requiredForPageSubAgent": [
+            "applyHtmlHeadContract",
+            "recordDispatchCompletion"
+          ],
+          "pathInjection": "absolute",
+          "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+          "commandTemplates": {
+            "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-position-setter\" --html-src=\"pages/position-setter.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+          }
+        },
+        "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+        "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\position-setter.html",
+        "brandPrefix": "vl",
+        "aestheticsMode": "free-explore",
+        "toolDisciplineBlockPresent": true,
+        "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\position-setter.html\" --title=\"二传\" --lang=\"zh-CN\" --prefix=\"vl\"",
+        "headFillMode": "skeleton-first",
+        "viewportMode": "document-scroll",
+        "completionSchemaExpected": "full",
+        "restoreFields": null,
+        "restoreContractStatus": null,
+        "restoreCompactPacket": null,
+        "deterministicCommands": null,
+        "sourceAuthorityLock": null,
+        "preDispatchFileHashes": {
+          "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+        },
+        "contextPreflight": {
+          "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+          "requiredContextFiles": [
+            "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+            "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+            "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+            "delivery-quality/page-rendering-quality-gate.md",
+            "delivery-quality/design-artifact-validation.md",
+            "delivery-quality/delivery-evidence-contract.md",
+            "visual-experience/visual-experience-guidelines.md",
+            "visual-experience/visual-checkpoint-protocol.md"
+          ],
+          "optionalContextFiles": [],
+          "passed": true
+        },
+        "pageSliceOnly": true,
+        "requiredFieldsPresent": true,
+        "missingFields": [],
+        "fillHtmlHeadCommandValid": true,
+        "mobileNavigation": {
+          "required": false,
+          "appliesToThisPage": false,
+          "canonicalHtmlIncluded": false,
+          "missingFields": []
+        },
+        "persistedToSummary": true,
+        "taskQueryAudited": false,
+        "proofSource": "summary-only",
+        "largeWorkflowFilesInTaskQuery": null
+      },
+      {
+        "recorded_at": "2026-11-12T08:06:52.867Z",
+        "generatedBy": "build-page-dispatch-manifest.mjs",
+        "packetType": "ComplexPagePacket",
+        "laneContract": {
+          "resolvedLane": "complex_html_page",
+          "packetType": "ComplexPagePacket",
+          "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+          "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+        },
+        "taskLinePresent": true,
+        "outputPathPresent": true,
+        "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "nodeId": "page-position-opposite",
+        "htmlSrc": "pages/position-opposite.html",
+        "supplementaryReads": [],
+        "allowedWritePaths": [
+          "pages/position-opposite.html",
+          "assets/"
+        ],
+        "forbiddenWriteRoots": [
+          "*.design",
+          "runtime-orchestration-summary.json",
+          "validation-report.json",
+          "finish-readiness-report.json",
+          "restore-contract-report.json",
+          "page-generation-summary.json"
+        ],
+        "toolPolicy": {
+          "todoWriteAllowed": false,
+          "validationScriptsAllowed": false,
+          "previewAllowed": false,
+          "helperScriptsAllowed": false,
+          "designFileWriteAllowed": false,
+          "allowedWritePaths": [
+            "pages/position-opposite.html",
+            "assets/"
+          ]
+        },
+        "skillRuntime": {
+          "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+          "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+          "toolPaths": {
+            "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+            "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+            "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+            "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+            "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+            "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+          },
+          "requiredForPageSubAgent": [
+            "applyHtmlHeadContract",
+            "recordDispatchCompletion"
+          ],
+          "pathInjection": "absolute",
+          "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+          "commandTemplates": {
+            "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-position-opposite\" --html-src=\"pages/position-opposite.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+          }
+        },
+        "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+        "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\position-opposite.html",
+        "brandPrefix": "vl",
+        "aestheticsMode": "free-explore",
+        "toolDisciplineBlockPresent": true,
+        "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\position-opposite.html\" --title=\"接应\" --lang=\"zh-CN\" --prefix=\"vl\"",
+        "headFillMode": "skeleton-first",
+        "viewportMode": "document-scroll",
+        "completionSchemaExpected": "full",
+        "restoreFields": null,
+        "restoreContractStatus": null,
+        "restoreCompactPacket": null,
+        "deterministicCommands": null,
+        "sourceAuthorityLock": null,
+        "preDispatchFileHashes": {
+          "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+        },
+        "contextPreflight": {
+          "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+          "requiredContextFiles": [
+            "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+            "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+            "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+            "delivery-quality/page-rendering-quality-gate.md",
+            "delivery-quality/design-artifact-validation.md",
+            "delivery-quality/delivery-evidence-contract.md",
+            "visual-experience/visual-experience-guidelines.md",
+            "visual-experience/visual-checkpoint-protocol.md"
+          ],
+          "optionalContextFiles": [],
+          "passed": true
+        },
+        "pageSliceOnly": true,
+        "requiredFieldsPresent": true,
+        "missingFields": [],
+        "fillHtmlHeadCommandValid": true,
+        "mobileNavigation": {
+          "required": false,
+          "appliesToThisPage": false,
+          "canonicalHtmlIncluded": false,
+          "missingFields": []
+        },
+        "persistedToSummary": true,
+        "taskQueryAudited": false,
+        "proofSource": "summary-only",
+        "largeWorkflowFilesInTaskQuery": null
+      },
+      {
+        "recorded_at": "2026-11-12T08:06:52.867Z",
+        "generatedBy": "build-page-dispatch-manifest.mjs",
+        "packetType": "ComplexPagePacket",
+        "laneContract": {
+          "resolvedLane": "complex_html_page",
+          "packetType": "ComplexPagePacket",
+          "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+          "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+        },
+        "taskLinePresent": true,
+        "outputPathPresent": true,
+        "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "nodeId": "page-position-libero",
+        "htmlSrc": "pages/position-libero.html",
+        "supplementaryReads": [],
+        "allowedWritePaths": [
+          "pages/position-libero.html",
+          "assets/"
+        ],
+        "forbiddenWriteRoots": [
+          "*.design",
+          "runtime-orchestration-summary.json",
+          "validation-report.json",
+          "finish-readiness-report.json",
+          "restore-contract-report.json",
+          "page-generation-summary.json"
+        ],
+        "toolPolicy": {
+          "todoWriteAllowed": false,
+          "validationScriptsAllowed": false,
+          "previewAllowed": false,
+          "helperScriptsAllowed": false,
+          "designFileWriteAllowed": false,
+          "allowedWritePaths": [
+            "pages/position-libero.html",
+            "assets/"
+          ]
+        },
+        "skillRuntime": {
+          "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+          "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+          "toolPaths": {
+            "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+            "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+            "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+            "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+            "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+            "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+          },
+          "requiredForPageSubAgent": [
+            "applyHtmlHeadContract",
+            "recordDispatchCompletion"
+          ],
+          "pathInjection": "absolute",
+          "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+          "commandTemplates": {
+            "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-position-libero\" --html-src=\"pages/position-libero.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+          }
+        },
+        "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+        "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\position-libero.html",
+        "brandPrefix": "vl",
+        "aestheticsMode": "free-explore",
+        "toolDisciplineBlockPresent": true,
+        "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\position-libero.html\" --title=\"自由人\" --lang=\"zh-CN\" --prefix=\"vl\"",
+        "headFillMode": "skeleton-first",
+        "viewportMode": "document-scroll",
+        "completionSchemaExpected": "full",
+        "restoreFields": null,
+        "restoreContractStatus": null,
+        "restoreCompactPacket": null,
+        "deterministicCommands": null,
+        "sourceAuthorityLock": null,
+        "preDispatchFileHashes": {
+          "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+        },
+        "contextPreflight": {
+          "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+          "requiredContextFiles": [
+            "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+            "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+            "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+            "delivery-quality/page-rendering-quality-gate.md",
+            "delivery-quality/design-artifact-validation.md",
+            "delivery-quality/delivery-evidence-contract.md",
+            "visual-experience/visual-experience-guidelines.md",
+            "visual-experience/visual-checkpoint-protocol.md"
+          ],
+          "optionalContextFiles": [],
+          "passed": true
+        },
+        "pageSliceOnly": true,
+        "requiredFieldsPresent": true,
+        "missingFields": [],
+        "fillHtmlHeadCommandValid": true,
+        "mobileNavigation": {
+          "required": false,
+          "appliesToThisPage": false,
+          "canonicalHtmlIncluded": false,
+          "missingFields": []
+        },
+        "persistedToSummary": true,
+        "taskQueryAudited": false,
+        "proofSource": "summary-only",
+        "largeWorkflowFilesInTaskQuery": null
+      },
+      {
+        "recorded_at": "2026-11-12T08:06:52.867Z",
+        "generatedBy": "build-page-dispatch-manifest.mjs",
+        "packetType": "ComplexPagePacket",
+        "laneContract": {
+          "resolvedLane": "complex_html_page",
+          "packetType": "ComplexPagePacket",
+          "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+          "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+        },
+        "taskLinePresent": true,
+        "outputPathPresent": true,
+        "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "nodeId": "page-skill-spike",
+        "htmlSrc": "pages/skill-spike.html",
+        "supplementaryReads": [],
+        "allowedWritePaths": [
+          "pages/skill-spike.html",
+          "assets/"
+        ],
+        "forbiddenWriteRoots": [
+          "*.design",
+          "runtime-orchestration-summary.json",
+          "validation-report.json",
+          "finish-readiness-report.json",
+          "restore-contract-report.json",
+          "page-generation-summary.json"
+        ],
+        "toolPolicy": {
+          "todoWriteAllowed": false,
+          "validationScriptsAllowed": false,
+          "previewAllowed": false,
+          "helperScriptsAllowed": false,
+          "designFileWriteAllowed": false,
+          "allowedWritePaths": [
+            "pages/skill-spike.html",
+            "assets/"
+          ]
+        },
+        "skillRuntime": {
+          "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+          "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+          "toolPaths": {
+            "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+            "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+            "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+            "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+            "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+            "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+          },
+          "requiredForPageSubAgent": [
+            "applyHtmlHeadContract",
+            "recordDispatchCompletion"
+          ],
+          "pathInjection": "absolute",
+          "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+          "commandTemplates": {
+            "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-skill-spike\" --html-src=\"pages/skill-spike.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+          }
+        },
+        "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+        "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\skill-spike.html",
+        "brandPrefix": "vl",
+        "aestheticsMode": "free-explore",
+        "toolDisciplineBlockPresent": true,
+        "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\skill-spike.html\" --title=\"扣球教学\" --lang=\"zh-CN\" --prefix=\"vl\"",
+        "headFillMode": "skeleton-first",
+        "viewportMode": "document-scroll",
+        "completionSchemaExpected": "full",
+        "restoreFields": null,
+        "restoreContractStatus": null,
+        "restoreCompactPacket": null,
+        "deterministicCommands": null,
+        "sourceAuthorityLock": null,
+        "preDispatchFileHashes": {
+          "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+        },
+        "contextPreflight": {
+          "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+          "requiredContextFiles": [
+            "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+            "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+            "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+            "delivery-quality/page-rendering-quality-gate.md",
+            "delivery-quality/design-artifact-validation.md",
+            "delivery-quality/delivery-evidence-contract.md",
+            "visual-experience/visual-experience-guidelines.md",
+            "visual-experience/visual-checkpoint-protocol.md"
+          ],
+          "optionalContextFiles": [],
+          "passed": true
+        },
+        "pageSliceOnly": true,
+        "requiredFieldsPresent": true,
+        "missingFields": [],
+        "fillHtmlHeadCommandValid": true,
+        "mobileNavigation": {
+          "required": false,
+          "appliesToThisPage": false,
+          "canonicalHtmlIncluded": false,
+          "missingFields": []
+        },
+        "persistedToSummary": true,
+        "taskQueryAudited": false,
+        "proofSource": "summary-only",
+        "largeWorkflowFilesInTaskQuery": null
+      },
+      {
+        "recorded_at": "2026-11-12T08:06:52.867Z",
+        "generatedBy": "build-page-dispatch-manifest.mjs",
+        "packetType": "ComplexPagePacket",
+        "laneContract": {
+          "resolvedLane": "complex_html_page",
+          "packetType": "ComplexPagePacket",
+          "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+          "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+        },
+        "taskLinePresent": true,
+        "outputPathPresent": true,
+        "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "nodeId": "page-skill-pass",
+        "htmlSrc": "pages/skill-pass.html",
+        "supplementaryReads": [],
+        "allowedWritePaths": [
+          "pages/skill-pass.html",
+          "assets/"
+        ],
+        "forbiddenWriteRoots": [
+          "*.design",
+          "runtime-orchestration-summary.json",
+          "validation-report.json",
+          "finish-readiness-report.json",
+          "restore-contract-report.json",
+          "page-generation-summary.json"
+        ],
+        "toolPolicy": {
+          "todoWriteAllowed": false,
+          "validationScriptsAllowed": false,
+          "previewAllowed": false,
+          "helperScriptsAllowed": false,
+          "designFileWriteAllowed": false,
+          "allowedWritePaths": [
+            "pages/skill-pass.html",
+            "assets/"
+          ]
+        },
+        "skillRuntime": {
+          "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+          "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+          "toolPaths": {
+            "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+            "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+            "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+            "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+            "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+            "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+          },
+          "requiredForPageSubAgent": [
+            "applyHtmlHeadContract",
+            "recordDispatchCompletion"
+          ],
+          "pathInjection": "absolute",
+          "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+          "commandTemplates": {
+            "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-skill-pass\" --html-src=\"pages/skill-pass.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+          }
+        },
+        "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+        "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\skill-pass.html",
+        "brandPrefix": "vl",
+        "aestheticsMode": "free-explore",
+        "toolDisciplineBlockPresent": true,
+        "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\skill-pass.html\" --title=\"一传教学\" --lang=\"zh-CN\" --prefix=\"vl\"",
+        "headFillMode": "skeleton-first",
+        "viewportMode": "document-scroll",
+        "completionSchemaExpected": "full",
+        "restoreFields": null,
+        "restoreContractStatus": null,
+        "restoreCompactPacket": null,
+        "deterministicCommands": null,
+        "sourceAuthorityLock": null,
+        "preDispatchFileHashes": {
+          "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+        },
+        "contextPreflight": {
+          "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+          "requiredContextFiles": [
+            "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+            "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+            "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+            "delivery-quality/page-rendering-quality-gate.md",
+            "delivery-quality/design-artifact-validation.md",
+            "delivery-quality/delivery-evidence-contract.md",
+            "visual-experience/visual-experience-guidelines.md",
+            "visual-experience/visual-checkpoint-protocol.md"
+          ],
+          "optionalContextFiles": [],
+          "passed": true
+        },
+        "pageSliceOnly": true,
+        "requiredFieldsPresent": true,
+        "missingFields": [],
+        "fillHtmlHeadCommandValid": true,
+        "mobileNavigation": {
+          "required": false,
+          "appliesToThisPage": false,
+          "canonicalHtmlIncluded": false,
+          "missingFields": []
+        },
+        "persistedToSummary": true,
+        "taskQueryAudited": false,
+        "proofSource": "summary-only",
+        "largeWorkflowFilesInTaskQuery": null
+      },
+      {
+        "recorded_at": "2026-11-12T08:06:52.867Z",
+        "generatedBy": "build-page-dispatch-manifest.mjs",
+        "packetType": "ComplexPagePacket",
+        "laneContract": {
+          "resolvedLane": "complex_html_page",
+          "packetType": "ComplexPagePacket",
+          "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+          "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+        },
+        "taskLinePresent": true,
+        "outputPathPresent": true,
+        "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "nodeId": "page-skill-set",
+        "htmlSrc": "pages/skill-set.html",
+        "supplementaryReads": [],
+        "allowedWritePaths": [
+          "pages/skill-set.html",
+          "assets/"
+        ],
+        "forbiddenWriteRoots": [
+          "*.design",
+          "runtime-orchestration-summary.json",
+          "validation-report.json",
+          "finish-readiness-report.json",
+          "restore-contract-report.json",
+          "page-generation-summary.json"
+        ],
+        "toolPolicy": {
+          "todoWriteAllowed": false,
+          "validationScriptsAllowed": false,
+          "previewAllowed": false,
+          "helperScriptsAllowed": false,
+          "designFileWriteAllowed": false,
+          "allowedWritePaths": [
+            "pages/skill-set.html",
+            "assets/"
+          ]
+        },
+        "skillRuntime": {
+          "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+          "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+          "toolPaths": {
+            "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+            "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+            "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+            "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+            "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+            "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+          },
+          "requiredForPageSubAgent": [
+            "applyHtmlHeadContract",
+            "recordDispatchCompletion"
+          ],
+          "pathInjection": "absolute",
+          "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+          "commandTemplates": {
+            "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-skill-set\" --html-src=\"pages/skill-set.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+          }
+        },
+        "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+        "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\skill-set.html",
+        "brandPrefix": "vl",
+        "aestheticsMode": "free-explore",
+        "toolDisciplineBlockPresent": true,
+        "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\skill-set.html\" --title=\"传球教学\" --lang=\"zh-CN\" --prefix=\"vl\"",
+        "headFillMode": "skeleton-first",
+        "viewportMode": "document-scroll",
+        "completionSchemaExpected": "full",
+        "restoreFields": null,
+        "restoreContractStatus": null,
+        "restoreCompactPacket": null,
+        "deterministicCommands": null,
+        "sourceAuthorityLock": null,
+        "preDispatchFileHashes": {
+          "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+        },
+        "contextPreflight": {
+          "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+          "requiredContextFiles": [
+            "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+            "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+            "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+            "delivery-quality/page-rendering-quality-gate.md",
+            "delivery-quality/design-artifact-validation.md",
+            "delivery-quality/delivery-evidence-contract.md",
+            "visual-experience/visual-experience-guidelines.md",
+            "visual-experience/visual-checkpoint-protocol.md"
+          ],
+          "optionalContextFiles": [],
+          "passed": true
+        },
+        "pageSliceOnly": true,
+        "requiredFieldsPresent": true,
+        "missingFields": [],
+        "fillHtmlHeadCommandValid": true,
+        "mobileNavigation": {
+          "required": false,
+          "appliesToThisPage": false,
+          "canonicalHtmlIncluded": false,
+          "missingFields": []
+        },
+        "persistedToSummary": true,
+        "taskQueryAudited": false,
+        "proofSource": "summary-only",
+        "largeWorkflowFilesInTaskQuery": null
+      },
+      {
+        "recorded_at": "2026-11-12T08:06:52.867Z",
+        "generatedBy": "build-page-dispatch-manifest.mjs",
+        "packetType": "ComplexPagePacket",
+        "laneContract": {
+          "resolvedLane": "complex_html_page",
+          "packetType": "ComplexPagePacket",
+          "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+          "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+        },
+        "taskLinePresent": true,
+        "outputPathPresent": true,
+        "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "nodeId": "page-skill-dig",
+        "htmlSrc": "pages/skill-dig.html",
+        "supplementaryReads": [],
+        "allowedWritePaths": [
+          "pages/skill-dig.html",
+          "assets/"
+        ],
+        "forbiddenWriteRoots": [
+          "*.design",
+          "runtime-orchestration-summary.json",
+          "validation-report.json",
+          "finish-readiness-report.json",
+          "restore-contract-report.json",
+          "page-generation-summary.json"
+        ],
+        "toolPolicy": {
+          "todoWriteAllowed": false,
+          "validationScriptsAllowed": false,
+          "previewAllowed": false,
+          "helperScriptsAllowed": false,
+          "designFileWriteAllowed": false,
+          "allowedWritePaths": [
+            "pages/skill-dig.html",
+            "assets/"
+          ]
+        },
+        "skillRuntime": {
+          "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+          "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+          "toolPaths": {
+            "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+            "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+            "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+            "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+            "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+            "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+          },
+          "requiredForPageSubAgent": [
+            "applyHtmlHeadContract",
+            "recordDispatchCompletion"
+          ],
+          "pathInjection": "absolute",
+          "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+          "commandTemplates": {
+            "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-skill-dig\" --html-src=\"pages/skill-dig.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+          }
+        },
+        "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+        "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\skill-dig.html",
+        "brandPrefix": "vl",
+        "aestheticsMode": "free-explore",
+        "toolDisciplineBlockPresent": true,
+        "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\skill-dig.html\" --title=\"防守救球\" --lang=\"zh-CN\" --prefix=\"vl\"",
+        "headFillMode": "skeleton-first",
+        "viewportMode": "document-scroll",
+        "completionSchemaExpected": "full",
+        "restoreFields": null,
+        "restoreContractStatus": null,
+        "restoreCompactPacket": null,
+        "deterministicCommands": null,
+        "sourceAuthorityLock": null,
+        "preDispatchFileHashes": {
+          "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+        },
+        "contextPreflight": {
+          "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+          "requiredContextFiles": [
+            "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+            "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+            "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+            "delivery-quality/page-rendering-quality-gate.md",
+            "delivery-quality/design-artifact-validation.md",
+            "delivery-quality/delivery-evidence-contract.md",
+            "visual-experience/visual-experience-guidelines.md",
+            "visual-experience/visual-checkpoint-protocol.md"
+          ],
+          "optionalContextFiles": [],
+          "passed": true
+        },
+        "pageSliceOnly": true,
+        "requiredFieldsPresent": true,
+        "missingFields": [],
+        "fillHtmlHeadCommandValid": true,
+        "mobileNavigation": {
+          "required": false,
+          "appliesToThisPage": false,
+          "canonicalHtmlIncluded": false,
+          "missingFields": []
+        },
+        "persistedToSummary": true,
+        "taskQueryAudited": false,
+        "proofSource": "summary-only",
+        "largeWorkflowFilesInTaskQuery": null
+      },
+      {
+        "recorded_at": "2026-11-12T08:06:52.867Z",
+        "generatedBy": "build-page-dispatch-manifest.mjs",
+        "packetType": "ComplexPagePacket",
+        "laneContract": {
+          "resolvedLane": "complex_html_page",
+          "packetType": "ComplexPagePacket",
+          "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+          "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+        },
+        "taskLinePresent": true,
+        "outputPathPresent": true,
+        "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "nodeId": "page-set-gesture",
+        "htmlSrc": "pages/set-gesture.html",
+        "supplementaryReads": [],
+        "allowedWritePaths": [
+          "pages/set-gesture.html",
+          "assets/"
+        ],
+        "forbiddenWriteRoots": [
+          "*.design",
+          "runtime-orchestration-summary.json",
+          "validation-report.json",
+          "finish-readiness-report.json",
+          "restore-contract-report.json",
+          "page-generation-summary.json"
+        ],
+        "toolPolicy": {
+          "todoWriteAllowed": false,
+          "validationScriptsAllowed": false,
+          "previewAllowed": false,
+          "helperScriptsAllowed": false,
+          "designFileWriteAllowed": false,
+          "allowedWritePaths": [
+            "pages/set-gesture.html",
+            "assets/"
+          ]
+        },
+        "skillRuntime": {
+          "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+          "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+          "toolPaths": {
+            "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+            "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+            "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+            "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+            "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+            "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+          },
+          "requiredForPageSubAgent": [
+            "applyHtmlHeadContract",
+            "recordDispatchCompletion"
+          ],
+          "pathInjection": "absolute",
+          "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+          "commandTemplates": {
+            "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-set-gesture\" --html-src=\"pages/set-gesture.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+          }
+        },
+        "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+        "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\set-gesture.html",
+        "brandPrefix": "vl",
+        "aestheticsMode": "free-explore",
+        "toolDisciplineBlockPresent": true,
+        "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\set-gesture.html\" --title=\"二传手势\" --lang=\"zh-CN\" --prefix=\"vl\"",
+        "headFillMode": "skeleton-first",
+        "viewportMode": "document-scroll",
+        "completionSchemaExpected": "full",
+        "restoreFields": null,
+        "restoreContractStatus": null,
+        "restoreCompactPacket": null,
+        "deterministicCommands": null,
+        "sourceAuthorityLock": null,
+        "preDispatchFileHashes": {
+          "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+        },
+        "contextPreflight": {
+          "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+          "requiredContextFiles": [
+            "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+            "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+            "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+            "delivery-quality/page-rendering-quality-gate.md",
+            "delivery-quality/design-artifact-validation.md",
+            "delivery-quality/delivery-evidence-contract.md",
+            "visual-experience/visual-experience-guidelines.md",
+            "visual-experience/visual-checkpoint-protocol.md"
+          ],
+          "optionalContextFiles": [],
+          "passed": true
+        },
+        "pageSliceOnly": true,
+        "requiredFieldsPresent": true,
+        "missingFields": [],
+        "fillHtmlHeadCommandValid": true,
+        "mobileNavigation": {
+          "required": false,
+          "appliesToThisPage": false,
+          "canonicalHtmlIncluded": false,
+          "missingFields": []
+        },
+        "persistedToSummary": true,
+        "taskQueryAudited": false,
+        "proofSource": "summary-only",
+        "largeWorkflowFilesInTaskQuery": null
+      },
+      {
+        "recorded_at": "2026-11-12T08:06:52.867Z",
+        "generatedBy": "build-page-dispatch-manifest.mjs",
+        "packetType": "ComplexPagePacket",
+        "laneContract": {
+          "resolvedLane": "complex_html_page",
+          "packetType": "ComplexPagePacket",
+          "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+          "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+        },
+        "taskLinePresent": true,
+        "outputPathPresent": true,
+        "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "nodeId": "page-search",
+        "htmlSrc": "pages/search.html",
+        "supplementaryReads": [],
+        "allowedWritePaths": [
+          "pages/search.html",
+          "assets/"
+        ],
+        "forbiddenWriteRoots": [
+          "*.design",
+          "runtime-orchestration-summary.json",
+          "validation-report.json",
+          "finish-readiness-report.json",
+          "restore-contract-report.json",
+          "page-generation-summary.json"
+        ],
+        "toolPolicy": {
+          "todoWriteAllowed": false,
+          "validationScriptsAllowed": false,
+          "previewAllowed": false,
+          "helperScriptsAllowed": false,
+          "designFileWriteAllowed": false,
+          "allowedWritePaths": [
+            "pages/search.html",
+            "assets/"
+          ]
+        },
+        "skillRuntime": {
+          "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+          "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+          "toolPaths": {
+            "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+            "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+            "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+            "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+            "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+            "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+          },
+          "requiredForPageSubAgent": [
+            "applyHtmlHeadContract",
+            "recordDispatchCompletion"
+          ],
+          "pathInjection": "absolute",
+          "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+          "commandTemplates": {
+            "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-search\" --html-src=\"pages/search.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+          }
+        },
+        "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+        "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\search.html",
+        "brandPrefix": "vl",
+        "aestheticsMode": "free-explore",
+        "toolDisciplineBlockPresent": true,
+        "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\search.html\" --title=\"搜索\" --lang=\"zh-CN\" --prefix=\"vl\"",
+        "headFillMode": "skeleton-first",
+        "viewportMode": "document-scroll",
+        "completionSchemaExpected": "full",
+        "restoreFields": null,
+        "restoreContractStatus": null,
+        "restoreCompactPacket": null,
+        "deterministicCommands": null,
+        "sourceAuthorityLock": null,
+        "preDispatchFileHashes": {
+          "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+        },
+        "contextPreflight": {
+          "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+          "requiredContextFiles": [
+            "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+            "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+            "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+            "delivery-quality/page-rendering-quality-gate.md",
+            "delivery-quality/design-artifact-validation.md",
+            "delivery-quality/delivery-evidence-contract.md",
+            "visual-experience/visual-experience-guidelines.md",
+            "visual-experience/visual-checkpoint-protocol.md"
+          ],
+          "optionalContextFiles": [],
+          "passed": true
+        },
+        "pageSliceOnly": true,
+        "requiredFieldsPresent": true,
+        "missingFields": [],
+        "fillHtmlHeadCommandValid": true,
+        "mobileNavigation": {
+          "required": false,
+          "appliesToThisPage": false,
+          "canonicalHtmlIncluded": false,
+          "missingFields": []
+        },
+        "persistedToSummary": true,
+        "taskQueryAudited": false,
+        "proofSource": "summary-only",
+        "largeWorkflowFilesInTaskQuery": null
+      },
+      {
+        "recorded_at": "2026-11-12T08:06:52.867Z",
+        "generatedBy": "build-page-dispatch-manifest.mjs",
+        "packetType": "ComplexPagePacket",
+        "laneContract": {
+          "resolvedLane": "complex_html_page",
+          "packetType": "ComplexPagePacket",
+          "pageRuntimeGuide": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+          "dispatchContract": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md"
+        },
+        "taskLinePresent": true,
+        "outputPathPresent": true,
+        "sharedTemplate": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "nodeId": "page-news-detail",
+        "htmlSrc": "pages/news-detail.html",
+        "supplementaryReads": [],
+        "allowedWritePaths": [
+          "pages/news-detail.html",
+          "assets/"
+        ],
+        "forbiddenWriteRoots": [
+          "*.design",
+          "runtime-orchestration-summary.json",
+          "validation-report.json",
+          "finish-readiness-report.json",
+          "restore-contract-report.json",
+          "page-generation-summary.json"
+        ],
+        "toolPolicy": {
+          "todoWriteAllowed": false,
+          "validationScriptsAllowed": false,
+          "previewAllowed": false,
+          "helperScriptsAllowed": false,
+          "designFileWriteAllowed": false,
+          "allowedWritePaths": [
+            "pages/news-detail.html",
+            "assets/"
+          ]
+        },
+        "skillRuntime": {
+          "skillDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design",
+          "deterministicToolDir": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling",
+          "toolPaths": {
+            "applyHtmlHeadContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs",
+            "recordDispatchCompletion": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs",
+            "buildPageDispatchManifest": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\build-page-dispatch-manifest.mjs",
+            "validateDesignWorkspace": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-design-workspace.mjs",
+            "validateFinishReadiness": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-finish-readiness.mjs",
+            "validateRestoreContract": "C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\validate-restore-contract.mjs"
+          },
+          "requiredForPageSubAgent": [
+            "applyHtmlHeadContract",
+            "recordDispatchCompletion"
+          ],
+          "pathInjection": "absolute",
+          "pathContract": "Do not use {SKILL_DIR} placeholders inside Page Sub-Agent packets; use toolPaths.* absolute paths.",
+          "commandTemplates": {
+            "recordDispatchCompletion": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\record-dispatch-completion.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\" --node-id=\"page-news-detail\" --html-src=\"pages/news-detail.html\" --status=completed --changed-files=<comma-separated-project-relative-files> --trace-digest=<main-agent-runtime-trace-digest> --tool-ledger-json=<tool-ledger-json-or-file>"
+          }
+        },
+        "cssFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css",
+        "htmlFilePath": "c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\news-detail.html",
+        "brandPrefix": "vl",
+        "aestheticsMode": "free-explore",
+        "toolDisciplineBlockPresent": true,
+        "fillHtmlHeadCommand": "node \"C:\\Users\\33685\\.trae-cn\\plugins\\trae-remote-official\\trae-design\\0.1.3\\skills\\solo-design\\shared-runtime\\deterministic-tooling\\apply-html-head-contract.mjs\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\colors_and_type.css\" \"c:\\Users\\33685\\Desktop\\1112\\volleylab\\pages\\news-detail.html\" --title=\"新闻详情\" --lang=\"zh-CN\" --prefix=\"vl\"",
+        "headFillMode": "skeleton-first",
+        "viewportMode": "document-scroll",
+        "completionSchemaExpected": "full",
+        "restoreFields": null,
+        "restoreContractStatus": null,
+        "restoreCompactPacket": null,
+        "deterministicCommands": null,
+        "sourceAuthorityLock": null,
+        "preDispatchFileHashes": {
+          "volleylab.design": "efe94798739695d34fced19deb10652e260d7c9cfc3efc0c3e1fdb636d0f0734"
+        },
+        "contextPreflight": {
+          "workflowPath": "intent-workflows/intent-project-complex-build/INTENT_WORKFLOW.md",
+          "requiredContextFiles": [
+            "shared-runtime/runtime-boundaries/lane-runtime-contracts.md",
+            "shared-runtime/agent-dispatch-runtime/lane-dispatch-index.md",
+            "shared-runtime/agent-dispatch-runtime/shared-page-rendering-kernel.md",
+            "delivery-quality/page-rendering-quality-gate.md",
+            "delivery-quality/design-artifact-validation.md",
+            "delivery-quality/delivery-evidence-contract.md",
+            "visual-experience/visual-experience-guidelines.md",
+            "visual-experience/visual-checkpoint-protocol.md"
+          ],
+          "optionalContextFiles": [],
+          "passed": true
+        },
+        "pageSliceOnly": true,
+        "requiredFieldsPresent": true,
+        "missingFields": [],
+        "fillHtmlHeadCommandValid": true,
+        "mobileNavigation": {
+          "required": false,
+          "appliesToThisPage": false,
+          "canonicalHtmlIncluded": false,
+          "missingFields": []
+        },
+        "persistedToSummary": true,
+        "taskQueryAudited": false,
+        "proofSource": "summary-only",
+        "largeWorkflowFilesInTaskQuery": null
+      }
+    ],
+    "validationHistory": [],
+    "validationRepairLedger": [],
+    "validationSnapshot": {},
+    "readScopeLedger": [
+      {
+        "actor": "page-sub-agent",
+        "lane": "complex_html_page",
+        "path": "intent-workflows/intent-project-complex-build/complex-page-runtime.md",
+        "reason": "page runtime guide",
+        "scopeClass": "page-runtime",
+        "declaredBeforeRead": true,
+        "recordedAt": "2026-11-12T08:06:52.867Z",
+        "nodeId": "page-splash",
+        "htmlSrc": "pages/splash.html"
+      },
+      {
+        "actor": "page-sub-agent",
+        "lane": "complex_html_page",
+        "path": "intent-workflows/intent-project-complex-build/complex-page-dispatch-contract.md",
+        "reason": "dispatch contract",
+        "scopeClass": "dispatch-contract",
+        "declaredBeforeRead": true,
+        "recordedAt": "2026-11-12T08:06:52.867Z",
+        "nodeId": "page-splash",
+        "htmlSrc": "pages/splash.html"
+      }
+    ],
+    "expectedDispatches": [
+      {
+        "nodeId": "page-splash",
+        "pageId": "page-splash",
+        "targetPageId": "page-splash",
+        "htmlSrc": "pages/splash.html",
+        "packetType": "ComplexPagePacket",
+        "status": "completed",
+        "changedFiles": [
+          "pages/splash.html"
+        ],
+        "toolCallLedger": {
+          "source": "main-agent-runtime-trace",
+          "traceDigest": "64b16e02a6a63b7539ebfd5556c24cc2fa7adf31dac515e230fa88f0d7aafb07",
+          "todoWriteCalls": 0,
+          "previewCalls": 0,
+          "validationScriptCalls": 0,
+          "helperScriptWrites": 0
+        },
+        "recordedAt": "2026-11-12T08:32:56.776Z",
+        "source": "record-dispatch-completion.mjs"
+      },
+      {
+        "nodeId": "page-home",
+        "pageId": "page-home",
+        "targetPageId": "page-home",
+        "htmlSrc": "pages/home.html",
+        "packetType": "ComplexPagePacket",
+        "status": "completed",
+        "changedFiles": [
+          "pages/home.html"
+        ],
+        "toolCallLedger": {
+          "source": "main-agent-runtime-trace",
+          "traceDigest": "1e8e9f1d5a116b381f30669f66b37a1e870bc9f7aac0bf5d1bb77da42feabd04",
+          "todoWriteCalls": 0,
+          "previewCalls": 0,
+          "validationScriptCalls": 0,
+          "helperScriptWrites": 0
+        },
+        "recordedAt": "2026-11-12T08:32:10.721Z",
+        "source": "record-dispatch-completion.mjs"
+      },
+      {
+        "nodeId": "page-position-outside",
+        "pageId": "page-position-outside",
+        "targetPageId": "page-position-outside",
+        "htmlSrc": "pages/position-outside.html",
+        "packetType": "ComplexPagePacket",
+        "status": "completed",
+        "changedFiles": [
+          "pages/position-outside.html"
+        ],
+        "toolCallLedger": {
+          "source": "main-agent-runtime-trace",
+          "traceDigest": "c6dfa8e2666a9ed69f01594b9d62deaa6ba6f3b48e3afb6b974a45ec5012b4cb",
+          "todoWriteCalls": 0,
+          "previewCalls": 0,
+          "validationScriptCalls": 0,
+          "helperScriptWrites": 0
+        },
+        "recordedAt": "2026-11-12T08:32:10.783Z",
+        "source": "record-dispatch-completion.mjs"
+      },
+      {
+        "nodeId": "page-position-setter",
+        "pageId": "page-position-setter",
+        "targetPageId": "page-position-setter",
+        "htmlSrc": "pages/position-setter.html",
+        "packetType": "ComplexPagePacket",
+        "status": "completed",
+        "changedFiles": [
+          "pages/position-setter.html"
+        ],
+        "toolCallLedger": {
+          "source": "main-agent-runtime-trace",
+          "traceDigest": "e45d97b92fe5525dd9aaeb25c6e8858ad943f6c697e1845feb0395ed742d3f8a",
+          "todoWriteCalls": 0,
+          "previewCalls": 0,
+          "validationScriptCalls": 0,
+          "helperScriptWrites": 0
+        },
+        "recordedAt": "2026-11-12T08:32:10.842Z",
+        "source": "record-dispatch-completion.mjs"
+      },
+      {
+        "nodeId": "page-position-opposite",
+        "pageId": "page-position-opposite",
+        "targetPageId": "page-position-opposite",
+        "htmlSrc": "pages/position-opposite.html",
+        "packetType": "ComplexPagePacket",
+        "status": "completed",
+        "changedFiles": [
+          "pages/position-opposite.html"
+        ],
+        "toolCallLedger": {
+          "source": "main-agent-runtime-trace",
+          "traceDigest": "48124b5228cefb267cbd5c8542e232da8b1a422b4418127adba9b4f672e1c6f1",
+          "todoWriteCalls": 0,
+          "previewCalls": 0,
+          "validationScriptCalls": 0,
+          "helperScriptWrites": 0
+        },
+        "recordedAt": "2026-11-12T08:32:10.917Z",
+        "source": "record-dispatch-completion.mjs"
+      },
+      {
+        "nodeId": "page-position-libero",
+        "pageId": "page-position-libero",
+        "targetPageId": "page-position-libero",
+        "htmlSrc": "pages/position-libero.html",
+        "packetType": "ComplexPagePacket",
+        "status": "completed",
+        "changedFiles": [
+          "pages/position-libero.html"
+        ],
+        "toolCallLedger": {
+          "source": "main-agent-runtime-trace",
+          "traceDigest": "15ae14edf1382905b215950a53cea4200bb5554aeb18af87da2618f1f24144ef",
+          "todoWriteCalls": 0,
+          "previewCalls": 0,
+          "validationScriptCalls": 0,
+          "helperScriptWrites": 0
+        },
+        "recordedAt": "2026-11-12T08:32:10.984Z",
+        "source": "record-dispatch-completion.mjs"
+      },
+      {
+        "nodeId": "page-skill-spike",
+        "pageId": "page-skill-spike",
+        "targetPageId": "page-skill-spike",
+        "htmlSrc": "pages/skill-spike.html",
+        "packetType": "ComplexPagePacket",
+        "status": "completed",
+        "changedFiles": [
+          "pages/skill-spike.html"
+        ],
+        "toolCallLedger": {
+          "source": "main-agent-runtime-trace",
+          "traceDigest": "c9f1a1b3ed6ba8e1f31266d9a502196428e11fdc9eaaf8b435b9d65cc3c3618b",
+          "todoWriteCalls": 0,
+          "previewCalls": 0,
+          "validationScriptCalls": 0,
+          "helperScriptWrites": 0
+        },
+        "recordedAt": "2026-11-12T08:32:11.048Z",
+        "source": "record-dispatch-completion.mjs"
+      },
+      {
+        "nodeId": "page-skill-pass",
+        "pageId": "page-skill-pass",
+        "targetPageId": "page-skill-pass",
+        "htmlSrc": "pages/skill-pass.html",
+        "packetType": "ComplexPagePacket",
+        "status": "completed",
+        "changedFiles": [
+          "pages/skill-pass.html"
+        ],
+        "toolCallLedger": {
+          "source": "main-agent-runtime-trace",
+          "traceDigest": "bd001541ecec306e2a0b6b8cfce09dca30ae29107d5417b8a69a4079470545f1",
+          "todoWriteCalls": 0,
+          "previewCalls": 0,
+          "validationScriptCalls": 0,
+          "helperScriptWrites": 0
+        },
+        "recordedAt": "2026-11-12T08:32:11.116Z",
+        "source": "record-dispatch-completion.mjs"
+      },
+      {
+        "nodeId": "page-skill-set",
+        "pageId": "page-skill-set",
+        "targetPageId": "page-skill-set",
+        "htmlSrc": "pages/skill-set.html",
+        "packetType": "ComplexPagePacket",
+        "status": "completed",
+        "changedFiles": [
+          "pages/skill-set.html"
+        ],
+        "toolCallLedger": {
+          "source": "main-agent-runtime-trace",
+          "traceDigest": "454694b75f55bbcf7e76e515657c28d3d2798c5987c8714257f2ad6df9efabdc",
+          "todoWriteCalls": 0,
+          "previewCalls": 0,
+          "validationScriptCalls": 0,
+          "helperScriptWrites": 0
+        },
+        "recordedAt": "2026-11-12T08:32:11.179Z",
+        "source": "record-dispatch-completion.mjs"
+      },
+      {
+        "nodeId": "page-skill-dig",
+        "pageId": "page-skill-dig",
+        "targetPageId": "page-skill-dig",
+        "htmlSrc": "pages/skill-dig.html",
+        "packetType": "ComplexPagePacket",
+        "status": "completed",
+        "changedFiles": [
+          "pages/skill-dig.html"
+        ],
+        "toolCallLedger": {
+          "source": "main-agent-runtime-trace",
+          "traceDigest": "1d99ece9cb137f1606907e7c177c90c40d87d9ee8bb26d2495b1e8abc0c98eac",
+          "todoWriteCalls": 0,
+          "previewCalls": 0,
+          "validationScriptCalls": 0,
+          "helperScriptWrites": 0
+        },
+        "recordedAt": "2026-11-12T08:32:11.243Z",
+        "source": "record-dispatch-completion.mjs"
+      },
+      {
+        "nodeId": "page-set-gesture",
+        "pageId": "page-set-gesture",
+        "targetPageId": "page-set-gesture",
+        "htmlSrc": "pages/set-gesture.html",
+        "packetType": "ComplexPagePacket",
+        "status": "completed",
+        "changedFiles": [
+          "pages/set-gesture.html"
+        ],
+        "toolCallLedger": {
+          "source": "main-agent-runtime-trace",
+          "traceDigest": "11592b81903096b5abdc6d8ef64ba0ea13cc80ec8c0e3c7bcdddd05816c695a8",
+          "todoWriteCalls": 0,
+          "previewCalls": 0,
+          "validationScriptCalls": 0,
+          "helperScriptWrites": 0
+        },
+        "recordedAt": "2026-11-12T08:32:11.330Z",
+        "source": "record-dispatch-completion.mjs"
+      },
+      {
+        "nodeId": "page-search",
+        "pageId": "page-search",
+        "targetPageId": "page-search",
+        "htmlSrc": "pages/search.html",
+        "packetType": "ComplexPagePacket",
+        "status": "completed",
+        "changedFiles": [
+          "pages/search.html"
+        ],
+        "toolCallLedger": {
+          "source": "main-agent-runtime-trace",
+          "traceDigest": "e00463035ca42a4734cb79d3701723872de2c3fad827f776406e11c9225ae2d0",
+          "todoWriteCalls": 0,
+          "previewCalls": 0,
+          "validationScriptCalls": 0,
+          "helperScriptWrites": 0
+        },
+        "recordedAt": "2026-11-12T08:32:11.392Z",
+        "source": "record-dispatch-completion.mjs"
+      },
+      {
+        "nodeId": "page-news-detail",
+        "pageId": "page-news-detail",
+        "targetPageId": "page-news-detail",
+        "htmlSrc": "pages/news-detail.html",
+        "packetType": "ComplexPagePacket",
+        "status": "completed",
+        "changedFiles": [
+          "pages/news-detail.html"
+        ],
+        "toolCallLedger": {
+          "source": "main-agent-runtime-trace",
+          "traceDigest": "af3d83131af840b0166bce0a4e146882607fb676ad1c933299f7943d8541ea51",
+          "todoWriteCalls": 0,
+          "previewCalls": 0,
+          "validationScriptCalls": 0,
+          "helperScriptWrites": 0
+        },
+        "recordedAt": "2026-11-12T08:32:11.455Z",
+        "source": "record-dispatch-completion.mjs"
+      }
+    ],
+    "mainAgentPostDispatchMutations": [
+      {
+        "path": "volleylab.design",
+        "reason": "main agent registered page wiring interactions after leaf page generation",
+        "owner": "main-agent",
+        "recordedAt": "2026-11-12T08:32:56.776Z",
+        "source": "record-dispatch-completion.mjs"
+      }
+    ]
+  },
+  "designSource": {
+    "operatingMode": "free-explore",
+    "cssFilePath": "colors_and_type.css",
+    "brandPrefix": "vl",
+    "designLibrary": null,
+    "fontLinks": [],
+    "iconAssets": [],
+    "styleConstraints": {
+      "radiusMax": 16,
+      "staticShadowAlphaMax": 0.05,
+      "primaryHueCount": 1,
+      "secondaryAccentForbidden": true
+    },
+    "imageRules": {
+      "banned": "纯 CSS/SVG 伪造大面积主视觉；真实球员照片；霓虹渐变",
+      "allowed": "生成的战术板封面位图 + 生成的灰色素模动作帧 + 教练板语义的内联 SVG 球场线稿"
+    }
+  },
+  "pages": [
+    {
+      "nodeId": "page-splash",
+      "title": "开屏页",
+      "pageIndex": 0,
+      "group": 0,
+      "htmlSrc": "pages/splash.html",
+      "pageType": "splash",
+      "viewportMode": "document-scroll",
+      "mobileNavigationApplies": false,
+      "visualNorthStar": "整屏战术板：半场线稿铺满上部，排球线稿居中偏上并用橙色描边球缝，下方应用名、一句话定位与橙色胶囊按钮。",
+      "compositionPattern": "centered-single-column-full-bleed",
+      "continuityAnchors": [
+        "56px app bar：40px 圆形返回按钮（lucide arrow-left）",
+        "surface：卡片 --vl-surface + 1px --vl-border，圆角 16",
+        "橙色 --vl-primary 仅用于主 CTA 与当前步骤"
+      ],
+      "imagePlan": [],
+      "chartsRequired": false,
+      "qualityRisks": [
+        "开屏内容过少导致首屏空洞",
+        "排球线稿用位图会与战术板风格冲突"
+      ],
+      "privateRegions": [
+        "整页"
+      ],
+      "domIdsRequired": [
+        "cta-enter"
+      ],
+      "motionPlan": "logo 呼吸（vl-breathe 3.2s）、标题上移 14px 淡入、CTA 延迟 220ms 淡入",
+      "supplementaryReads": [],
+      "allowedWritePaths": [],
+      "generationPath": [
+        "gen-project-shell",
+        "leaf-splash"
+      ]
+    },
+    {
+      "nodeId": "page-home",
+      "title": "首页",
+      "pageIndex": 1,
+      "group": 0,
+      "htmlSrc": "pages/home.html",
+      "pageType": "hub",
+      "viewportMode": "document-scroll",
+      "mobileNavigationApplies": false,
+      "visualNorthStar": "第一屏 = 品牌标题 + 搜索胶囊 + 16:9 新闻轮播（图片 + 底部压黑渐变 + 等宽标签）；第二屏 = 2×2 战术板位置卡，每卡含半场线稿封面、位置代号 4/3/2/5、能力一行摘要与脉冲橙点。",
+      "compositionPattern": "editorial-header + carousel + 2col-grid",
+      "continuityAnchors": [
+        "区块标题 18/700 左 + 13px 右侧链接",
+        "surface：卡片 --vl-surface + 1px --vl-border，圆角 16",
+        "等宽字体承载战术编号与英文位置名",
+        "页面底部 1px 分隔 + 13px 说明行"
+      ],
+      "imagePlan": [
+        {
+          "role": "position-card-cover",
+          "asset": "assets/pos-outside-cover.jpg",
+          "status": "generated",
+          "alt": "主攻四号位半场线稿"
+        },
+        {
+          "role": "position-card-cover",
+          "asset": "assets/pos-setter-cover.jpg",
+          "status": "generated",
+          "alt": "二传三号位半场线稿"
+        },
+        {
+          "role": "position-card-cover",
+          "asset": "assets/pos-opposite-cover.jpg",
+          "status": "generated",
+          "alt": "接应二号位半场线稿"
+        },
+        {
+          "role": "position-card-cover",
+          "asset": "assets/pos-libero-cover.jpg",
+          "status": "generated",
+          "alt": "自由人后排半场线稿"
+        },
+        {
+          "role": "news-thumb",
+          "asset": "assets/pos-libero-cover.jpg",
+          "status": "generated",
+          "alt": "新闻封面：后排防守"
+        }
+      ],
+      "chartsRequired": false,
+      "qualityRisks": [
+        "轮播与卡片同色导致节奏平淡",
+        "四个位置卡容易变成同构卡片墙"
+      ],
+      "privateRegions": [
+        "新闻轮播",
+        "位置卡网格"
+      ],
+      "domIdsRequired": [
+        "cta-search",
+        "news-carousel",
+        "link-news-detail",
+        "link-pos-outside",
+        "link-pos-setter",
+        "link-pos-opposite",
+        "link-pos-libero"
+      ],
+      "motionPlan": "轮播卡片滚动吸附；位置卡封面在 hover 时 scale(1.03)；橙点脉冲 vl-pulse 2.4s",
+      "supplementaryReads": [],
+      "allowedWritePaths": [],
+      "generationPath": [
+        "gen-project-shell",
+        "leaf-home"
+      ]
+    },
+    {
+      "nodeId": "page-position-outside",
+      "title": "主攻",
+      "pageIndex": 2,
+      "group": 0,
+      "htmlSrc": "pages/position-outside.html",
+      "pageType": "detail",
+      "viewportMode": "document-scroll",
+      "mobileNavigationApplies": false,
+      "visualNorthStar": "满宽战术板封面（260px）+ 底部渐隐到墨黑 + 橙色 4 号位点；标题「主攻 Outside Hitter」压在封面上，正下方是能力条与半场站位 SVG。",
+      "compositionPattern": "hero-bleed + metric-stack + diagram + list-blocks + compare-table",
+      "continuityAnchors": [
+        "56px app bar：40px 圆形返回按钮（lucide arrow-left）+ 18/700 标题",
+        "surface：卡片 --vl-surface + 1px --vl-border，圆角 16",
+        "橙色 --vl-primary 仅用于主 CTA 与当前步骤",
+        "等宽字体承载战术编号与英文位置名"
+      ],
+      "imagePlan": [
+        {
+          "role": "hero",
+          "asset": "assets/pos-outside-cover.jpg",
+          "status": "generated",
+          "alt": "主攻四号位战术板示意图"
+        }
+      ],
+      "chartsRequired": false,
+      "qualityRisks": [
+        "能力条用彩虹色",
+        "站位 SVG 与封面图重复表达"
+      ],
+      "privateRegions": [
+        "封面区",
+        "能力条",
+        "站位图",
+        "职责与技能卡"
+      ],
+      "domIdsRequired": [
+        "pos-hero",
+        "ability-bars",
+        "court-diagram",
+        "rotation-chips",
+        "skill-list",
+        "link-skill-spike",
+        "back-home"
+      ],
+      "motionPlan": "封面 Ken Burns 轻微上移；能力条宽度 0→目标值 620ms cubic-bezier(.3,0,0,1) 依次延迟 60ms",
+      "supplementaryReads": [],
+      "allowedWritePaths": [],
+      "generationPath": [
+        "gen-project-shell",
+        "leaf-position-outside"
+      ]
+    },
+    {
+      "nodeId": "page-position-setter",
+      "title": "二传",
+      "pageIndex": 3,
+      "group": 0,
+      "htmlSrc": "pages/position-setter.html",
+      "pageType": "detail",
+      "viewportMode": "document-scroll",
+      "mobileNavigationApplies": false,
+      "visualNorthStar": "以「组织核心」为视觉重心：封面中央的橙色 3 号位点带同心圆环；战术手势入口做成橙色描边的横条而不是普通卡片。",
+      "compositionPattern": "hero-bleed + metric-stack + diagram + highlighted-entry + list-blocks",
+      "continuityAnchors": [
+        "56px app bar：40px 圆形返回按钮（lucide arrow-left）+ 18/700 标题",
+        "surface：卡片 --vl-surface + 1px --vl-border，圆角 16",
+        "橙色 --vl-primary 仅用于主 CTA 与当前步骤"
+      ],
+      "imagePlan": [
+        {
+          "role": "hero",
+          "asset": "assets/pos-setter-cover.jpg",
+          "status": "generated",
+          "alt": "二传三号位战术板示意图"
+        },
+        {
+          "role": "skill-thumb",
+          "asset": "assets/skill-set-stage.jpg",
+          "status": "generated",
+          "alt": "上手传球素模帧缩略"
+        }
+      ],
+      "chartsRequired": false,
+      "qualityRisks": [
+        "战术手势入口淹没在卡片里",
+        "站位图与封面重复"
+      ],
+      "privateRegions": [
+        "封面区",
+        "能力条",
+        "战术手势入口",
+        "技能卡"
+      ],
+      "domIdsRequired": [
+        "pos-hero",
+        "ability-bars",
+        "court-diagram",
+        "link-set-gesture",
+        "link-skill-set",
+        "back-home",
+        "back-setter"
+      ],
+      "motionPlan": "同心圆环呼吸；技能卡缩略图 hover 提亮",
+      "supplementaryReads": [],
+      "allowedWritePaths": [],
+      "generationPath": [
+        "gen-project-shell",
+        "leaf-position-setter"
+      ]
+    },
+    {
+      "nodeId": "page-position-opposite",
+      "title": "接应",
+      "pageIndex": 4,
+      "group": 0,
+      "htmlSrc": "pages/position-opposite.html",
+      "pageType": "detail",
+      "viewportMode": "document-scroll",
+      "mobileNavigationApplies": false,
+      "visualNorthStar": "以「右翼火力」为叙事：2 号位橙点加虚线进攻箭头（从后排插上），能力条中拦网与发球被单独强调。",
+      "compositionPattern": "hero-bleed + metric-stack + diagram-with-arrow + list-blocks",
+      "continuityAnchors": [
+        "56px app bar：40px 圆形返回按钮（lucide arrow-left）+ 18/700 标题",
+        "surface：卡片 --vl-surface + 1px --vl-border，圆角 16",
+        "等宽字体承载战术编号与英文位置名"
+      ],
+      "imagePlan": [
+        {
+          "role": "hero",
+          "asset": "assets/pos-opposite-cover.jpg",
+          "status": "generated",
+          "alt": "接应二号位战术板示意图"
+        }
+      ],
+      "chartsRequired": false,
+      "qualityRisks": [
+        "进攻箭头过粗破坏线稿感"
+      ],
+      "privateRegions": [
+        "封面区",
+        "能力条",
+        "站位图"
+      ],
+      "domIdsRequired": [
+        "pos-hero",
+        "ability-bars",
+        "court-diagram",
+        "back-home"
+      ],
+      "motionPlan": "虚线箭头 stroke-dashoffset 循环流动 8s linear infinite",
+      "supplementaryReads": [],
+      "allowedWritePaths": [],
+      "generationPath": [
+        "gen-project-shell",
+        "leaf-position-opposite"
+      ]
+    },
+    {
+      "nodeId": "page-position-libero",
+      "title": "自由人",
+      "pageIndex": 5,
+      "group": 0,
+      "htmlSrc": "pages/position-libero.html",
+      "pageType": "detail",
+      "viewportMode": "document-scroll",
+      "mobileNavigationApplies": false,
+      "visualNorthStar": "以「后排三个人」为结构：封面两个橙点（5/6 区），站位图用低姿人形线稿，规则限制单独做成红色语义的提示块。",
+      "compositionPattern": "hero-bleed + rule-callout + metric-stack + diagram + list-blocks",
+      "continuityAnchors": [
+        "56px app bar：40px 圆形返回按钮（lucide arrow-left）+ 18/700 标题",
+        "surface：卡片 --vl-surface + 1px --vl-border，圆角 16",
+        "橙色 --vl-primary 仅用于主 CTA 与当前步骤"
+      ],
+      "imagePlan": [
+        {
+          "role": "hero",
+          "asset": "assets/pos-libero-cover.jpg",
+          "status": "generated",
+          "alt": "自由人后排防守战术板示意图"
+        },
+        {
+          "role": "skill-thumb",
+          "asset": "assets/skill-dig-stage.jpg",
+          "status": "generated",
+          "alt": "鱼跃防守素模帧缩略"
+        }
+      ],
+      "chartsRequired": false,
+      "qualityRisks": [
+        "红色规则提示滥用成装饰"
+      ],
+      "privateRegions": [
+        "封面区",
+        "规则提示",
+        "站位图",
+        "技能卡"
+      ],
+      "domIdsRequired": [
+        "pos-hero",
+        "court-diagram",
+        "link-skill-pass",
+        "link-skill-dig",
+        "back-home"
+      ],
+      "motionPlan": "规则提示块左侧 3px 红线；技能卡 hover 提亮",
+      "supplementaryReads": [],
+      "allowedWritePaths": [],
+      "generationPath": [
+        "gen-project-shell",
+        "leaf-position-libero"
+      ]
+    },
+    {
+      "nodeId": "page-skill-spike",
+      "title": "扣球教学",
+      "pageIndex": 6,
+      "group": 0,
+      "htmlSrc": "pages/skill-spike.html",
+      "pageType": "lesson",
+      "viewportMode": "document-scroll",
+      "mobileNavigationApplies": false,
+      "visualNorthStar": "上方 42vh 素模演示台（浅灰帧舞台 + 深色页面形成强对比），台下是帧序列条与播控；下方关键要点用「编号 + 一句话」的战术板清单。",
+      "compositionPattern": "media-stage + keypoint-list + step-rail + mistake-block",
+      "continuityAnchors": [
+        "56px app bar：40px 圆形返回按钮（lucide arrow-left）+ 18/700 标题",
+        "surface：卡片 --vl-surface + 1px --vl-border，圆角 16",
+        "橙色 --vl-primary 仅用于主 CTA 与当前步骤",
+        "区块标题 18/700 左 + 13px 右侧链接"
+      ],
+      "imagePlan": [
+        {
+          "role": "demo-frame",
+          "asset": "assets/skill-spike-stage.jpg",
+          "status": "generated",
+          "alt": "扣球空中击球素模帧"
+        }
+      ],
+      "chartsRequired": false,
+      "qualityRisks": [
+        "浅灰素模图与深色页面硬拼显得割裂",
+        "演示台高度过大挤压首屏信息"
+      ],
+      "privateRegions": [
+        "演示台",
+        "帧序列",
+        "关键要点",
+        "错误示范"
+      ],
+      "domIdsRequired": [
+        "skill-stage",
+        "frame-strip",
+        "step-chips",
+        "keypoints",
+        "mistakes",
+        "back-outside"
+      ],
+      "motionPlan": "演示帧 0.4s 逐帧切换；当前步骤 chip 橙底；滚动时步骤条 sticky",
+      "supplementaryReads": [],
+      "allowedWritePaths": [],
+      "generationPath": [
+        "gen-project-shell",
+        "leaf-skill-spike"
+      ]
+    },
+    {
+      "nodeId": "page-skill-pass",
+      "title": "一传教学",
+      "pageIndex": 7,
+      "group": 0,
+      "htmlSrc": "pages/skill-pass.html",
+      "pageType": "lesson",
+      "viewportMode": "document-scroll",
+      "mobileNavigationApplies": false,
+      "visualNorthStar": "素模演示台 + 「手臂平台」特写注解线（橙色引线与等宽标签），要点强调身体三角与平台角度。",
+      "compositionPattern": "media-stage-with-annotation + keypoint-list + step-rail + mistake-block",
+      "continuityAnchors": [
+        "56px app bar：40px 圆形返回按钮（lucide arrow-left）+ 18/700 标题",
+        "surface：卡片 --vl-surface + 1px --vl-border，圆角 16",
+        "橙色 --vl-primary 仅用于主 CTA 与当前步骤"
+      ],
+      "imagePlan": [
+        {
+          "role": "demo-frame",
+          "asset": "assets/skill-pass-stage.jpg",
+          "status": "generated",
+          "alt": "一传低姿垫球素模帧"
+        }
+      ],
+      "chartsRequired": false,
+      "qualityRisks": [
+        "注解引线遮挡人物"
+      ],
+      "privateRegions": [
+        "演示台",
+        "关键要点",
+        "错误示范"
+      ],
+      "domIdsRequired": [
+        "skill-stage",
+        "frame-strip",
+        "step-chips",
+        "keypoints",
+        "mistakes",
+        "back-libero"
+      ],
+      "motionPlan": "注解线 dashoffset 依次绘制；步骤条 sticky",
+      "supplementaryReads": [],
+      "allowedWritePaths": [],
+      "generationPath": [
+        "gen-project-shell",
+        "leaf-skill-pass"
+      ]
+    },
+    {
+      "nodeId": "page-skill-set",
+      "title": "传球教学",
+      "pageIndex": 8,
+      "group": 0,
+      "htmlSrc": "pages/skill-set.html",
+      "pageType": "lesson",
+      "viewportMode": "document-scroll",
+      "mobileNavigationApplies": false,
+      "visualNorthStar": "素模演示台 + 手型「球窝」局部放大框（橙色描边方框 + 等宽标注），要点强调手指发力与蹬地传导。",
+      "compositionPattern": "media-stage + zoom-callout + keypoint-list + mistake-block",
+      "continuityAnchors": [
+        "56px app bar：40px 圆形返回按钮（lucide arrow-left）+ 18/700 标题",
+        "surface：卡片 --vl-surface + 1px --vl-border，圆角 16",
+        "等宽字体承载战术编号与英文位置名"
+      ],
+      "imagePlan": [
+        {
+          "role": "demo-frame",
+          "asset": "assets/skill-set-stage.jpg",
+          "status": "generated",
+          "alt": "传球上手素模帧"
+        }
+      ],
+      "chartsRequired": false,
+      "qualityRisks": [
+        "局部放大框比例失真"
+      ],
+      "privateRegions": [
+        "演示台",
+        "手型特写",
+        "关键要点"
+      ],
+      "domIdsRequired": [
+        "skill-stage",
+        "hand-callout",
+        "keypoints",
+        "mistakes",
+        "back-setter"
+      ],
+      "motionPlan": "手型放大框 1.0→1.06 缓慢呼吸；要点逐条淡入",
+      "supplementaryReads": [],
+      "allowedWritePaths": [],
+      "generationPath": [
+        "gen-project-shell",
+        "leaf-skill-set"
+      ]
+    },
+    {
+      "nodeId": "page-skill-dig",
+      "title": "防守救球",
+      "pageIndex": 9,
+      "group": 0,
+      "htmlSrc": "pages/skill-dig.html",
+      "pageType": "lesson",
+      "viewportMode": "document-scroll",
+      "mobileNavigationApplies": false,
+      "visualNorthStar": "横向鱼跃素模图铺满演示台，叠一条橙色轨迹线表示扑救方向；下方用三档「站位高度」对比（高姿/低姿/鱼跃）的小型线稿。",
+      "compositionPattern": "media-stage-wide + stance-comparison + step-rail + mistake-block",
+      "continuityAnchors": [
+        "56px app bar：40px 圆形返回按钮（lucide arrow-left）+ 18/700 标题",
+        "surface：卡片 --vl-surface + 1px --vl-border，圆角 16",
+        "橙色 --vl-primary 仅用于主 CTA 与当前步骤"
+      ],
+      "imagePlan": [
+        {
+          "role": "demo-frame",
+          "asset": "assets/skill-dig-stage.jpg",
+          "status": "generated",
+          "alt": "鱼跃救球素模帧"
+        }
+      ],
+      "chartsRequired": false,
+      "qualityRisks": [
+        "横图在竖屏被裁掉手脚"
+      ],
+      "privateRegions": [
+        "演示台",
+        "三档站位对比"
+      ],
+      "domIdsRequired": [
+        "skill-stage",
+        "stance-compare",
+        "step-chips",
+        "back-libero"
+      ],
+      "motionPlan": "轨迹线 dashoffset 循环；三档对比切换时高亮当前档",
+      "supplementaryReads": [],
+      "allowedWritePaths": [],
+      "generationPath": [
+        "gen-project-shell",
+        "leaf-skill-dig"
+      ]
+    },
+    {
+      "nodeId": "page-set-gesture",
+      "title": "二传手势",
+      "pageIndex": 10,
+      "group": 0,
+      "htmlSrc": "pages/set-gesture.html",
+      "pageType": "reference",
+      "viewportMode": "document-scroll",
+      "mobileNavigationApplies": false,
+      "visualNorthStar": "横向吸附手势卡（每张卡：编号大字 + 手势线稿 + 战术名），一屏可见 1.2 张，右侧截断暗示可滑动。",
+      "compositionPattern": "horizontal-snap-cards + legend",
+      "continuityAnchors": [
+        "56px app bar：40px 圆形返回按钮（lucide arrow-left）+ 18/700 标题",
+        "surface：卡片 --vl-surface + 1px --vl-border，圆角 16",
+        "等宽字体承载战术编号与英文位置名"
+      ],
+      "imagePlan": [],
+      "chartsRequired": false,
+      "qualityRisks": [
+        "手势线稿画得过细在小屏不可读"
+      ],
+      "privateRegions": [
+        "手势卡列表"
+      ],
+      "domIdsRequired": [
+        "gesture-cards",
+        "back-setter",
+        "gesture-card-link"
+      ],
+      "motionPlan": "横向 scroll-snap；卡片进入时轻微上浮",
+      "supplementaryReads": [],
+      "allowedWritePaths": [],
+      "generationPath": [
+        "gen-project-shell",
+        "leaf-set-gesture"
+      ]
+    },
+    {
+      "nodeId": "page-search",
+      "title": "搜索",
+      "pageIndex": 11,
+      "group": 0,
+      "htmlSrc": "pages/search.html",
+      "pageType": "search",
+      "viewportMode": "document-scroll",
+      "mobileNavigationApplies": false,
+      "visualNorthStar": "顶部搜索框（墨黑输入 + 橙色聚焦环），下方「最近搜索」chip 与分组结果；结果行是「类型标签 + 标题 + 一句解释」的三段式。",
+      "compositionPattern": "search-header + chip-row + grouped-results",
+      "continuityAnchors": [
+        "surface：卡片 --vl-surface + 1px --vl-border，圆角 16",
+        "橙色 --vl-primary 仅用于主 CTA 与当前步骤",
+        "区块标题 18/700 左 + 13px 右侧链接"
+      ],
+      "imagePlan": [],
+      "chartsRequired": false,
+      "qualityRisks": [
+        "空状态缺失",
+        "结果分组与普通列表无差别"
+      ],
+      "privateRegions": [
+        "搜索框",
+        "结果分组"
+      ],
+      "domIdsRequired": [
+        "search-input",
+        "result-groups",
+        "result-pos-outside",
+        "result-skill-spike",
+        "empty-state",
+        "back-home"
+      ],
+      "motionPlan": "输入聚焦时边框转橙色 140ms；结果行 hover 背景提亮",
+      "supplementaryReads": [],
+      "allowedWritePaths": [],
+      "generationPath": [
+        "gen-project-shell",
+        "leaf-search"
+      ]
+    },
+    {
+      "nodeId": "page-news-detail",
+      "title": "新闻详情",
+      "pageIndex": 12,
+      "group": 0,
+      "htmlSrc": "pages/news-detail.html",
+      "pageType": "article",
+      "viewportMode": "document-scroll",
+      "mobileNavigationApplies": false,
+      "visualNorthStar": "封面图 + 压黑标题区，正文为 17/1.75 的阅读排版，中间插入一张半场线稿说明块；结尾是「相关位置」横滑卡。",
+      "compositionPattern": "article-hero + longform + inline-diagram + related-row",
+      "continuityAnchors": [
+        "56px app bar：40px 圆形返回按钮（lucide arrow-left）+ 18/700 标题",
+        "surface：卡片 --vl-surface + 1px --vl-border，圆角 16",
+        "等宽字体承载战术编号与英文位置名"
+      ],
+      "imagePlan": [
+        {
+          "role": "article-cover",
+          "asset": "assets/pos-libero-cover.jpg",
+          "status": "generated",
+          "alt": "新闻封面：后排防守站位"
+        }
+      ],
+      "chartsRequired": false,
+      "qualityRisks": [
+        "长文排版过密",
+        "正文用纯白导致刺眼"
+      ],
+      "privateRegions": [
+        "封面",
+        "正文"
+      ],
+      "domIdsRequired": [
+        "article-head",
+        "article-body",
+        "back-home"
+      ],
+      "motionPlan": "封面视差 8%；正文首段淡入",
+      "supplementaryReads": [],
+      "allowedWritePaths": [],
+      "generationPath": [
+        "gen-project-shell",
+        "leaf-news-detail"
+      ]
+    }
+  ]
+}

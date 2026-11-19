@@ -1,0 +1,806 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二传</title>
+    <style id="theme-vars">
+/* ============================================================
+   排球研习 VolleyLab — 战术板视觉系统 (Tactic Board Design System)
+   深色单主题 · 粉笔白线稿 + 排球橙高亮
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+
+  /* --- 表面 Surface --- */
+  --vl-background: #10151B;      /* 墨黑偏蓝，战术板底色 */
+  --vl-surface: #1A212B;         /* 卡片 / 浮层 */
+  --vl-surface-2: #222B38;       /* hover / 选中 */
+  --vl-surface-3: #171D26;       /* 演示区 / 内嵌面板 */
+  --vl-border: #2A3441;          /* 分割线 / 描边 */
+  --vl-line-soft: #202832;       /* 列表内细分割 */
+
+  /* --- 文本 Text --- */
+  --vl-foreground: #EDF1F5;      /* 粉笔白 */
+  --vl-muted-foreground: #8C98A8;/* 说明文字 */
+  --vl-ink-3: #5E6A79;           /* 三级文字 */
+
+  /* --- 主强调 Brand（唯一品牌色） --- */
+  --vl-primary: #F2A03C;         /* 排球橙 */
+  --vl-primary-foreground: #10151B;
+  --vl-primary-soft: rgba(242, 160, 60, 0.14);
+  --vl-primary-line: rgba(242, 160, 60, 0.44);
+
+  /* --- 语义别名 Semantic aliases --- */
+  --vl-card: #1A212B;
+  --vl-card-foreground: #EDF1F5;
+  --vl-popover: #202834;
+  --vl-popover-foreground: #EDF1F5;
+  --vl-muted: #171D26;
+  --vl-input: #171D26;
+  --vl-ring: #F2A03C;
+
+  /* --- 状态 Status --- */
+  --state-success: #35C28B;      /* 步骤完成 */
+  --state-warning: #F2A03C;
+  --state-error: #E2574C;        /* 常见错误 */
+  --state-info: #3FA9C9;         /* 数据 / 次要标签 */
+
+  /* --- 线稿与遮罩 Linework & scrim --- */
+  --vl-court-line: #3A4756;
+  --vl-court-line-soft: #2E3947;
+  --vl-stage-light: #F2F4F7;    /* 素模演示台浅灰底，与深色页面形成对比 */
+  --vl-scrim: rgba(16, 21, 27, 0.72);
+  --vl-scrim-strong: rgba(16, 21, 27, 0.94);
+  --vl-overlay-chip: rgba(16, 21, 27, 0.66);
+
+  /* --- 圆角 Radius --- */
+  --vl-radius-sm: 4px;
+  --vl-radius-md: 8px;
+  --vl-radius-lg: 16px;
+  --vl-radius-full: 9999px;
+
+  /* --- 字体 Typography --- */
+  --vl-font-sans: "PingFang SC", "HarmonyOS Sans", "Noto Sans SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  --vl-font-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Roboto Mono", monospace;
+}
+
+/* ============================================================
+   基础元素
+   ============================================================ */
+
+html {
+  background: var(--vl-background);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--vl-background);
+  color: var(--vl-foreground);
+  font-family: var(--vl-font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  word-break: keep-all;
+}
+
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; color: inherit; }
+
+img { display: block; max-width: 100%; }
+
+::selection {
+  background: var(--vl-primary-soft);
+  color: var(--vl-foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--vl-ring);
+  outline-offset: 2px;
+  border-radius: var(--vl-radius-sm);
+}
+
+/* ============================================================
+   版式工具（全局复用，保证 11 个页面同一套节奏）
+   ============================================================ */
+
+.vl-screen {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 20px 32px;
+  box-sizing: border-box;
+}
+
+.vl-appbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 56px;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.vl-footer {
+  width: 100%;
+  max-width: 560px;
+  margin: 40px auto 0;
+  padding: 16px 20px 28px;
+  border-top: 1px solid var(--vl-border);
+  box-sizing: border-box;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--vl-muted-foreground);
+}
+
+.vl-iconbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: -10px;
+  border: 1px solid transparent;
+  border-radius: var(--vl-radius-full);
+  background: transparent;
+  color: var(--vl-foreground);
+  transition: background-color 140ms cubic-bezier(.2, .8, .2, 1), border-color 140ms cubic-bezier(.2, .8, .2, 1);
+}
+.vl-iconbtn:hover { background: var(--vl-surface); border-color: var(--vl-border); }
+.vl-iconbtn:active { background: var(--vl-surface-2); }
+
+.vl-appbar-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.vl-eyebrow {
+  font-family: var(--vl-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--vl-muted-foreground);
+}
+
+.vl-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 28px 0 12px;
+}
+
+.vl-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.vl-section-link {
+  font-size: 13px;
+  color: var(--vl-muted-foreground);
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: color 140ms ease;
+}
+.vl-section-link:hover { color: var(--vl-primary); }
+
+.vl-card {
+  background: var(--vl-card);
+  border: 1px solid var(--vl-border);
+  border-radius: var(--vl-radius-lg);
+}
+
+.vl-divider {
+  height: 1px;
+  background: var(--vl-line-soft);
+  border: 0;
+  margin: 0;
+}
+
+.vl-hair {
+  height: 1px;
+  background: var(--vl-border);
+  border: 0;
+  margin: 0;
+}
+
+.vl-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: var(--vl-radius-md);
+  background: var(--vl-surface-2);
+  color: var(--vl-muted-foreground);
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.vl-tag-brand {
+  background: var(--vl-primary);
+  color: var(--vl-primary-foreground);
+  font-weight: 700;
+  border-radius: var(--vl-radius-sm);
+}
+
+.vl-tag-outline {
+  background: transparent;
+  border: 1px solid var(--vl-primary-line);
+  color: var(--vl-primary);
+}
+
+.vl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: var(--vl-radius-full);
+  border: 1px solid var(--vl-border);
+  background: transparent;
+  color: var(--vl-foreground);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+.vl-btn:hover { background: var(--vl-surface); }
+.vl-btn:active { transform: scale(0.99); }
+
+.vl-btn-primary {
+  background: var(--vl-primary);
+  border-color: var(--vl-primary);
+  color: var(--vl-primary-foreground);
+  font-weight: 700;
+}
+.vl-btn-primary:hover { background: var(--vl-primary); border-color: var(--vl-foreground); }
+
+.vl-num {
+  font-family: var(--vl-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.vl-body {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--vl-muted-foreground);
+}
+
+.vl-caption {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--vl-muted-foreground);
+}
+
+.vl-label {
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--vl-muted-foreground);
+}
+
+/* 战术板球场线稿容器 */
+.vl-court {
+  background: var(--vl-surface-3);
+  border: 1px solid var(--vl-border);
+  border-radius: var(--vl-radius-lg);
+  overflow: hidden;
+}
+
+/* 橙色站位点的脉冲 */
+@keyframes vl-pulse {
+  0%   { transform: scale(1);    opacity: 1; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+
+/* 开屏按钮呼吸 */
+@keyframes vl-breathe {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.04); }
+}
+
+/* 球体浮动 */
+@keyframes vl-float {
+  0%   { transform: translateY(-6px); }
+  100% { transform: translateY(6px); }
+}
+
+/* 页面入场（CSS 降级版本，Flutter 端用 Interval 交织动画） */
+@keyframes vl-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.vl-rise {
+  animation: vl-rise 420ms cubic-bezier(.3, 0, 0, 1) both;
+}
+
+/* 自定义滚动条隐藏（横向步骤条 / 手势卡） */
+.vl-noscrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.vl-noscrollbar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+    </style>
+    <script src="vendor/tailwind.js"></script>
+    <script src="vendor/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--vl-background);
+    --color-foreground: var(--vl-foreground);
+    --color-card: var(--vl-card);
+    --color-card-foreground: var(--vl-card-foreground);
+    --color-popover: var(--vl-popover);
+    --color-popover-foreground: var(--vl-popover-foreground);
+    --color-primary: var(--vl-primary);
+    --color-primary-foreground: var(--vl-primary-foreground);
+    --color-muted: var(--vl-muted);
+    --color-muted-foreground: var(--vl-muted-foreground);
+    --color-border: var(--vl-border);
+    --color-input: var(--vl-input);
+    --color-ring: var(--vl-ring);
+    --radius-sm: var(--vl-radius-sm);
+    --radius-md: var(--vl-radius-md);
+    --radius-lg: var(--vl-radius-lg);
+  }
+  @layer base {
+    body { background: var(--vl-background); color: var(--vl-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style id="semantic-token-fallback">
+      .bg-background { background-color: var(--vl-background); }
+      .text-background { color: var(--vl-background); }
+      .border-background { border-color: var(--vl-background); }
+      .ring-background { --tw-ring-color: var(--vl-background); }
+      .bg-foreground { background-color: var(--vl-foreground); }
+      .text-foreground { color: var(--vl-foreground); }
+      .border-foreground { border-color: var(--vl-foreground); }
+      .ring-foreground { --tw-ring-color: var(--vl-foreground); }
+      .bg-card { background-color: var(--vl-card); }
+      .text-card { color: var(--vl-card); }
+      .border-card { border-color: var(--vl-card); }
+      .ring-card { --tw-ring-color: var(--vl-card); }
+      .bg-card-foreground { background-color: var(--vl-card-foreground); }
+      .text-card-foreground { color: var(--vl-card-foreground); }
+      .border-card-foreground { border-color: var(--vl-card-foreground); }
+      .ring-card-foreground { --tw-ring-color: var(--vl-card-foreground); }
+      .bg-popover { background-color: var(--vl-popover); }
+      .text-popover { color: var(--vl-popover); }
+      .border-popover { border-color: var(--vl-popover); }
+      .ring-popover { --tw-ring-color: var(--vl-popover); }
+      .bg-popover-foreground { background-color: var(--vl-popover-foreground); }
+      .text-popover-foreground { color: var(--vl-popover-foreground); }
+      .border-popover-foreground { border-color: var(--vl-popover-foreground); }
+      .ring-popover-foreground { --tw-ring-color: var(--vl-popover-foreground); }
+      .bg-primary { background-color: var(--vl-primary); }
+      .text-primary { color: var(--vl-primary); }
+      .border-primary { border-color: var(--vl-primary); }
+      .ring-primary { --tw-ring-color: var(--vl-primary); }
+      .bg-primary-foreground { background-color: var(--vl-primary-foreground); }
+      .text-primary-foreground { color: var(--vl-primary-foreground); }
+      .border-primary-foreground { border-color: var(--vl-primary-foreground); }
+      .ring-primary-foreground { --tw-ring-color: var(--vl-primary-foreground); }
+      .bg-muted { background-color: var(--vl-muted); }
+      .text-muted { color: var(--vl-muted); }
+      .border-muted { border-color: var(--vl-muted); }
+      .ring-muted { --tw-ring-color: var(--vl-muted); }
+      .bg-muted-foreground { background-color: var(--vl-muted-foreground); }
+      .text-muted-foreground { color: var(--vl-muted-foreground); }
+      .border-muted-foreground { border-color: var(--vl-muted-foreground); }
+      .ring-muted-foreground { --tw-ring-color: var(--vl-muted-foreground); }
+      .bg-border { background-color: var(--vl-border); }
+      .text-border { color: var(--vl-border); }
+      .border-border { border-color: var(--vl-border); }
+      .ring-border { --tw-ring-color: var(--vl-border); }
+      .bg-input { background-color: var(--vl-input); }
+      .text-input { color: var(--vl-input); }
+      .border-input { border-color: var(--vl-input); }
+      .ring-input { --tw-ring-color: var(--vl-input); }
+      .bg-ring { background-color: var(--vl-ring); }
+      .text-ring { color: var(--vl-ring); }
+      .border-ring { border-color: var(--vl-ring); }
+      .ring-ring { --tw-ring-color: var(--vl-ring); }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <header class="vl-appbar">
+      <a class="vl-iconbtn" data-dom-id="back-home" href="home.html" aria-label="返回">
+        <i data-lucide="arrow-left"></i>
+      </a>
+      <div class="vl-appbar-title">二传</div>
+    </header>
+
+    <main class="vl-page">
+      <figure class="pos-hero" data-dom-id="pos-hero">
+        <img src="assets/pos-setter-cover.jpg" alt="二传三号位战术板示意图" style="width:100%;height:100%;object-fit:cover">
+        <div class="pos-hero__mask" aria-hidden="true"></div>
+        <figcaption class="pos-hero__caption">
+          <span class="hero-zone">ZONE 3</span>
+          <h1 class="hero-name">二传</h1>
+          <p class="hero-en">Setter</p>
+        </figcaption>
+      </figure>
+
+      <div class="vl-screen">
+        <p class="vl-body tagline">场上大脑，唯一需要每一球都触球的人，负责把一传变成可攻的球。</p>
+
+        <div class="vl-section-head">
+          <h2 class="vl-section-title">能力画像</h2>
+          <span class="vl-eyebrow">Rating / 10</span>
+        </div>
+        <div class="ability-list" data-dom-id="ability-bars">
+          <div class="ability">
+            <span class="ability__name">传球精度</span>
+            <span class="ability__track"><span class="ability__fill" style="--w:90%"></span></span>
+            <span class="ability__val vl-num">9/10</span>
+            <p class="ability__desc">落点稳定在本方攻手击球点</p>
+          </div>
+          <div class="ability">
+            <span class="ability__name">场上视野</span>
+            <span class="ability__track"><span class="ability__fill" style="--w:80%"></span></span>
+            <span class="ability__val vl-num">8/10</span>
+            <p class="ability__desc">观察对方拦网与己方攻手状态</p>
+          </div>
+          <div class="ability">
+            <span class="ability__name">移动能力</span>
+            <span class="ability__track"><span class="ability__fill" style="--w:70%"></span></span>
+            <span class="ability__val vl-num">7/10</span>
+            <p class="ability__desc">一传偏球时的救传</p>
+          </div>
+          <div class="ability">
+            <span class="ability__name">决策速度</span>
+            <span class="ability__track"><span class="ability__fill" style="--w:80%"></span></span>
+            <span class="ability__val vl-num">8/10</span>
+            <p class="ability__desc">0.5 秒内选定进攻点</p>
+          </div>
+        </div>
+
+        <div class="vl-section-head">
+          <h2 class="vl-section-title">站位图</h2>
+          <span class="vl-eyebrow">Front Row Center</span>
+        </div>
+        <div class="vl-court court-wrap" data-dom-id="court-diagram">
+          <svg class="court-svg" viewBox="0 0 360 400" role="img" aria-label="半场站位示意图：三号位位于前排中间，用橙色实心圆与同心圆环标出组织核心">
+            <text class="cv-net-label" x="2" y="12">NET</text>
+            <line class="cv-net" x1="1" y1="24" x2="359" y2="24"></line>
+            <rect class="cv-line" x="1" y="24" width="358" height="360"></rect>
+            <line class="cv-line" x1="1" y1="144" x2="359" y2="144"></line>
+            <line class="cv-sep" x1="120" y1="24" x2="120" y2="384"></line>
+            <line class="cv-sep" x1="240" y1="24" x2="240" y2="384"></line>
+            <text class="cv-zone" x="60" y="84" text-anchor="middle" dominant-baseline="central">4</text>
+            <text class="cv-zone" x="300" y="84" text-anchor="middle" dominant-baseline="central">2</text>
+            <text class="cv-zone" x="60" y="264" text-anchor="middle" dominant-baseline="central">5</text>
+            <text class="cv-zone" x="180" y="264" text-anchor="middle" dominant-baseline="central">6</text>
+            <text class="cv-zone" x="300" y="264" text-anchor="middle" dominant-baseline="central">1</text>
+            <circle class="cv-glow" cx="180" cy="84" r="34"></circle>
+            <circle class="cv-ring cv-ring--outer" cx="180" cy="84" r="24"></circle>
+            <circle class="cv-ring" cx="180" cy="84" r="15"></circle>
+            <circle class="cv-dot" cx="180" cy="84" r="7"></circle>
+            <text class="cv-label" x="196" y="84" dominant-baseline="central">3</text>
+          </svg>
+        </div>
+        <p class="vl-caption court-note">三号位在前排正中，二传从这里把球分配到两侧；二传本身无固定号位，随轮转走前排与后排。</p>
+
+        <div class="vl-section-head">
+          <h2 class="vl-section-title">轮次职责</h2>
+          <span class="vl-eyebrow">Front / Back</span>
+        </div>
+        <div class="rot-grid" data-dom-id="rotation-chips">
+          <section class="vl-card rot-card">
+            <h3 class="rot-head"><i data-lucide="chevrons-up"></i>前排</h3>
+            <ul class="rot-list">
+              <li><p class="rot-line"><span class="rot-name">组织进攻</span> —— 分配球权，决定这一球给谁打、打什么战术。</p></li>
+              <li><p class="rot-line"><span class="rot-name">战术执行</span> —— 用手势与攻手约定战术，赛前布置、赛中对暗号。</p></li>
+              <li><p class="rot-line"><span class="rot-name">二次球处理</span> —— 一传直接过网或落到网前时自己处理，能吊、能打、能推。</p></li>
+            </ul>
+          </section>
+          <section class="vl-card rot-card">
+            <h3 class="rot-head"><i data-lucide="chevrons-down"></i>后排</h3>
+            <ul class="rot-list">
+              <li><p class="rot-line"><span class="rot-name">传球</span> —— 双手上手传球为主，一传冲网时用垫传过渡。</p></li>
+            </ul>
+          </section>
+        </div>
+
+        <div class="vl-section-head">
+          <h2 class="vl-section-title">技能教学</h2>
+          <span class="vl-eyebrow">3 Entries</span>
+        </div>
+        <div class="skill-list" data-dom-id="skill-list">
+          <a class="vl-card skill-row" data-dom-id="link-skill-set" href="skill-set.html">
+            <img class="skill-thumb" src="assets/skill-set-stage.jpg" alt="传球上手素模定格">
+            <span class="skill-body">
+              <span class="skill-name">传球</span>
+              <span class="skill-desc">5 个步骤 · 手型到弹送</span>
+            </span>
+            <i class="skill-chev" data-lucide="chevron-right"></i>
+          </a>
+          <article class="vl-card skill-row">
+            <span class="skill-thumb skill-thumb--icon"><i data-lucide="circle-dot"></i></span>
+            <span class="skill-body">
+              <span class="skill-name">二次球</span>
+              <span class="skill-desc">吊 / 打 / 推</span>
+            </span>
+            <span class="skill-count">3 个选择</span>
+          </article>
+          <a class="vl-card skill-row gesture-entry" data-dom-id="link-set-gesture" href="set-gesture.html">
+            <span class="gesture-entry__icon"><i data-lucide="hand"></i></span>
+            <span class="skill-body">
+              <span class="gesture-entry__title">战术手势对照</span>
+              <span class="gesture-entry__desc">5 张手势图，一眼看懂要打什么</span>
+            </span>
+            <i class="gesture-entry__arrow" data-lucide="arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="vl-section-head">
+          <h2 class="vl-section-title">常见错误</h2>
+          <span class="vl-eyebrow">3 Fixes</span>
+        </div>
+        <ul class="mistakes" data-dom-id="mistakes">
+          <li class="mistake">
+            <span class="mistake__bar" aria-hidden="true"></span>
+            <div class="mistake__body">
+              <p class="mistake__title"><span class="mistake__idx vl-num">01</span>手型像“推铅球”，十指并拢僵硬</p>
+              <p class="mistake__fix"><span class="mistake__fix-label">正确做法</span>手型是“球窝”，十指张开包住球体两侧</p>
+            </div>
+          </li>
+          <li class="mistake">
+            <span class="mistake__bar" aria-hidden="true"></span>
+            <div class="mistake__body">
+              <p class="mistake__title"><span class="mistake__idx vl-num">02</span>只用手臂，不蹬地</p>
+              <p class="mistake__fix"><span class="mistake__fix-label">正确做法</span>屈膝蹬地带动伸臂，力量从下往上走</p>
+            </div>
+          </li>
+          <li class="mistake">
+            <span class="mistake__bar" aria-hidden="true"></span>
+            <div class="mistake__body">
+              <p class="mistake__title"><span class="mistake__idx vl-num">03</span>传球前不观察，盲传固定点</p>
+              <p class="mistake__fix"><span class="mistake__fix-label">正确做法</span>出手前扫一眼对方拦网人数和己方攻手起跳</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <footer class="vl-footer">
+      <p>排球研习 VolleyLab · 课程项目演示</p>
+      <p class="footer-note">高校排球社团教学演示 · 站位与动作均为教学示意</p>
+    </footer>
+
+    <style id="critical-layout">
+      /* ===== 页面骨架：自然文档流，560 居中，无 sticky/fixed ===== */
+      .vl-page { width: 100%; max-width: 560px; margin: 0 auto; }
+      .vl-appbar .vl-iconbtn { width: 44px; height: 44px; margin-left: -12px; }
+      .vl-iconbtn svg { width: 20px; height: 20px; }
+
+      /* ===== 封面：Ken Burns 缓推 ===== */
+      .pos-hero {
+        position: relative;
+        height: clamp(240px, 62vw, 300px);
+        margin: 0;
+        overflow: hidden;
+        background: var(--vl-surface-3);
+        border-bottom: 1px solid var(--vl-border);
+      }
+      @keyframes vl-hero-drift {
+        from { transform: scale(1.07) translate3d(0, 10px, 0); }
+        to   { transform: scale(1.02) translate3d(0, -6px, 0); }
+      }
+      .pos-hero img { animation: vl-hero-drift 12s ease-out both; }
+      .pos-hero__mask {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, transparent 0%, transparent 40%, var(--vl-scrim) 74%, var(--vl-scrim-strong) 100%);
+      }
+      .pos-hero__caption {
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        bottom: 18px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+      }
+      .hero-zone {
+        font-family: var(--vl-font-mono);
+        font-size: 11px;
+        line-height: 1.4;
+        letter-spacing: 0.18em;
+        color: var(--vl-primary);
+        background: var(--vl-overlay-chip);
+        border: 1px solid var(--vl-primary-line);
+        border-radius: var(--vl-radius-sm);
+        padding: 2px 6px;
+      }
+      .hero-name { font-size: 28px; font-weight: 700; line-height: 1.1; letter-spacing: 0.01em; }
+      .hero-en {
+        font-family: var(--vl-font-mono);
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--vl-muted-foreground);
+      }
+
+      /* ===== 一句话定位 ===== */
+      .tagline { margin-top: 16px; }
+
+      /* ===== 能力画像 ===== */
+      .ability-list { display: flex; flex-direction: column; }
+      .ability {
+        display: grid;
+        grid-template-columns: 76px minmax(0, 1fr) 40px;
+        column-gap: 12px;
+        row-gap: 5px;
+        align-items: center;
+        padding: 9px 0;
+      }
+      .ability + .ability { border-top: 1px solid var(--vl-line-soft); }
+      .ability__name { font-size: 13px; font-weight: 600; white-space: nowrap; }
+      .ability__track { height: 6px; border-radius: 3px; background: var(--vl-surface-2); overflow: hidden; }
+      .ability__fill {
+        display: block;
+        height: 100%;
+        width: var(--w, 50%);
+        border-radius: 3px;
+        background: var(--vl-primary);
+        animation: vl-bar-grow 720ms cubic-bezier(.3, 0, 0, 1) both;
+      }
+      @keyframes vl-bar-grow { from { width: 0; } }
+      .ability:nth-child(1) .ability__fill { animation-delay: 0ms; }
+      .ability:nth-child(2) .ability__fill { animation-delay: 60ms; }
+      .ability:nth-child(3) .ability__fill { animation-delay: 120ms; }
+      .ability:nth-child(4) .ability__fill { animation-delay: 180ms; }
+      .ability__val { font-size: 13px; text-align: right; color: var(--vl-foreground); }
+      .ability__desc { grid-column: 1 / -1; font-size: 13px; line-height: 1.5; color: var(--vl-muted-foreground); }
+
+      /* ===== 站位半场图 ===== */
+      .court-wrap { padding: 12px; }
+      .court-svg { display: block; width: 100%; height: auto; }
+      .cv-net { stroke: var(--vl-court-line); stroke-width: 2.5; }
+      .cv-line { fill: none; stroke: var(--vl-court-line); stroke-width: 1.5; }
+      .cv-sep { stroke: var(--vl-court-line-soft); stroke-width: 1; }
+      .cv-net-label { fill: var(--vl-court-line); font-family: var(--vl-font-mono); font-size: 10px; letter-spacing: 0.16em; }
+      .cv-zone { fill: var(--vl-ink-3); font-family: var(--vl-font-mono); font-size: 12px; }
+      .cv-glow { fill: var(--vl-primary); fill-opacity: 0.16; }
+      .cv-ring { fill: none; stroke: var(--vl-primary-line); stroke-width: 1.5; }
+      .cv-ring--outer { stroke-opacity: 0.45; }
+      .cv-dot { fill: var(--vl-primary); }
+      .cv-label { fill: var(--vl-primary); font-family: var(--vl-font-mono); font-size: 15px; font-weight: 700; }
+      .court-note { margin-top: 8px; }
+
+      /* ===== 轮次职责 ===== */
+      .rot-grid { display: grid; gap: 12px; }
+      .rot-card { padding: 12px 14px; }
+      .rot-head {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.4;
+        color: var(--vl-foreground);
+      }
+      .rot-head svg { width: 16px; height: 16px; color: var(--vl-primary); }
+      .rot-list { list-style: none; margin: 6px 0 0; padding: 0; }
+      .rot-list li { padding: 9px 0; border-top: 1px solid var(--vl-line-soft); }
+      .rot-line { font-size: 13px; line-height: 1.6; color: var(--vl-muted-foreground); }
+      .rot-name { font-size: 15px; font-weight: 600; color: var(--vl-foreground); }
+
+      /* ===== 技能卡 ===== */
+      .skill-list { display: grid; gap: 10px; }
+      .skill-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-height: 64px;
+        padding: 12px;
+        transition: border-color 140ms ease, background-color 140ms ease;
+      }
+      a.skill-row:hover { border-color: var(--vl-primary-line); }
+      a.skill-row:active { background: var(--vl-surface-2); }
+      .skill-thumb {
+        flex: none;
+        width: 40px;
+        height: 40px;
+        border-radius: var(--vl-radius-md);
+        object-fit: cover;
+      }
+      .skill-thumb--icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--vl-surface-2);
+        color: var(--vl-muted-foreground);
+      }
+      .skill-thumb--icon svg { width: 20px; height: 20px; }
+      .skill-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+      .skill-name { font-size: 15px; font-weight: 700; line-height: 1.35; }
+      .skill-desc { font-size: 13px; line-height: 1.45; color: var(--vl-muted-foreground); }
+      .skill-chev { flex: none; width: 16px; height: 16px; color: var(--vl-ink-3); }
+      .skill-count {
+        flex: none;
+        white-space: nowrap;
+        font-family: var(--vl-font-mono);
+        font-size: 12px;
+        color: var(--vl-muted-foreground);
+      }
+
+      /* ===== 战术手势入口 ===== */
+      .gesture-entry {
+        background: var(--vl-primary-soft);
+        border-color: var(--vl-primary-line);
+      }
+      a.gesture-entry:hover { border-color: var(--vl-primary); }
+      .gesture-entry__icon { flex: none; display: flex; color: var(--vl-primary); }
+      .gesture-entry__icon svg { width: 20px; height: 20px; }
+      .gesture-entry__title { font-size: 15px; font-weight: 700; line-height: 1.35; color: var(--vl-foreground); }
+      .gesture-entry__desc { font-size: 13px; line-height: 1.45; color: var(--vl-muted-foreground); }
+      .gesture-entry__arrow { flex: none; width: 18px; height: 18px; color: var(--vl-primary); transition: transform 140ms ease; }
+      .gesture-entry:hover .gesture-entry__arrow { transform: translateX(2px); }
+
+      /* ===== 常见错误 ===== */
+      .mistakes { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+      .mistake { display: grid; grid-template-columns: 2px minmax(0, 1fr); gap: 12px; }
+      .mistake__bar { background: var(--state-error); border-radius: 1px; }
+      .mistake__title { font-size: 15px; font-weight: 600; line-height: 1.5; color: var(--vl-foreground); }
+      .mistake__idx { margin-right: 6px; font-size: 12px; color: var(--vl-muted-foreground); }
+      .mistake__fix { margin-top: 4px; font-size: 13px; line-height: 1.55; color: var(--vl-muted-foreground); }
+      .mistake__fix-label { margin-right: 6px; font-weight: 600; color: var(--vl-foreground); }
+
+      /* ===== 页脚 ===== */
+      .footer-note { margin-top: 4px; font-size: 12px; color: var(--vl-muted-foreground); }
+    </style>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
