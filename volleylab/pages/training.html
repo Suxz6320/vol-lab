@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>训练记录</title>
+    <style id="theme-vars">
+/* ============================================================
+   排球研习 VolleyLab — 战术板视觉系统 (Tactic Board Design System)
+   深色单主题 · 粉笔白线稿 + 排球橙高亮
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+
+  /* --- 表面 Surface --- */
+  --vl-background: #10151B;      /* 墨黑偏蓝，战术板底色 */
+  --vl-surface: #1A212B;         /* 卡片 / 浮层 */
+  --vl-surface-2: #222B38;       /* hover / 选中 */
+  --vl-surface-3: #171D26;       /* 演示区 / 内嵌面板 */
+  --vl-border: #2A3441;          /* 分割线 / 描边 */
+  --vl-line-soft: #202832;       /* 列表内细分割 */
+
+  /* --- 文本 Text --- */
+  --vl-foreground: #EDF1F5;      /* 粉笔白 */
+  --vl-muted-foreground: #8C98A8;/* 说明文字 */
+  --vl-ink-3: #5E6A79;           /* 三级文字 */
+
+  /* --- 主强调 Brand（唯一品牌色） --- */
+  --vl-primary: #F2A03C;         /* 排球橙 */
+  --vl-primary-foreground: #10151B;
+  --vl-primary-soft: rgba(242, 160, 60, 0.14);
+  --vl-primary-line: rgba(242, 160, 60, 0.44);
+
+  /* --- 语义别名 Semantic aliases --- */
+  --vl-card: #1A212B;
+  --vl-card-foreground: #EDF1F5;
+  --vl-popover: #202834;
+  --vl-popover-foreground: #EDF1F5;
+  --vl-muted: #171D26;
+  --vl-input: #171D26;
+  --vl-ring: #F2A03C;
+
+  /* --- 状态 Status --- */
+  --state-success: #35C28B;      /* 步骤完成 */
+  --state-warning: #F2A03C;
+  --state-error: #E2574C;        /* 常见错误 */
+  --state-info: #3FA9C9;         /* 数据 / 次要标签 */
+
+  /* --- 线稿与遮罩 Linework & scrim --- */
+  --vl-court-line: #3A4756;
+  --vl-court-line-soft: #2E3947;
+  --vl-stage-light: #F2F4F7;    /* 素模演示台浅灰底，与深色页面形成对比 */
+  --vl-scrim: rgba(16, 21, 27, 0.72);
+  --vl-scrim-strong: rgba(16, 21, 27, 0.94);
+  --vl-overlay-chip: rgba(16, 21, 27, 0.66);
+
+  /* --- 圆角 Radius --- */
+  --vl-radius-sm: 4px;
+  --vl-radius-md: 8px;
+  --vl-radius-lg: 16px;
+  --vl-radius-full: 9999px;
+
+  /* --- 字体 Typography --- */
+  --vl-font-sans: "PingFang SC", "HarmonyOS Sans", "Noto Sans SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  --vl-font-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Roboto Mono", monospace;
+}
+
+/* ============================================================
+   基础元素
+   ============================================================ */
+
+html {
+  background: var(--vl-background);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--vl-background);
+  color: var(--vl-foreground);
+  font-family: var(--vl-font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  word-break: keep-all;
+}
+
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; color: inherit; }
+
+img { display: block; max-width: 100%; }
+
+::selection {
+  background: var(--vl-primary-soft);
+  color: var(--vl-foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--vl-ring);
+  outline-offset: 2px;
+  border-radius: var(--vl-radius-sm);
+}
+
+/* ============================================================
+   版式工具
+   ============================================================ */
+
+.vl-screen {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 20px 32px;
+  box-sizing: border-box;
+}
+
+.vl-appbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 56px;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.vl-footer {
+  width: 100%;
+  max-width: 560px;
+  margin: 40px auto 0;
+  padding: 16px 20px 28px;
+  border-top: 1px solid var(--vl-border);
+  box-sizing: border-box;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--vl-muted-foreground);
+}
+
+.vl-iconbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: -10px;
+  border: 1px solid transparent;
+  border-radius: var(--vl-radius-full);
+  background: transparent;
+  color: var(--vl-foreground);
+  transition: background-color 140ms cubic-bezier(.2, .8, .2, 1), border-color 140ms cubic-bezier(.2, .8, .2, 1);
+}
+.vl-iconbtn:hover { background: var(--vl-surface); border-color: var(--vl-border); }
+.vl-iconbtn:active { background: var(--vl-surface-2); }
+
+.vl-appbar-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.vl-num {
+  font-family: var(--vl-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.vl-noscrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.vl-noscrollbar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+    </style>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+
+      /* ===== AppBar ===== */
+      .vl-appbar .vl-iconbtn { width: 44px; height: 44px; margin-left: -12px; }
+      .vl-iconbtn svg { width: 20px; height: 20px; }
+
+      /* ===== 概览卡 ===== */
+      .tr-overview {
+        background: #1A212B;
+        border: 1px solid #2A3441;
+        border-radius: 16px;
+        padding: 16px;
+      }
+      .tr-overview-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .tr-overview-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: #EDF1F5;
+      }
+      .tr-add-btn {
+        font-size: 13px;
+        font-weight: 600;
+        color: #F2A03C;
+        background: none;
+        border: none;
+        padding: 4px 0;
+        cursor: pointer;
+      }
+      .tr-stats {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 16px;
+      }
+      .tr-stat {
+        flex: 1;
+        text-align: center;
+      }
+      .tr-stat-num {
+        font-family: var(--vl-font-mono);
+        font-size: 26px;
+        font-weight: 700;
+        color: #EDF1F5;
+        line-height: 1.1;
+      }
+      .tr-stat-num.cyan { color: #3FA9C9; }
+      .tr-stat-label {
+        font-size: 11px;
+        color: #8C98A8;
+        margin-top: 4px;
+      }
+      .tr-divider {
+        height: 1px;
+        background: #2A3441;
+        margin: 16px 0;
+      }
+      .tr-bars {
+        display: flex;
+        align-items: flex-end;
+        gap: 6px;
+        height: 40px;
+      }
+      .tr-bar {
+        flex: 1;
+        width: 14px;
+        border-radius: 4px;
+        background: #F2A03C;
+        min-height: 2px;
+        transition: height 300ms ease;
+      }
+      .tr-bar.empty { background: #2A3441; height: 2px; }
+      .tr-bar.today { background: #3FA9C9; }
+
+      /* ===== 筛选胶囊行 ===== */
+      .tr-filter-row {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 16px 0 12px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .tr-filter-row::-webkit-scrollbar { display: none; }
+      .tr-filter-chip {
+        flex-shrink: 0;
+        padding: 7px 14px;
+        border-radius: 999px;
+        border: 1px solid #2A3441;
+        background: transparent;
+        color: #8C98A8;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 140ms ease;
+      }
+      .tr-filter-chip.active {
+        background: #F2A03C;
+        border-color: #F2A03C;
+        color: #10151B;
+        font-weight: 600;
+      }
+
+      /* ===== 记录列表 ===== */
+      .tr-group-head {
+        font-size: 11px;
+        color: #8C98A8;
+        margin: 16px 0 8px;
+        font-family: var(--vl-font-mono);
+        letter-spacing: 0.08em;
+      }
+      .tr-record-card {
+        position: relative;
+        height: 72px;
+        padding: 12px 14px 12px 14px;
+        background: #1A212B;
+        border: 1px solid #2A3441;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+      }
+      .tr-record-card::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 12px;
+        bottom: 12px;
+        width: 3px;
+        border-radius: 2px;
+      }
+      .tr-record-card.pos-outside::before { background: #F2A03C; }
+      .tr-record-card.pos-setter::before { background: #3FA9C9; }
+      .tr-record-card.pos-opposite::before { background: #35C28B; }
+      .tr-record-card.pos-libero::before { background: #7A8798; }
+      .tr-record-card.pos-middle::before { background: #C77E24; }
+
+      .tr-record-row1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .tr-record-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #EDF1F5;
+      }
+      .tr-record-stats {
+        font-size: 12px;
+        color: #8C98A8;
+        font-family: var(--vl-font-mono);
+      }
+      .tr-record-row2 {
+        font-size: 12px;
+        color: #8C98A8;
+        margin-top: 6px;
+        line-height: 1.5;
+      }
+
+      /* ===== 空态 ===== */
+      .tr-empty {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 48px 20px;
+        text-align: center;
+      }
+      .tr-empty-court {
+        width: 200px;
+        height: auto;
+        opacity: 0.35;
+      }
+      .tr-empty-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: #EDF1F5;
+        margin-top: 20px;
+      }
+      .tr-empty-sub {
+        font-size: 13px;
+        color: #8C98A8;
+        margin-top: 6px;
+      }
+      .tr-empty-btn {
+        margin-top: 20px;
+        padding: 11px 28px;
+        border-radius: 999px;
+        border: none;
+        background: #F2A03C;
+        color: #10151B;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main>
+      <header class="vl-appbar">
+        <a class="vl-iconbtn" href="home.html" aria-label="返回">
+          <i data-lucide="arrow-left"></i>
+        </a>
+        <div class="vl-appbar-title">训练记录</div>
+      </header>
+
+      <div class="vl-screen">
+        <!-- 概览卡 -->
+        <section class="tr-overview">
+          <div class="tr-overview-head">
+            <div class="tr-overview-title">训练记录</div>
+            <button class="tr-add-btn" onclick="alert('演示用：WebView 内无法调起加库表单')">+ 记一次</button>
+          </div>
+          <div class="tr-stats">
+            <div class="tr-stat">
+              <div class="tr-stat-num">32</div>
+              <div class="tr-stat-label">次 · 本月</div>
+            </div>
+            <div class="tr-stat">
+              <div class="tr-stat-num">18</div>
+              <div class="tr-stat-label">累计小时</div>
+            </div>
+            <div class="tr-stat">
+              <div class="tr-stat-num cyan">5</div>
+              <div class="tr-stat-label">连续天数</div>
+            </div>
+          </div>
+          <div class="tr-divider"></div>
+          <div class="tr-bars">
+            <!-- 7 根迷你柱状：近 7 天，空 / 有 / 有 / 空 / 有 / 空 / 今天 -->
+            <div class="tr-bar empty" style="height:2px"></div>
+            <div class="tr-bar" style="height:16px"></div>
+            <div class="tr-bar" style="height:28px"></div>
+            <div class="tr-bar empty" style="height:2px"></div>
+            <div class="tr-bar" style="height:22px"></div>
+            <div class="tr-bar empty" style="height:2px"></div>
+            <div class="tr-bar today" style="height:34px"></div>
+          </div>
+        </section>
+
+        <!-- 筛选胶囊行 -->
+        <div class="tr-filter-row no-scrollbar" role="tablist">
+          <button class="tr-filter-chip active" data-pos="all">全部</button>
+          <button class="tr-filter-chip" data-pos="outside">主攻</button>
+          <button class="tr-filter-chip" data-pos="setter">二传</button>
+          <button class="tr-filter-chip" data-pos="opposite">接应</button>
+          <button class="tr-filter-chip" data-pos="libero">自由人</button>
+          <button class="tr-filter-chip" data-pos="middle">副攻</button>
+        </div>
+
+        <!-- 记录列表 -->
+        <div id="tr-record-list">
+          <!-- 今天 -->
+          <div class="tr-group-head">今天</div>
+          <article class="tr-record-card pos-outside">
+            <div class="tr-record-row1">
+              <div class="tr-record-title">主攻 · 扣球</div>
+              <div class="tr-record-stats">3 组 · 20 次</div>
+            </div>
+            <div class="tr-record-row2">40 分钟 · 备注：发力链练习</div>
+          </article>
+
+          <!-- 11-17 -->
+          <div class="tr-group-head">11-17</div>
+          <article class="tr-record-card pos-libero">
+            <div class="tr-record-row1">
+              <div class="tr-record-title">自由人 · 防守</div>
+              <div class="tr-record-stats">4 组 · 30 次</div>
+            </div>
+            <div class="tr-record-row2">50 分钟 · 备注：斜线与吊球预判</div>
+          </article>
+
+          <article class="tr-record-card pos-setter">
+            <div class="tr-record-row1">
+              <div class="tr-record-title">二传 · 传球</div>
+              <div class="tr-record-stats">2 组 · 25 次</div>
+            </div>
+            <div class="tr-record-row2">35 分钟 · 备注：背传节奏</div>
+          </article>
+
+          <article class="tr-record-card pos-opposite">
+            <div class="tr-record-row1">
+              <div class="tr-record-title">接应 · 拦网</div>
+              <div class="tr-record-stats">2 组 · 15 次</div>
+            </div>
+            <div class="tr-record-row2">25 分钟 · 备注：双人配合时机</div>
+          </article>
+
+          <article class="tr-record-card pos-middle">
+            <div class="tr-record-row1">
+              <div class="tr-record-title">副攻 · 快攻</div>
+              <div class="tr-record-stats">3 组 · 18 次</div>
+            </div>
+            <div class="tr-record-row2">30 分钟 · 备注：短平快节奏</div>
+          </article>
+        </div>
+
+        <!-- 空态（默认隐藏，过滤无结果时显示） -->
+        <div id="tr-empty" class="tr-empty" style="display:none;">
+          <svg class="tr-empty-court" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="10" width="180" height="180" rx="4" stroke="#3A4756" stroke-width="1.2"/>
+            <line x1="10" y1="70" x2="190" y2="70" stroke="#3A4756" stroke-width="1"/>
+            <line x1="10" y1="130" x2="190" y2="130" stroke="#3A4756" stroke-width="1"/>
+            <line x1="70" y1="10" x2="70" y2="70" stroke="#3A4756" stroke-width="0.8" stroke-dasharray="2 3"/>
+            <line x1="130" y1="10" x2="130" y2="70" stroke="#3A4756" stroke-width="0.8" stroke-dasharray="2 3"/>
+            <line x1="60" y1="70" x2="60" y2="130" stroke="#3A4756" stroke-width="0.8" stroke-dasharray="2 3"/>
+            <line x1="140" y1="70" x2="140" y2="130" stroke="#3A4756" stroke-width="0.8" stroke-dasharray="2 3"/>
+            <line x1="70" y1="130" x2="70" y2="190" stroke="#3A4756" stroke-width="0.8" stroke-dasharray="2 3"/>
+            <line x1="130" y1="130" x2="130" y2="190" stroke="#3A4756" stroke-width="0.8" stroke-dasharray="2 3"/>
+          </svg>
+          <div class="tr-empty-title">还没有训练记录</div>
+          <div class="tr-empty-sub">今天练了什么？</div>
+          <button class="tr-empty-btn" onclick="alert('演示用：WebView 内无法调起加库表单')">记一次</button>
+        </div>
+      </div>
+
+      <footer class="vl-footer">
+        <p>排球研习 VolleyLab · 课程项目演示</p>
+        <p style="margin-top:4px;font-size:12px;color:var(--vl-muted-foreground);">训练记录为教学示例 · 数据非真实</p>
+      </footer>
+    </main>
+
+    <script>
+      lucide.createIcons();
+
+      // 筛选交互
+      const chips = document.querySelectorAll('.tr-filter-chip');
+      const cards = document.querySelectorAll('.tr-record-card');
+      const groups = document.querySelectorAll('.tr-group-head');
+      const empty = document.getElementById('tr-empty');
+      const list = document.getElementById('tr-record-list');
+
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          chips.forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          const pos = chip.dataset.pos;
+
+          let visibleCount = 0;
+          cards.forEach(card => {
+            if (pos === 'all' || card.classList.contains('pos-' + pos)) {
+              card.style.display = '';
+              visibleCount++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          // 控制分组头显隐
+          groups.forEach(g => {
+            const next = g.nextElementSibling;
+            let hasVisible = false;
+            let el = next;
+            while (el && !el.classList.contains('tr-group-head')) {
+              if (el.style.display !== 'none') { hasVisible = true; break; }
+              el = el.nextElementSibling;
+            }
+            g.style.display = hasVisible ? '' : 'none';
+          });
+
+          empty.style.display = visibleCount === 0 ? '' : 'none';
+          list.style.display = visibleCount === 0 ? 'none' : '';
+        });
+      });
+    </script>
+</body>
+</html>
