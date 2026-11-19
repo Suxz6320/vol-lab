@@ -421,7 +421,7 @@ img { display: block; max-width: 100%; }
         <section class="tr-overview">
           <div class="tr-overview-head">
             <div class="tr-overview-title">训练记录</div>
-            <button class="tr-add-btn">+ 记一次</button>
+            <button class="tr-add-btn" onclick="window.openTrainingForm && window.openTrainingForm()">+ 记一次</button>
           </div>
           <div class="tr-stats">
             <div class="tr-stat">
@@ -756,11 +756,26 @@ img { display: block; max-width: 100%; }
         });
       }
 
+      // 暴露到 window 兜底（防止 addEventListener 未执行）
+      window.openTrainingForm = openAddForm;
+      window.__trSave = () => {
+        records.unshift({
+          pos: document.querySelector("#f-pos").value,
+          action: document.querySelector("#f-action").value,
+          groups: document.querySelector("#f-groups").value || "-",
+          duration: (document.querySelector("#f-duration").value || 30) + " 分钟",
+          note: document.querySelector("#f-note").value,
+          date: new Date().toISOString().slice(0,10),
+        });
+        saveRecords();
+        renderList();
+      };
+
       document.querySelector(".tr-add-btn").addEventListener("click", openAddForm);
       document.querySelector(".tr-empty-btn").addEventListener("click", openAddForm);
 
       // 初始渲染
-      renderList();
+      try { renderList(); } catch(e) { console.error("[training] init crash:", e); }
     </script>
 </body>
 </html>
