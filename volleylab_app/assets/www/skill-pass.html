@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN" class="light">
 <head>
     <meta charset="UTF-8">
@@ -464,115 +464,14 @@ img { display: block; max-width: 100%; }
 
       <div class="vl-screen">
         <!-- 演示台 -->
-        <section class="vl-stage" data-dom-id="skill-stage" aria-label="一传慢动作演示">
-          <div class="vl-anim" aria-hidden="true">
-            <svg viewBox="30 15 340 270" preserveAspectRatio="xMidYMid meet" focusable="false">
-              <line class="court-line" x1="34" y1="264" x2="366" y2="264"></line>
-              <line class="court-soft" x1="34" y1="206" x2="366" y2="206"></line>
-              <g class="vl-shadow"><ellipse rx="46" ry="7"></ellipse></g>
-              <g class="vl-fig">
-                <g class="hip">
-                  <circle class="pelvis" r="11"></circle>
-                  <g class="leg far">
-                    <g class="thigh-near thigh-far">
-                      <line x1="0" y1="0" x2="0" y2="56"></line>
-                      <g class="knee">
-                        <circle class="joint" r="7"></circle>
-                        <g class="shin-near shin-far">
-                          <line x1="0" y1="0" x2="0" y2="54"></line>
-                          <g class="ankle">
-                            <g class="foot foot-far">
-                              <path class="shoe" d="M-3 -4.5 h16 a4.5 4.5 0 0 1 0 9 h-16 a4.5 4.5 0 0 1 0 -9 z"></path>
-                            </g>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                  <g class="leg near">
-                    <g class="thigh-near">
-                      <line x1="0" y1="0" x2="0" y2="56"></line>
-                      <g class="knee">
-                        <circle class="joint" r="7"></circle>
-                        <g class="shin-near">
-                          <line x1="0" y1="0" x2="0" y2="54"></line>
-                          <g class="ankle">
-                            <g class="foot foot-near">
-                              <path class="shoe" d="M-3 -4.5 h16 a4.5 4.5 0 0 1 0 9 h-16 a4.5 4.5 0 0 1 0 -9 z"></path>
-                            </g>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                  <g class="torso">
-                    <line class="trunk" x1="0" y1="0" x2="12" y2="-44"></line>
-                    <g class="shoulder">
-                      <circle class="joint" r="9"></circle>
-                      <line class="neck" x1="0" y1="0" x2="6" y2="-13"></line>
-                      <circle class="head" cx="8" cy="-27" r="15"></circle>
-                      <path class="hair" d="M-4 -37 a17 17 0 0 1 25 -1"></path>
-                      <path class="face" d="M21 -31 q4 4 -1 8"></path>
-                      <g class="arm far">
-                        <g class="upper-far">
-                          <line x1="0" y1="0" x2="0" y2="38"></line>
-                          <g class="elbow">
-                            <circle class="joint" r="6"></circle>
-                            <g class="fore-far">
-                              <line x1="0" y1="0" x2="0" y2="32"></line>
-                              <circle class="hand" cx="0" cy="35" r="5.5"></circle>
-                              <path class="finger" d="M-3 39 l-2 5"></path>
-                              <path class="finger" d="M2 39 l2 5"></path>
-                            </g>
-                          </g>
-                        </g>
-                      </g>
-                      <g class="arm near near-arm">
-                        <g class="upper-near">
-                          <line x1="0" y1="0" x2="0" y2="38"></line>
-                          <g class="elbow">
-                            <circle class="joint" r="6"></circle>
-                            <g class="fore-near">
-                              <line x1="0" y1="0" x2="0" y2="32"></line>
-                              <circle class="hand" cx="0" cy="35" r="5.5"></circle>
-                              <path class="finger" d="M-3 39 l-2 5"></path>
-                              <path class="finger" d="M2 39 l2 5"></path>
-                            </g>
-                          </g>
-                        </g>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </g>
-              <g class="vl-ball">
-                <g class="vl-ball__spin">
-                  <circle r="9.5"></circle>
-                  <path class="seam" d="M-9.5 0 a9.5 9.5 0 0 1 19 0"></path>
-                  <path class="seam" d="M-9.5 0 a9.5 9.5 0 0 0 19 0"></path>
-                  <path class="seam" d="M0 -9.5 a9.5 9.5 0 0 1 0 19"></path>
-                </g>
-              </g>
-            </svg>
-            <span class="vl-anim__phase"><b class="vl-num">01</b><span>低重心准备</span></span>
-          </div>
-          <div class="vl-stage__top">
-            <span class="vl-chip">SLOW MOTION · 0.5×</span>
-            <span class="vl-chip"><span class="vl-chip__cur vl-num">03</span><span class="vl-chip__slash">/</span><span class="vl-chip__no vl-num">05</span></span>
-          </div>
-          <div class="vl-stage__bar">
-            <input class="vl-play-input" type="checkbox" id="vl-play" checked>
-            <label class="vl-play-btn" for="vl-play">
-              <span class="vl-play-icon vl-play-icon--play"><i data-lucide="play"></i></span>
-              <span class="vl-play-icon vl-play-icon--pause"><i data-lucide="pause"></i></span>
-              <span class="vl-sr">播放 / 暂停</span>
-            </label>
-            <div class="vl-progress" aria-hidden="true"><span class="vl-progress__fill"></span></div>
-            <span class="vl-loop"><i data-lucide="repeat"></i>循环</span>
-          </div>
-        </section>
 
-        <!-- 帧序列条 -->
+        <!-- ③ 3D 交互舞台（Three.js + GLB + OrbitControls） -->
+        <div class="vl-stage3d" id="skill3d" data-glb="models/skill-pass.glb" aria-label="3D 动作演示，可滑动旋转缩放">
+          <span class="vl-stage__chip">3D · 可旋转</span>
+          <span class="vl-stage__hint">拖动旋转 · 双指缩放</span>
+        </div>
+
+<!-- 帧序列条 -->
         <section class="vl-frames" data-dom-id="frame-strip" aria-label="慢动作分帧">
           <div class="vl-frames__meta">
             <span class="vl-meta">Frame strip</span>
@@ -718,142 +617,26 @@ img { display: block; max-width: 100%; }
       .vl-appbar-title { flex: 1 1 auto; min-width: 0; }
       .vl-footer__note { margin-top: 4px; font-size: 12px; line-height: 1.5; color: var(--vl-ink-3); }
 
-      /* ===== 演示台 ===== */
-      .vl-stage {
+      /* ===== 3D 舞台 ===== */
+      .vl-stage3d {
         position: relative;
-        margin-top: 12px;
-        height: clamp(300px, 52vh, 420px);
-        border-radius: var(--vl-radius-lg);
-        overflow: hidden;
-        background: var(--vl-stage-light);
-      }
-      .vl-stage__img {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-        animation: vl-stage-drift 6s ease-in-out infinite alternate;
-      }
-      @keyframes vl-stage-drift {
-        from { transform: scale(1.03) translateY(-4px); }
-        to   { transform: scale(1.03) translateY(4px); }
-      }
-      .vl-stage__top {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        right: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 8px;
-        pointer-events: none;
-      }
-      .vl-chip {
-        display: inline-flex;
-        align-items: center;
-        gap: 3px;
-        height: 24px;
-        padding: 0 9px;
-        border-radius: var(--vl-radius-full);
-        background: var(--vl-overlay-chip);
-        color: var(--vl-foreground);
-        font-family: var(--vl-font-mono);
-        font-size: 11px;
-        line-height: 1;
-        letter-spacing: 0.12em;
-        white-space: nowrap;
-      }
-      .vl-chip__cur,
-      .vl-chip__no { color: var(--vl-primary); font-weight: 700; }
-      .vl-chip__slash { color: var(--vl-muted-foreground); padding: 0 2px; }
-
-      /* ===== 播放控制条（纯 CSS :checked 切换，无业务 JS） ===== */
-      .vl-stage__bar {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        height: 40px;
-        padding: 0 12px;
+        height: clamp(320px, 55vh, 460px);
         box-sizing: border-box;
-        background: var(--vl-scrim);
-      }
-      .vl-play-input {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        margin: 0;
-        padding: 0;
-        border: 0;
-        opacity: 0;
-        clip-path: inset(50%);
+        border: 1px solid var(--vl-border);
+        border-radius: var(--vl-radius-lg);
+        background: radial-gradient(120% 90% at 50% 0%, #1E2733 0%, var(--vl-surface-3) 58%, #0E1318 100%);
         overflow: hidden;
-        pointer-events: none;
+        margin-top: 12px;
       }
-      .vl-play-btn {
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        flex: 0 0 40px;
-        border-radius: var(--vl-radius-full);
-        color: var(--vl-foreground);
-        cursor: pointer;
-        transition: background-color 140ms cubic-bezier(.2, .8, .2, 1);
-      }
-      .vl-play-btn::before {
-        content: "";
-        position: absolute;
-        inset: -2px;
-        border-radius: var(--vl-radius-full);
-      }
-      .vl-play-btn:hover { background: var(--vl-surface-2); }
-      .vl-play-btn svg { width: 16px; height: 16px; }
-      .vl-play-icon { display: none; align-items: center; justify-content: center; }
-      .vl-play-icon--play svg { transform: translateX(1px); }
-      .vl-play-input:checked + .vl-play-btn .vl-play-icon--pause { display: inline-flex; }
-      .vl-play-input:not(:checked) + .vl-play-btn .vl-play-icon--play { display: inline-flex; }
-      .vl-play-input:focus-visible + .vl-play-btn { outline: 2px solid var(--vl-ring); outline-offset: 2px; }
-      .vl-progress {
-        flex: 1 1 auto;
-        min-width: 0;
-        height: 3px;
-        border-radius: var(--vl-radius-full);
-        background: var(--vl-surface-2);
-        overflow: hidden;
-      }
-      .vl-progress__fill {
-        display: block;
-        width: 60%;
-        height: 100%;
-        border-radius: inherit;
-        background: var(--vl-primary);
-      }
-      .vl-loop {
-        display: inline-flex;
-        align-items: center;
-        gap: 3px;
-        font-size: 11px;
-        line-height: 1;
-        color: var(--vl-muted-foreground);
-        white-space: nowrap;
-      }
-      .vl-loop svg { width: 13px; height: 13px; }
-      .vl-sr {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        margin: -1px;
-        padding: 0;
-        border: 0;
-        overflow: hidden;
-        clip-path: inset(50%);
-        white-space: nowrap;
+      .vl-stage3d canvas { display: block; width: 100% !important; height: 100% !important; }
+      .vl-stage__hint {
+        position: absolute; right: 12px; bottom: 10px; z-index: 3;
+        display: inline-flex; align-items: center; gap: 4px;
+        height: 22px; padding: 0 8px; border-radius: 11px;
+        background: var(--vl-overlay-chip);
+        font-family: var(--vl-font-mono); font-size: 10px; letter-spacing: 0.08em;
+        color: var(--vl-muted-foreground); white-space: nowrap;
       }
 
       /* ===== 帧序列条 ===== */
@@ -991,274 +774,14 @@ img { display: block; max-width: 100%; }
       .vl-mistake__t { font-size: 15px; font-weight: 600; line-height: 1.45; }
       .vl-mistake__d { margin-top: 3px; font-size: 13px; line-height: 1.55; color: var(--vl-muted-foreground); }
 
-      /* ===== 素模动作动画：SVG 关节点驱动，5 阶段循环 ===== */
-      .vl-stage { --vl-loop: 5s; }
-      .vl-stage--anim {
-        background: radial-gradient(120% 90% at 50% 0%, #FFFFFF 0%, var(--vl-stage-light) 58%, #E2E7EE 100%);
-      }
-      .vl-anim { position: absolute; inset: 0; z-index: 1; pointer-events: none; --vl-ease: cubic-bezier(.42, 0, .3, 1); }
-      .vl-anim svg { display: block; width: 100%; height: 100%; }
-      .vl-anim .court-line { stroke: #B6C1CD; stroke-width: 2; }
-      .vl-anim .court-soft { stroke: #D3DAE3; stroke-width: 1; stroke-dasharray: 5 7; }
-      .vl-anim .vl-shadow { transform: translate(154px, 266px); fill: rgba(70, 84, 99, .18); }
-      .vl-fig line { fill: none; stroke: #6E7987; stroke-linecap: round; stroke-width: 9; }
-      .vl-fig .trunk { stroke-width: 23; }
-      .vl-fig .neck { stroke-width: 12; }
-      .vl-fig .upper-near line,
-      .vl-fig .upper-far line { stroke-width: 13; }
-      .vl-fig .fore-near line,
-      .vl-fig .fore-far line { stroke-width: 11; }
-      .vl-fig .thigh-near line,
-      .vl-fig .thigh-far line { stroke-width: 18; }
-      .vl-fig .shin-near line,
-      .vl-fig .shin-far line { stroke-width: 13; }
-      .vl-fig .head,
-      .vl-fig .hand,
-      .vl-fig .pelvis,
-      .vl-fig .joint,
-      .vl-fig .shoe { fill: #6E7987; stroke: none; }
-      .vl-fig .hair { fill: none; stroke: #59636F; stroke-width: 5; stroke-linecap: round; }
-      .vl-fig .face { fill: none; stroke: #F2F4F7; stroke-width: 2.4; stroke-linecap: round; }
-      .vl-fig .finger { fill: none; stroke: #6E7987; stroke-width: 3; stroke-linecap: round; }
-      .vl-fig .far { opacity: .3; }
-      .vl-anim .leg.far { transform: translate(-9px, 3px); }
-      .vl-anim .arm.far { transform: translate(-7px, 4px); }
-      .vl-fig .near-arm line { stroke: var(--vl-primary); }
-      .vl-fig .near-arm .finger { stroke: var(--vl-primary); }
-      .vl-fig .near-arm .joint,
-      .vl-fig .near-arm .hand { fill: var(--vl-primary); }
-      .vl-ball circle { fill: var(--vl-primary); stroke: #C77E24; stroke-width: 1.5; }
-      .vl-ball .seam { fill: none; stroke: rgba(16, 21, 27, .5); stroke-width: 1.4; }
-      .vl-anim__phase {
-        position: absolute;
-        left: 12px;
-        bottom: 52px;
-        display: inline-flex;
-        align-items: baseline;
-        gap: 6px;
-        padding: 5px 10px;
-        border-radius: var(--vl-radius-full);
-        background: var(--vl-overlay-chip);
-        color: var(--vl-foreground);
-        font-size: 12px;
-        line-height: 1;
-        letter-spacing: 0.02em;
-      }
-      .vl-anim__phase b { font-family: var(--vl-font-mono); font-size: 11px; color: var(--vl-primary); letter-spacing: 0.1em; }
-      .vl-anim g { transform-box: view-box; transform-origin: 0 0; }
-      .vl-anim .hip { transform: translate(150px, 150px); }
-      .vl-anim .torso { transform: rotate(8deg); }
-      .vl-anim .shoulder { transform: translate(12px, -44px); }
-      .vl-anim .upper-near { transform: rotate(-24deg); }
-      .vl-anim .upper-far { transform: rotate(-14deg); }
-      .vl-anim .elbow { transform: translate(0px, 38px); }
-      .vl-anim .fore-near { transform: rotate(-18deg); }
-      .vl-anim .fore-far { transform: rotate(-22deg); }
-      .vl-anim .thigh-near { transform: rotate(4deg); }
-      .vl-anim .thigh-far { transform: rotate(-2deg); }
-      .vl-anim .knee { transform: translate(0px, 56px); }
-      .vl-anim .shin-near { transform: rotate(-6deg); }
-      .vl-anim .shin-far { transform: rotate(-4deg); }
-      .vl-anim .ankle { transform: translate(0px, 54px); }
-      .vl-anim .foot-near { transform: rotate(4deg); }
-      .vl-anim .foot-far { transform: rotate(8deg); }
-      .vl-ball { opacity: 0; transform: translate(262px, 20px); }
-
-      .vl-stage--anim.is-run .vl-fig { animation: kRoot var(--vl-loop) var(--vl-ease) infinite; }
-      .vl-stage--anim.is-run .torso { animation: kTorso var(--vl-loop) var(--vl-ease) infinite; }
-      .vl-stage--anim.is-run .upper-near { animation: kUpperNear var(--vl-loop) var(--vl-ease) infinite; }
-      .vl-stage--anim.is-run .fore-near { animation: kForeNear var(--vl-loop) var(--vl-ease) infinite; }
-      .vl-stage--anim.is-run .upper-far { animation: kUpperFar var(--vl-loop) var(--vl-ease) infinite; }
-      .vl-stage--anim.is-run .fore-far { animation: kForeFar var(--vl-loop) var(--vl-ease) infinite; }
-      .vl-stage--anim.is-run .thigh-near:not(.thigh-far) { animation: kThighNear var(--vl-loop) var(--vl-ease) infinite; }
-      .vl-stage--anim.is-run .shin-near:not(.shin-far) { animation: kShinNear var(--vl-loop) var(--vl-ease) infinite; }
-      .vl-stage--anim.is-run .foot-near { animation: kFootNear var(--vl-loop) var(--vl-ease) infinite; }
-      .vl-stage--anim.is-run .foot-far { animation: kFootFar var(--vl-loop) var(--vl-ease) infinite; }
-      .vl-stage--anim.is-run .thigh-far { animation: kThighFar var(--vl-loop) var(--vl-ease) infinite; }
-      .vl-stage--anim.is-run .shin-far { animation: kShinFar var(--vl-loop) var(--vl-ease) infinite; }
-      .vl-stage--anim.is-run .vl-ball { animation: kBall var(--vl-loop) var(--vl-ease) infinite; }
-      .vl-stage--anim.is-run .vl-progress__fill { animation: kProgress var(--vl-loop) linear infinite; }
-      .vl-stage--anim.is-run .vl-shadow { animation: kShadow var(--vl-loop) ease-in-out infinite; }
-      .vl-stage--anim.is-run .vl-ball__spin { animation: kSpin 2.4s linear infinite; }
-      .vl-stage--anim.is-paused *,
-      .vl-stage--anim.is-paused *::after { animation-play-state: paused !important; }
-      .vl-stage--anim .vl-stage__bar { z-index: 3; }
-      .vl-stage--anim .vl-stage__top { z-index: 3; }
-
-      @keyframes kRoot {
-        0%, 10% { transform: translate(0px, 0px); }
-        20% { transform: translate(0px, 10px); }
-        40% { transform: translate(0px, 16px); }
-        58% { transform: translate(0px, 8px); }
-        72% { transform: translate(0px, 0px); }
-        86% { transform: translate(0px, 2px); }
-        100% { transform: translate(0px, 0px); }
-      }
-      @keyframes kTorso {
-        0%, 12% { transform: rotate(8deg); }
-        34% { transform: rotate(24deg); }
-        52% { transform: rotate(26deg); }
-        70% { transform: rotate(6deg); }
-        100% { transform: rotate(8deg); }
-      }
-      @keyframes kUpperNear {
-        0%, 12% { transform: rotate(-24deg); }
-        22% { transform: rotate(-58deg); }
-        46% { transform: rotate(-66deg); }
-        66% { transform: rotate(-84deg); }
-        82% { transform: rotate(-70deg); }
-        100% { transform: rotate(-24deg); }
-      }
-      @keyframes kForeNear {
-        0%, 12% { transform: rotate(-18deg); }
-        22% { transform: rotate(-8deg); }
-        46% { transform: rotate(-6deg); }
-        70% { transform: rotate(-4deg); }
-        100% { transform: rotate(-18deg); }
-      }
-      @keyframes kUpperFar {
-        0%, 12% { transform: rotate(-14deg); }
-        22% { transform: rotate(-52deg); }
-        46% { transform: rotate(-60deg); }
-        66% { transform: rotate(-78deg); }
-        82% { transform: rotate(-64deg); }
-        100% { transform: rotate(-14deg); }
-      }
-      @keyframes kForeFar {
-        0%, 12% { transform: rotate(-22deg); }
-        46% { transform: rotate(-10deg); }
-        70% { transform: rotate(-8deg); }
-        100% { transform: rotate(-22deg); }
-      }
-      @keyframes kThighNear {
-        0%, 10% { transform: rotate(4deg); }
-        22% { transform: rotate(30deg); }
-        40% { transform: rotate(38deg); }
-        62% { transform: rotate(12deg); }
-        100% { transform: rotate(4deg); }
-      }
-      @keyframes kShinNear {
-        0%, 10% { transform: rotate(-8deg); }
-        22% { transform: rotate(-19deg); }
-        40% { transform: rotate(-16deg); }
-        62% { transform: rotate(-10deg); }
-        100% { transform: rotate(-8deg); }
-      }
-      @keyframes kThighFar {
-        0%, 10% { transform: rotate(-2deg); }
-        22% { transform: rotate(24deg); }
-        40% { transform: rotate(32deg); }
-        62% { transform: rotate(6deg); }
-        100% { transform: rotate(-2deg); }
-      }
-      @keyframes kShinFar {
-        0%, 10% { transform: rotate(-6deg); }
-        22% { transform: rotate(-16deg); }
-        40% { transform: rotate(-14deg); }
-        62% { transform: rotate(-8deg); }
-        100% { transform: rotate(-6deg); }
-      }
-      @keyframes kBall {
-        0%, 26% { opacity: 0; transform: translate(268px, 12px) scale(.6); }
-        34% { opacity: 1; transform: translate(262px, 40px) scale(1); }
-        52% { opacity: 1; transform: translate(238px, 142px) scale(1); }
-        60% { opacity: 1; transform: translate(236px, 148px) scale(1); }
-        76% { opacity: 1; transform: translate(276px, 92px) scale(1); }
-        88% { opacity: 1; transform: translate(320px, 46px) scale(.95); }
-        96%, 100% { opacity: 0; transform: translate(342px, 24px) scale(.8); }
-      }
-      @keyframes kProgress { from { width: 0; } to { width: 100%; } }
-      @keyframes kShadow {
-        0%, 100% { transform: translate(154px, 266px) scale(1); opacity: .95; }
-        38% { transform: translate(154px, 266px) scale(.64); opacity: .5; }
-        58% { transform: translate(154px, 266px) scale(.6); opacity: .45; }
-        82% { transform: translate(154px, 266px) scale(.92); opacity: .85; }
-      }
-      @keyframes kSpin { to { transform: rotate(360deg); } }
-      @keyframes kFootNear {
-        0%, 10% { transform: rotate(4deg); }
-        22% { transform: rotate(-11deg); }
-        40% { transform: rotate(-22deg); }
-        62% { transform: rotate(-2deg); }
-        100% { transform: rotate(4deg); }
-      }
-      @keyframes kFootFar {
-        0%, 10% { transform: rotate(8deg); }
-        22% { transform: rotate(-8deg); }
-        40% { transform: rotate(-18deg); }
-        62% { transform: rotate(2deg); }
-        100% { transform: rotate(8deg); }
-      }
-    </style>
+          </style>
 
     <script>lucide.createIcons();</script>
-    <script id="vl-skill-anim">
-      (function () {
-        var stage = document.querySelector('.vl-stage');
-        if (!stage) return;
-        stage.classList.add('vl-stage--anim');
-        var frames = [].slice.call(document.querySelectorAll('.vl-frame'));
-        var frameTrack = document.querySelector('.vl-frames__list');
-        var steps = [].slice.call(document.querySelectorAll('.vl-step'));
-        var softSteps = [].slice.call(document.querySelectorAll('.step'));
-        var chip = stage.querySelector('.vl-chip__cur');
-        var frameNum = stage.querySelector('.vl-stage__frame b');
-        var phaseNum = stage.querySelector('.vl-anim__phase b');
-        var phaseName = stage.querySelector('.vl-anim__phase span');
-        var n = frames.length || steps.length || softSteps.length || 6;
-        var loop = parseFloat(getComputedStyle(stage).getPropertyValue('--vl-loop')) || 6;
-        var frameMs = (loop * 1000) / n;
-        var idx = 0;
-        var timer = null;
-        var toggle = stage.querySelector('input[type="checkbox"]');
+    <script src="../vendor/three.min.js"></script>
+    <script src="../vendor/OrbitControls.js"></script>
+    <script src="../vendor/GLTFLoader.js"></script>
+    <script src="../vendor/skill-3d.js"></script>
 
-        function pad(v) { return (v < 10 ? '0' : '') + v; }
-        function paint(i) {
-          idx = ((i % n) + n) % n;
-          if (chip) chip.textContent = pad(idx + 1);
-          if (frameNum) frameNum.textContent = pad(idx + 1);
-          frames.forEach(function (el, k) { el.classList.toggle('vl-frame--now', k === idx); });
-          if (frames.length && frameTrack && frameTrack.scrollWidth > frameTrack.clientWidth + 4) {
-            var target = frames[idx].offsetLeft - (frameTrack.clientWidth - frames[idx].offsetWidth) / 2;
-            frameTrack.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
-          }
-          steps.forEach(function (el, k) { el.classList.toggle('vl-step--now', k === idx); });
-          softSteps.forEach(function (el, k) { el.classList.toggle('step--current', k === idx); });
-          if (phaseNum) phaseNum.textContent = pad(idx + 1);
-          if (phaseName) {
-            var src = frames[idx] || steps[idx] || softSteps[idx];
-            var nameEl = src ? src.querySelector('.vl-frame__name, .vl-step__name, .step__t') : null;
-            if (nameEl) phaseName.textContent = nameEl.textContent.trim();
-          }
-        }
-        function run() {
-          window.clearInterval(timer);
-          stage.classList.add('is-run');
-          paint(0);
-          timer = window.setInterval(function () { paint(idx + 1); }, frameMs);
-        }
-        function pause() {
-          window.clearInterval(timer);
-          stage.classList.add('is-paused');
-        }
-        function restart() {
-          stage.classList.remove('is-paused');
-          stage.classList.remove('is-run');
-          void stage.offsetWidth;
-          run();
-        }
-        if (toggle) {
-          toggle.checked = true;
-          toggle.addEventListener('change', function () {
-            if (toggle.checked) { restart(); } else { pause(); }
-          });
-        }
-        document.addEventListener('visibilitychange', function () {
-          if (document.hidden) { pause(); }
-          else if (!toggle || toggle.checked) { restart(); }
-        });
-        run();
-      })();
-    </script>
 </body>
 </html>
+
