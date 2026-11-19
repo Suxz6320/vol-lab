@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排球观察 · 女排世联赛新周期名单公布</title>
+    <style id="theme-vars">
+/* ============================================================
+   排球研习 VolleyLab — 战术板视觉系统 (Tactic Board Design System)
+   深色单主题 · 粉笔白线稿 + 排球橙高亮
+   ============================================================ */
+
+:root {
+  color-scheme: dark;
+
+  /* --- 表面 Surface --- */
+  --vl-background: #10151B;      /* 墨黑偏蓝，战术板底色 */
+  --vl-surface: #1A212B;         /* 卡片 / 浮层 */
+  --vl-surface-2: #222B38;       /* hover / 选中 */
+  --vl-surface-3: #171D26;       /* 演示区 / 内嵌面板 */
+  --vl-border: #2A3441;          /* 分割线 / 描边 */
+  --vl-line-soft: #202832;       /* 列表内细分割 */
+
+  /* --- 文本 Text --- */
+  --vl-foreground: #EDF1F5;      /* 粉笔白 */
+  --vl-muted-foreground: #8C98A8;/* 说明文字 */
+  --vl-ink-3: #5E6A79;           /* 三级文字 */
+
+  /* --- 主强调 Brand（唯一品牌色） --- */
+  --vl-primary: #F2A03C;         /* 排球橙 */
+  --vl-primary-foreground: #10151B;
+  --vl-primary-soft: rgba(242, 160, 60, 0.14);
+  --vl-primary-line: rgba(242, 160, 60, 0.44);
+
+  /* --- 语义别名 Semantic aliases --- */
+  --vl-card: #1A212B;
+  --vl-card-foreground: #EDF1F5;
+  --vl-popover: #202834;
+  --vl-popover-foreground: #EDF1F5;
+  --vl-muted: #171D26;
+  --vl-input: #171D26;
+  --vl-ring: #F2A03C;
+
+  /* --- 状态 Status --- */
+  --state-success: #35C28B;      /* 步骤完成 */
+  --state-warning: #F2A03C;
+  --state-error: #E2574C;        /* 常见错误 */
+  --state-info: #3FA9C9;         /* 数据 / 次要标签 */
+
+  /* --- 线稿与遮罩 Linework & scrim --- */
+  --vl-court-line: #3A4756;
+  --vl-court-line-soft: #2E3947;
+  --vl-stage-light: #F2F4F7;    /* 素模演示台浅灰底，与深色页面形成对比 */
+  --vl-scrim: rgba(16, 21, 27, 0.72);
+  --vl-scrim-strong: rgba(16, 21, 27, 0.94);
+  --vl-overlay-chip: rgba(16, 21, 27, 0.66);
+
+  /* --- 圆角 Radius --- */
+  --vl-radius-sm: 4px;
+  --vl-radius-md: 8px;
+  --vl-radius-lg: 16px;
+  --vl-radius-full: 9999px;
+
+  /* --- 字体 Typography --- */
+  --vl-font-sans: "PingFang SC", "HarmonyOS Sans", "Noto Sans SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  --vl-font-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Roboto Mono", monospace;
+}
+
+/* ============================================================
+   基础元素
+   ============================================================ */
+
+html {
+  background: var(--vl-background);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--vl-background);
+  color: var(--vl-foreground);
+  font-family: var(--vl-font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  word-break: keep-all;
+}
+
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; color: inherit; }
+
+img { display: block; max-width: 100%; }
+
+::selection {
+  background: var(--vl-primary-soft);
+  color: var(--vl-foreground);
+}
+
+:focus-visible {
+  outline: 2px solid var(--vl-ring);
+  outline-offset: 2px;
+  border-radius: var(--vl-radius-sm);
+}
+
+/* ============================================================
+   版式工具（全局复用，保证 11 个页面同一套节奏）
+   ============================================================ */
+
+.vl-screen {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 20px 32px;
+  box-sizing: border-box;
+}
+
+.vl-appbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 56px;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.vl-footer {
+  width: 100%;
+  max-width: 560px;
+  margin: 40px auto 0;
+  padding: 16px 20px 28px;
+  border-top: 1px solid var(--vl-border);
+  box-sizing: border-box;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--vl-muted-foreground);
+}
+
+.vl-iconbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: -10px;
+  border: 1px solid transparent;
+  border-radius: var(--vl-radius-full);
+  background: transparent;
+  color: var(--vl-foreground);
+  transition: background-color 140ms cubic-bezier(.2, .8, .2, 1), border-color 140ms cubic-bezier(.2, .8, .2, 1);
+}
+.vl-iconbtn:hover { background: var(--vl-surface); border-color: var(--vl-border); }
+.vl-iconbtn:active { background: var(--vl-surface-2); }
+
+.vl-appbar-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.vl-eyebrow {
+  font-family: var(--vl-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--vl-muted-foreground);
+}
+
+.vl-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 28px 0 12px;
+}
+
+.vl-section-title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.vl-section-link {
+  font-size: 13px;
+  color: var(--vl-muted-foreground);
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: color 140ms ease;
+}
+.vl-section-link:hover { color: var(--vl-primary); }
+
+.vl-card {
+  background: var(--vl-card);
+  border: 1px solid var(--vl-border);
+  border-radius: var(--vl-radius-lg);
+}
+
+.vl-divider {
+  height: 1px;
+  background: var(--vl-line-soft);
+  border: 0;
+  margin: 0;
+}
+
+.vl-hair {
+  height: 1px;
+  background: var(--vl-border);
+  border: 0;
+  margin: 0;
+}
+
+.vl-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: var(--vl-radius-md);
+  background: var(--vl-surface-2);
+  color: var(--vl-muted-foreground);
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.vl-tag-brand {
+  background: var(--vl-primary);
+  color: var(--vl-primary-foreground);
+  font-weight: 700;
+  border-radius: var(--vl-radius-sm);
+}
+
+.vl-tag-outline {
+  background: transparent;
+  border: 1px solid var(--vl-primary-line);
+  color: var(--vl-primary);
+}
+
+.vl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: var(--vl-radius-full);
+  border: 1px solid var(--vl-border);
+  background: transparent;
+  color: var(--vl-foreground);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+.vl-btn:hover { background: var(--vl-surface); }
+.vl-btn:active { transform: scale(0.99); }
+
+.vl-btn-primary {
+  background: var(--vl-primary);
+  border-color: var(--vl-primary);
+  color: var(--vl-primary-foreground);
+  font-weight: 700;
+}
+.vl-btn-primary:hover { background: var(--vl-primary); border-color: var(--vl-foreground); }
+
+.vl-num {
+  font-family: var(--vl-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.vl-body {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--vl-muted-foreground);
+}
+
+.vl-caption {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--vl-muted-foreground);
+}
+
+.vl-label {
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--vl-muted-foreground);
+}
+
+/* 战术板球场线稿容器 */
+.vl-court {
+  background: var(--vl-surface-3);
+  border: 1px solid var(--vl-border);
+  border-radius: var(--vl-radius-lg);
+  overflow: hidden;
+}
+
+/* 橙色站位点的脉冲 */
+@keyframes vl-pulse {
+  0%   { transform: scale(1);    opacity: 1; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+
+/* 开屏按钮呼吸 */
+@keyframes vl-breathe {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.04); }
+}
+
+/* 球体浮动 */
+@keyframes vl-float {
+  0%   { transform: translateY(-6px); }
+  100% { transform: translateY(6px); }
+}
+
+/* 页面入场（CSS 降级版本，Flutter 端用 Interval 交织动画） */
+@keyframes vl-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.vl-rise {
+  animation: vl-rise 420ms cubic-bezier(.3, 0, 0, 1) both;
+}
+
+/* 自定义滚动条隐藏（横向步骤条 / 手势卡） */
+.vl-noscrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.vl-noscrollbar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--vl-background);
+    --color-foreground: var(--vl-foreground);
+    --color-card: var(--vl-card);
+    --color-card-foreground: var(--vl-card-foreground);
+    --color-popover: var(--vl-popover);
+    --color-popover-foreground: var(--vl-popover-foreground);
+    --color-primary: var(--vl-primary);
+    --color-primary-foreground: var(--vl-primary-foreground);
+    --color-muted: var(--vl-muted);
+    --color-muted-foreground: var(--vl-muted-foreground);
+    --color-border: var(--vl-border);
+    --color-input: var(--vl-input);
+    --color-ring: var(--vl-ring);
+    --radius-sm: var(--vl-radius-sm);
+    --radius-md: var(--vl-radius-md);
+    --radius-lg: var(--vl-radius-lg);
+  }
+  @layer base {
+    body { background: var(--vl-background); color: var(--vl-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style id="semantic-token-fallback">
+      .bg-background { background-color: var(--vl-background); }
+      .text-background { color: var(--vl-background); }
+      .border-background { border-color: var(--vl-background); }
+      .ring-background { --tw-ring-color: var(--vl-background); }
+      .bg-foreground { background-color: var(--vl-foreground); }
+      .text-foreground { color: var(--vl-foreground); }
+      .border-foreground { border-color: var(--vl-foreground); }
+      .ring-foreground { --tw-ring-color: var(--vl-foreground); }
+      .bg-card { background-color: var(--vl-card); }
+      .text-card { color: var(--vl-card); }
+      .border-card { border-color: var(--vl-card); }
+      .ring-card { --tw-ring-color: var(--vl-card); }
+      .bg-card-foreground { background-color: var(--vl-card-foreground); }
+      .text-card-foreground { color: var(--vl-card-foreground); }
+      .border-card-foreground { border-color: var(--vl-card-foreground); }
+      .ring-card-foreground { --tw-ring-color: var(--vl-card-foreground); }
+      .bg-popover { background-color: var(--vl-popover); }
+      .text-popover { color: var(--vl-popover); }
+      .border-popover { border-color: var(--vl-popover); }
+      .ring-popover { --tw-ring-color: var(--vl-popover); }
+      .bg-popover-foreground { background-color: var(--vl-popover-foreground); }
+      .text-popover-foreground { color: var(--vl-popover-foreground); }
+      .border-popover-foreground { border-color: var(--vl-popover-foreground); }
+      .ring-popover-foreground { --tw-ring-color: var(--vl-popover-foreground); }
+      .bg-primary { background-color: var(--vl-primary); }
+      .text-primary { color: var(--vl-primary); }
+      .border-primary { border-color: var(--vl-primary); }
+      .ring-primary { --tw-ring-color: var(--vl-primary); }
+      .bg-primary-foreground { background-color: var(--vl-primary-foreground); }
+      .text-primary-foreground { color: var(--vl-primary-foreground); }
+      .border-primary-foreground { border-color: var(--vl-primary-foreground); }
+      .ring-primary-foreground { --tw-ring-color: var(--vl-primary-foreground); }
+      .bg-muted { background-color: var(--vl-muted); }
+      .text-muted { color: var(--vl-muted); }
+      .border-muted { border-color: var(--vl-muted); }
+      .ring-muted { --tw-ring-color: var(--vl-muted); }
+      .bg-muted-foreground { background-color: var(--vl-muted-foreground); }
+      .text-muted-foreground { color: var(--vl-muted-foreground); }
+      .border-muted-foreground { border-color: var(--vl-muted-foreground); }
+      .ring-muted-foreground { --tw-ring-color: var(--vl-muted-foreground); }
+      .bg-border { background-color: var(--vl-border); }
+      .text-border { color: var(--vl-border); }
+      .border-border { border-color: var(--vl-border); }
+      .ring-border { --tw-ring-color: var(--vl-border); }
+      .bg-input { background-color: var(--vl-input); }
+      .text-input { color: var(--vl-input); }
+      .border-input { border-color: var(--vl-input); }
+      .ring-input { --tw-ring-color: var(--vl-input); }
+      .bg-ring { background-color: var(--vl-ring); }
+      .text-ring { color: var(--vl-ring); }
+      .border-ring { border-color: var(--vl-ring); }
+      .ring-ring { --tw-ring-color: var(--vl-ring); }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main>
+      <header class="vl-appbar">
+        <a class="vl-iconbtn" data-dom-id="back-home" href="home.html" aria-label="返回">
+          <i data-lucide="arrow-left"></i>
+        </a>
+        <div class="vl-appbar-title">排球观察</div>
+      </header>
+
+      <div class="vl-screen nd-body">
+        <figure class="nd-cover">
+          <img src="../assets/news-womens-team.jpg" alt="女排世联赛新周期名单公布">
+          <span class="nd-cover-mask" aria-hidden="true"></span>
+          <figcaption class="nd-cover-meta">
+            <span class="nd-cat">排球观察</span>
+            <span class="nd-date vl-num">11-06</span>
+          </figcaption>
+        </figure>
+
+        <header class="nd-head" data-dom-id="article-head">
+          <h1 class="nd-title">女排世联赛新周期名单公布，年轻主攻获征召</h1>
+          <p class="nd-meta">编辑部整理 · 来源 排球观察 · 约 3 分钟阅读</p>
+        </header>
+
+        <article class="nd-article" data-dom-id="article-body">
+          <p>新周期主帅上任后的第一份世联赛大名单正式公布。与上一届的 14 人名单相比，这次一口气换了 6 张新面孔，其中最引人注目的是三位 99 后新人同时入选，打破了国家队过去几年以经验型球员为主的用人思路。</p>
+
+          <p>新任主教练在公布名单的新闻发布会上说：「这支队伍不能只靠老队员扛。年轻人要打出来，就必须在国际比赛里积累经验——哪怕是输掉的经验。」名单调整的力度确实出人意料：两名主力二传同时落选，换成了一位 22 岁的青年队升班马；自由人位置也从三人缩减到两人，其中一人来自省队，没有任何国字号履历。</p>
+
+          <p>最受关注的是主攻线。三位 99 后新人中，有两位都是主攻位置，这在国家队历史上并不多见。其中一位身高 1 米 96，摸高能到 3 米 30，但在联赛里以「扣球猛、防守弱」著称；另一位则是接发球体系的新人，技术全面但力量不足。主教练解释说：「一个练强攻突破，一个练后排串联，两人的发展方向不同，都值得给机会。」</p>
+
+          <p>副攻位置也有变化。上届主力副攻因为膝伤仍在康复中，暂时不随队出征。教练组决定不召入经验丰富的老将补位，而是带上两名青年队副攻。这样一来，首发副攻的位置会落在两位新人中的一位肩上——对于新人来说，世联赛的首场比赛，就是一场没有退路的大考。</p>
+
+          <p>世联赛首站将在下月于土耳其开打，对手包括世界排名第三的土耳其女排和第五的意大利女排。新任主教练坦言，这次参赛的目标不是拿奖牌，而是「让年轻人在高水平对抗里找到自己的位置」。</p>
+
+          <p>从名单调整到训练安排，这届国家队明显在走一条与过去不同的路：不追求眼前成绩，更看重年轻球员的成长曲线。效果如何，要等到首战开打才能见分晓。</p>
+
+          <p class="nd-endnote">编辑说明：本文为课程项目示例内容，球队名单、教练言论均为虚构，不构成对任何真实国家队或赛事的报道。</p>
+        </article>
+
+        <section class="nd-related" aria-labelledby="related-heading">
+          <div class="vl-section-head">
+            <h2 class="vl-section-title" id="related-heading">相关位置</h2>
+            <span class="vl-eyebrow">Related</span>
+          </div>
+          <div class="nd-rel-track vl-noscrollbar" aria-label="相关位置，左右滑动查看">
+            <article class="nd-rel-card">
+              <img class="nd-rel-img" src="../assets/pos-outside-cover.jpg" alt="主攻四号位站位半场线稿">
+              <div class="nd-rel-body">
+                <h3 class="nd-rel-name">主攻</h3>
+                <p class="nd-rel-desc">四号位的第一进攻点</p>
+              </div>
+            </article>
+            <article class="nd-rel-card">
+              <img class="nd-rel-img" src="../assets/pos-middle-cover.jpg" alt="副攻三号位站位半场线稿">
+              <div class="nd-rel-body">
+                <h3 class="nd-rel-name">副攻</h3>
+                <p class="nd-rel-desc">网前屏障与战术快攻</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <footer class="vl-footer">
+        <p>排球研习 VolleyLab · 课程项目演示</p>
+        <p class="nd-footer-note">排球观察为教学示例栏目 · 内容非官方资料</p>
+      </footer>
+    </main>
+
+    <style id="critical-layout">
+      .vl-appbar .vl-iconbtn { width: 44px; height: 44px; margin-left: -12px; }
+      .vl-iconbtn svg { width: 20px; height: 20px; }
+
+      .nd-body { padding-top: 4px; }
+
+      /* ===== 封面 ===== */
+      .nd-cover {
+        position: relative;
+        margin: 0;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        border-radius: var(--vl-radius-lg);
+        background: var(--vl-surface-3);
+      }
+      .nd-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .nd-cover-mask {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to bottom, transparent 42%, var(--vl-scrim) 76%, var(--vl-scrim-strong) 100%);
+      }
+      .nd-cover-meta {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .nd-cat {
+        padding: 3px 7px;
+        border: 1px solid var(--vl-primary-line);
+        border-radius: var(--vl-radius-sm);
+        background: var(--vl-overlay-chip);
+        font-family: var(--vl-font-mono);
+        font-size: 11px;
+        line-height: 1.2;
+        letter-spacing: 0.12em;
+        color: var(--vl-primary);
+      }
+      .nd-date {
+        font-size: 11px;
+        line-height: 1;
+        letter-spacing: 0.1em;
+        color: var(--vl-muted-foreground);
+      }
+
+      /* ===== 文章头部 ===== */
+      .nd-head { margin-top: 22px; }
+      .nd-title {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.35;
+        letter-spacing: 0;
+        color: var(--vl-foreground);
+      }
+      .nd-meta {
+        margin-top: 10px;
+        font-size: 13px;
+        line-height: 1.5;
+        color: var(--vl-muted-foreground);
+      }
+
+      /* ===== 正文 ===== */
+      .nd-article { margin-top: 20px; }
+      .nd-article p {
+        font-size: 17px;
+        line-height: 1.75;
+        color: var(--vl-foreground);
+      }
+      .nd-article p + p { margin-top: 16px; }
+      .nd-article > p:first-of-type::first-letter {
+        font-size: 1.6em;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--vl-primary);
+      }
+
+      .nd-figure {
+        margin: 22px 0;
+        padding: 14px 14px 12px;
+        background: var(--vl-surface-3);
+        border-radius: var(--vl-radius-lg);
+      }
+      .nd-court { display: block; width: 100%; height: auto; }
+      .nd-court-line { fill: none; stroke: var(--vl-court-line); stroke-width: 1; }
+      .nd-court-soft { stroke: var(--vl-court-line-soft); stroke-width: 1; }
+      .nd-court-net { stroke: var(--vl-court-line); stroke-width: 2; }
+      .nd-court-tag {
+        fill: var(--vl-court-line);
+        font-family: var(--vl-font-mono);
+        font-size: 9px;
+        letter-spacing: 0.16em;
+      }
+      .nd-zone {
+        fill: var(--vl-ink-3);
+        font-family: var(--vl-font-mono);
+        font-size: 11px;
+      }
+      .nd-dot-ring { fill: none; stroke: var(--vl-primary-line); stroke-width: 1.5; }
+      .nd-dot { fill: var(--vl-primary); }
+      .nd-figure-cap {
+        margin-top: 10px;
+        font-size: 12px;
+        line-height: 1.55;
+        color: var(--vl-muted-foreground);
+      }
+
+      .nd-article .nd-endnote {
+        margin-top: 24px;
+        padding-top: 14px;
+        border-top: 1px solid var(--vl-border);
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--vl-muted-foreground);
+      }
+
+      /* ===== 相关位置 ===== */
+      .nd-related .vl-section-head { margin-top: 30px; }
+      .nd-rel-track {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .nd-rel-card {
+        flex: 0 0 68%;
+        scroll-snap-align: start;
+        overflow: hidden;
+        background: var(--vl-surface);
+        border: 1px solid var(--vl-border);
+        border-radius: var(--vl-radius-lg);
+      }
+      .nd-rel-img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        background: var(--vl-surface-2);
+      }
+      .nd-rel-body {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        padding: 12px 14px 14px;
+      }
+      .nd-rel-name {
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1.35;
+        color: var(--vl-foreground);
+      }
+      .nd-rel-desc {
+        font-size: 13px;
+        line-height: 1.45;
+        color: var(--vl-muted-foreground);
+      }
+
+      .nd-footer-note { margin-top: 4px; font-size: 12px; color: var(--vl-muted-foreground); }
+    </style>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
