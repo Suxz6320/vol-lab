@@ -425,28 +425,21 @@ img { display: block; max-width: 100%; }
           </div>
           <div class="tr-stats">
             <div class="tr-stat">
-              <div class="tr-stat-num">32</div>
-              <div class="tr-stat-label">次 · 本月</div>
+              <div class="tr-stat-num" id="tr-num-total">—</div>
+              <div class="tr-stat-label">次 · 全部</div>
             </div>
             <div class="tr-stat">
-              <div class="tr-stat-num">18</div>
+              <div class="tr-stat-num" id="tr-num-hrs">—</div>
               <div class="tr-stat-label">累计小时</div>
             </div>
             <div class="tr-stat">
-              <div class="tr-stat-num cyan">5</div>
+              <div class="tr-stat-num cyan" id="tr-num-streak">—</div>
               <div class="tr-stat-label">连续天数</div>
             </div>
           </div>
           <div class="tr-divider"></div>
-          <div class="tr-bars">
-            <!-- 7 根迷你柱状：近 7 天，空 / 有 / 有 / 空 / 有 / 空 / 今天 -->
-            <div class="tr-bar empty" style="height:2px"></div>
-            <div class="tr-bar" style="height:16px"></div>
-            <div class="tr-bar" style="height:28px"></div>
-            <div class="tr-bar empty" style="height:2px"></div>
-            <div class="tr-bar" style="height:22px"></div>
-            <div class="tr-bar empty" style="height:2px"></div>
-            <div class="tr-bar today" style="height:34px"></div>
+          <div class="tr-bars" id="tr-bars">
+            <!-- 7 根迷你柱状图由 JS 渲染：近 7 天 -->
           </div>
         </section>
 
@@ -624,21 +617,58 @@ img { display: block; max-width: 100%; }
       }
 
       function updateStats() {
+        // 三个数字
         const total = records.length;
-        const hrs = Math.round(records.reduce((s,r) => s + parseInt(r.duration)||0, 0) / 60 * 10) / 10;
-        // 连续天数
+        const hrs = Math.round(records.reduce((s,r) => s + (parseInt(r.duration)||0), 0) / 60 * 10) / 10;
         const days = [...new Set(records.map(r => r.date))].sort((a,b) => b.localeCompare(a));
-        let streak = 0, today = new Date();
+        let streak = 0;
+        const today = new Date();
         for (let i=0; i<30; i++) {
           const d = new Date(today); d.setDate(d.getDate()-i);
-          const key = d.toISOString().slice(0,10);
-          if (days.includes(key)) streak++; else break;
+          if (days.includes(d.toISOString().slice(0,10))) streak++; else break;
         }
-        document.querySelector(".tr-stat-num:not(.cyan)").textContent = total;
-        // 第二个数字（累计小时）—— 选不是 cyan 的第二个
-        const nums = document.querySelectorAll(".tr-stat-num");
-        if (nums[1]) nums[1].textContent = hrs;
-        if (nums[2]) nums[2].textContent = streak;
+        document.getElementById("tr-num-total").textContent = total;
+        document.getElementById("tr-num-hrs").textContent = hrs;
+        document.getElementById("tr-num-streak").textContent = streak;
+
+        // 7 根柱状图（近 7 天，从最远 → 今天）
+        renderWeeklyBars();
+      }
+
+      function renderWeeklyBars() {
+        const container = document.getElementById("tr-bars");
+        if (!container) return;
+        container.innerHTML = "";
+
+        // 近 7 天日期
+        const dates = [];
+        const today = new Date();
+        for (let i=6; i>=0; i--) {
+          const d = new Date(today); d.setDate(d.getDate()-i);
+          dates.push(d.toISOString().slice(0,10));
+        }
+        const todayKey = dates[6];
+
+        // 每天记录数
+        const counts = dates.map(date => records.filter(r => r.date === date).length);
+        const maxCount = Math.max(1, ...counts);  // 至少 1 避免除零
+
+        counts.forEach((count, i) => {
+          const bar = document.createElement("div");
+          const isToday = dates[i] === todayKey;
+          const hasData = count > 0;
+
+          if (!hasData) {
+            bar.className = "tr-bar empty";
+            bar.style.height = "2px";
+          } else {
+            bar.className = "tr-bar" + (isToday ? " today" : "");
+            // 高度：2 ~ 40px 之间，按比例
+            const h = Math.max(4, Math.round((count / maxCount) * 38 + 2));
+            bar.style.height = h + "px";
+          }
+          container.appendChild(bar);
+        });
       }
 
       // ============ 筛选交互 ============
