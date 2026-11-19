@@ -343,3 +343,23 @@ img { display: block; max-width: 100%; }
     scroll-behavior: auto !important;
   }
 }
+
+/* ===== 全局蓝框/点击高亮去除 ===== */
+* {
+  -webkit-tap-highlight-color: transparent;
+  outline: none !important;
+}
+*:focus { outline: none !important; }
+*:focus-visible { outline: none !important; }
+
+canvas, button, a, [role="button"], input, select, textarea {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Three.js canvas 点击去焦点蓝框 */
+canvas:focus,
+.vl-stage3d canvas:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
